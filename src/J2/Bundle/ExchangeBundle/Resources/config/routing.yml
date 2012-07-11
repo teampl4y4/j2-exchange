@@ -1,0 +1,3 @@
+exchange:
+  resource: "@J2ExchangeBundle/Controller"
+  type: annotation
