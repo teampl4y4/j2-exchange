@@ -1,1 +1,5 @@
-Variable: {{var}}!
+{% if exchange %}
+    Exchange Name: {{exchange.name}}!
+{% else %}
+    No Exchanges!
+{% endif %}

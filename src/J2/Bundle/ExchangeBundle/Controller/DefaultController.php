@@ -14,6 +14,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array('var' => 'value');
+        $em        = $this->getDoctrine()->getEntityManager();
+        $exchange  = $em->getRepository('J2ExchangeBundle:Exchange')->find(1);
+        return array('exchange' => $exchange);
     }
 }
