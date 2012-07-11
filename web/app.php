@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 $environment = isset($_SERVER['ENVIRONMENT']) ? $_SERVER['ENVIRONMENT']
                : 'prod';
 
-$kernel = new AppKernel($environment, false);
+$debug  = ($environment == 'dev') ? true : false;
+
+$kernel = new AppKernel($environment, $debug);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 $kernel->handle(Request::createFromGlobals())->send();

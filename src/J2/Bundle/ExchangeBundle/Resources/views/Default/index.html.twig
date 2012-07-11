@@ -1,5 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
 {% if exchange %}
     Exchange Name: {{exchange.name}}!
 {% else %}
     No Exchanges!
 {% endif %}
+
+{% endblock %}
