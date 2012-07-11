@@ -7,7 +7,7 @@ require_once __DIR__.'/../app/AppKernel.php';
 use Symfony\Component\HttpFoundation\Request;
 
 $environment = isset($_SERVER['ENVIRONMENT']) ? $_SERVER['ENVIRONMENT']
-               : AppKernel::ENVIRONMENT_PROD;
+               : 'prod';
 
 $kernel = new AppKernel($environment, false);
 $kernel->loadClassCache();
