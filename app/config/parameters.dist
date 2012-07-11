@@ -1,0 +1,13 @@
+[parameters]
+    database_driver="pdo_mysql"
+    database_host="localhost"
+    database_port=""
+    database_name="j2exchange"
+    database_user="--CHANGE--"
+    database_password="--CHANGE--"
+    mailer_transport="smtp"
+    mailer_host="localhost"
+    mailer_user=""
+    mailer_password=""
+    locale="en"
+    secret="4c7f9dcef6a5b35ea744c585acf607e2"
