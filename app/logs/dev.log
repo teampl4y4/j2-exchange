@@ -423,3 +423,5 @@
 [2012-07-11 16:12:39] request.INFO: Matched route "j2_exchange_default_index" (parameters: "_controller": "J2\Bundle\ExchangeBundle\Controller\DefaultController::indexAction", "_route": "j2_exchange_default_index") [] []
 [2012-07-11 16:12:39] request.INFO: Matched route "j2_exchange_default_index" (parameters: "_controller": "J2\Bundle\ExchangeBundle\Controller\DefaultController::indexAction", "_route": "j2_exchange_default_index") [] []
 [2012-07-11 16:12:50] request.INFO: Matched route "j2_exchange_default_index" (parameters: "_controller": "J2\Bundle\ExchangeBundle\Controller\DefaultController::indexAction", "_route": "j2_exchange_default_index") [] []
+[2012-07-11 16:18:27] request.INFO: Matched route "j2_exchange_default_index" (parameters: "_controller": "J2\Bundle\ExchangeBundle\Controller\DefaultController::indexAction", "_route": "j2_exchange_default_index") [] []
+[2012-07-11 16:23:16] request.INFO: Matched route "j2_exchange_default_index" (parameters: "_controller": "J2\Bundle\ExchangeBundle\Controller\DefaultController::indexAction", "_route": "j2_exchange_default_index") [] []
