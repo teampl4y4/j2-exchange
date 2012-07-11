@@ -42,6 +42,12 @@ class Exchange
      */
     private $isActive;
 
+    public function __construct()
+    {
+        $this->setCreatedAt( new \DateTime() );
+        $this->setIsActive(true);
+    }
+
 
     /**
      * Get id
