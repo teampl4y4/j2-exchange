@@ -64,5 +64,5 @@
 
 [FOSUserBundle]
     git=https://github.com/FriendsOfSymfony/FOSUserBundle.git
-    target=/bundles/FOS/Bundle/FOSUserBundle
+    target=/bundles/FOS/UserBundle
     version=v1.2.0

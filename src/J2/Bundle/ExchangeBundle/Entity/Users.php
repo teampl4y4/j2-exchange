@@ -3,14 +3,14 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use FOS\UserBundle\Entity\User as BaseUser;
 /**
  * J2\Bundle\ExchangeBundle\Entity\Users
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\UsersRepository")
  */
-class Users
+class Users extends BaseUser
 {
     /**
      * @var integer $id
@@ -19,56 +19,35 @@ class Users
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string $email
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
+    protected $id;
 
     /**
      * @var string $firstName
      *
      * @ORM\Column(name="firstName", type="string", length=50)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string $lastName
      *
      * @ORM\Column(name="lastName", type="string", length=50)
      */
-    private $lastName;
-
-    /**
-     * @var string $password
-     *
-     * @ORM\Column(name="password", type="string", length=64)
-     */
-    private $password;
-
-    /**
-     * @var string $username
-     *
-     * @ORM\Column(name="username", type="string", length=20)
-     */
-    private $username;
+    protected $lastName;
 
     /**
      * @var datetime $createdAt
      *
      * @ORM\Column(name="createdAt", type="datetime")
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var boolean $active
      *
      * @ORM\Column(name="active", type="boolean")
      */
-    private $active;
+    protected $active;
 
 
     /**
