@@ -19,6 +19,6 @@ class OffersController extends Controller
      */
     public function indexAction()
     {
-        $this->getDoctrine()->getRepository('J2ExchangeBundle:SocialProfile');
+        $this->getDoctrine()->getRepository('J2ExchangeBundle:Products')->findByUser($user);
     }
 }
