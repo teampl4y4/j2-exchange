@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new J2ExchangeBundle()
+            new J2ExchangeBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
