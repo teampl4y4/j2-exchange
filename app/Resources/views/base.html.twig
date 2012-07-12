@@ -60,11 +60,7 @@
 
         <!-- Left navigation -->
         <div class="leftNav">
-            <ul id="menu">
-                <li class="dash"><a href="{{ path('_dashboard') }}" title="" class="active"><span>Dashboard</span></a></li>
-                <li class="products"><a href="{{ path('_products') }}" title=""><span>Products</span></a></li>
-                <li class="offers"><a href="{{ path('_offers') }}" title=""><span>Offers</span></a></li>
-            </ul>
+            {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:mainMenu') }}
         </div>
 
         <!-- Content -->
