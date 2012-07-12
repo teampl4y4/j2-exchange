@@ -5,7 +5,7 @@ namespace J2\Bundle\ExchangeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use J2\Bundle\ExchangeBundle\Controller\AbstractController;
 /**
  * Offers Controller
  *
@@ -19,6 +19,6 @@ class OffersController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $this->getDoctrine()->getRepository('J2ExchangeBundle:Products')->findByUser($user);
     }
 }
