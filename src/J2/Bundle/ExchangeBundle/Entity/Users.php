@@ -24,14 +24,14 @@ class Users extends BaseUser
     /**
      * @var string $firstName
      *
-     * @ORM\Column(name="firstName", type="string", length=50)
+     * @ORM\Column(name="firstName", type="string", length=50, nullable=true)
      */
     protected $firstName;
 
     /**
      * @var string $lastName
      *
-     * @ORM\Column(name="lastName", type="string", length=50)
+     * @ORM\Column(name="lastName", type="string", length=50, nullable=true)
      */
     protected $lastName;
 
@@ -48,6 +48,12 @@ class Users extends BaseUser
      * @ORM\Column(name="active", type="boolean")
      */
     protected $active;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
 
 
     /**
