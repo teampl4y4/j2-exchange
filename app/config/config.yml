@@ -58,17 +58,14 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
-<<<<<<< HEAD
-    
-fos_user:
-    db_driver: orm 
-    firewall_name: main
-    user_class: J2\Bundle\ExchangeBundle\Entity\Users
-=======
 
 knp_menu:
     twig:
         template: knp_menu.html.twig
     templating: false # if true, enables the helper for PHP templates
     default_renderer: twig # The renderer to use, list is also available by default
->>>>>>> 6800f27195739810814d7fe43f8ad64be16d752f
+
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: J2\Bundle\ExchangeBundle\Entity\Users
