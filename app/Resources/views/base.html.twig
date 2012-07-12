@@ -16,7 +16,7 @@
     <div id="topNav">
         <div class="fixed">
             <div class="wrapper">
-                <div class="welcome"><a href="#" title=""><img src="{{ asset('/bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, User!</span></div>
+                <div class="welcome"><a href="#" title=""><img src="{{ asset('/bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, {{app.user.firstName}}!</span></div>
                 <div class="userNav">
                     <ul>
                         <li><a href="/profile" title=""><img src="{{ asset('/bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
