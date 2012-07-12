@@ -1,7 +1,2 @@
-# Internal routing configuration to handle ESI
-#_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal
-
 J2ExchangeBundle:
   resource: "@J2ExchangeBundle/Resources/config/routing.yml"
