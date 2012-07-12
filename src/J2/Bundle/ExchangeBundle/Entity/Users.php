@@ -51,6 +51,7 @@ class Users extends BaseUser
 
     public function __construct()
     {
+        parent::__construct();
         $this->createdAt = new \DateTime();
         $this->active    = true;
     }
