@@ -1,8 +1,8 @@
 services:
+
     j2Exchange.menu_renderer:
-        # The class implements Knp\Menu\Renderer\RendererInterface
-        class: J2\Bundle\ExchangeBundle\Menu\CustomRenderer
-        arguments: [%kernel.charset%] # set your own dependencies here
+        class: J2\Bundle\ExchangeBundle\Menu\Renderer\CustomRenderer
+        arguments: [@knp_menu.matcher] # set your own dependencies here
         tags:
             # The alias is what is used to retrieve the menu
             - { name: knp_menu.renderer, alias: custom }
