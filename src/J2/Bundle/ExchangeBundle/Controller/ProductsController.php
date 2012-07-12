@@ -21,4 +21,24 @@ class ProductsController extends Controller
     {
         return array();
     }
+    
+    public function addAction(){
+        
+    }
+    
+    public function deleteAction(){
+        
+    }
+    
+    public function editAction(){
+        
+    }
+    
+    public function viewAction(){
+        
+    }
+    
+    public function saveAction(){
+        
+    }
 }
