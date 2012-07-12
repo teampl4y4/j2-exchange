@@ -2,13 +2,19 @@
 
 {% block title %}The Exchange{%endblock%}
 {% block content %}
+<div class="title"><h5>Dashboard</h5></div>
 
-{% if exchange %}
-    Exchange Name: {{exchange.name}}! This is changes on master PAST the branch..
-{% else %}
-    No Exchanges!
-{% endif %}
+<div class="widget first">
+    <div class="head"><h5 class="iDownload3">This is the headline</h5></div>
+    <div class="body">
 
-This is my change..
+    {% if exchange %}
+        Exchange Name: {{exchange.name}}! This is changes on master PAST the branch..
+    {% else %}
+        No Exchanges!
+    {% endif %}
+
+    </div>
+</div>
 
 {% endblock %}

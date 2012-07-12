@@ -18,4 +18,10 @@ class CustomRenderer extends ListRenderer implements \Knp\Menu\Renderer\Renderer
             $this->renderHtmlAttributes($item->getLinkAttributes()),
             $this->renderLabel($item, $options));
     }
+
+    protected function renderItem(ItemInterface $item, array $options)
+    {
+        return parent::renderItem($item, $options);
+    }
+
 }
