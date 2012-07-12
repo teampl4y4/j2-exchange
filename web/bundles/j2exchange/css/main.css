@@ -285,7 +285,7 @@ box-shadow: 0 1px 0 #4f565a;
 .leftNav ul li { position: relative; }
 .leftNav ul li a { color: #fafafa; font-size: 15px; display: block; background: url(../images/titleBg.png) repeat-x 0 0; border: 1px solid #2e3234; margin-top: 1px; }
 .leftNav ul li a:hover { background-position: 0 -39px; color: #fafafa; border: 1px solid #252a31; }
-.leftNav ul li a.active { background-position: 0 -78px; }
+.leftNav ul li a.current { background-position: 0 -78px; }
 .leftNav ul li a span { padding: 9px 0 9px 35px; display: block; }
 
 
