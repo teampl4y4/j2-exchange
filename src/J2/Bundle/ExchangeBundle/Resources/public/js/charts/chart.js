@@ -1,4 +1,4 @@
-	$(function () {
+$(function () {
     var sin = [], cos = [];
     for (var i = 0; i < 21; i += 0.5) {
         sin.push([i, Math.sin(i)]);

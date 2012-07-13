@@ -16,7 +16,7 @@ class LeftNavigation extends ContainerAware
         $menu = $factory->createItem('root', array('childrenAttributes' => array('id' => 'menu')));
 
         $menu->addChild('Dashboard', array('route' => '_dashboard', 'attributes' => array('class' => 'dash')));
-        $menu->addChild('Products', array('route' => '_products', 'attributes' => array('class' => 'products')));
+        $menu->addChild('Catalog', array('route' => '_products', 'attributes' => array('class' => 'products')));
         $menu->addChild('Offers', array('route' => '_offers', 'attributes' => array('class' => 'offers')));
 
         return $menu;

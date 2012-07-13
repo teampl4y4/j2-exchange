@@ -67,8 +67,6 @@
     </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        {% javascripts '@J2ExchangeBundle/Resources/public/js/custom.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+    {% block javascripts %}{% endblock %}
     </body>
 </html>
