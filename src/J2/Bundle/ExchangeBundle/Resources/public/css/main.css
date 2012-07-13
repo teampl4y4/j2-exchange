@@ -290,7 +290,7 @@ box-shadow: 0 1px 0 #4f565a;
 
 
 /* Left navigation icons */
-
+.leftNav ul li.first { margin-top: 0px !important;}
 .leftNav ul li.dash a span { background-image: url(../images/icons/dark/download.png) }
 .leftNav ul li.products a span { background-image: url(../images/icons/dark/cart3.png) }
 .leftNav ul li.offers span { background-image: url(../images/icons/dark/graph.png) }

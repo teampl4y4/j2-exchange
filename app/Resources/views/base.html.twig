@@ -51,7 +51,9 @@
 
         <!-- Left navigation -->
         <div class="leftNav">
-{{ knp_menu_render('J2ExchangeBundle:LeftNavigation:mainMenu', {}, 'custom') }}
+        {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:mainMenu',
+            {firstClass: 'firstItem', lastClass: 'lastItem', currentClass: 'active'},
+            'custom') }}
         </div>
 
         <!-- Content -->
