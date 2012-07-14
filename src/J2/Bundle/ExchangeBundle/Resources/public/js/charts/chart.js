@@ -47,7 +47,7 @@
                         y = item.datapoint[1].toFixed(2);
                     
                     showTooltip(item.pageX, item.pageY,
-                                item.series.label + " of " + x + " = " + y);
+                                item.series.label + " on " + x + " = " + y);
                 }
             }
             else {
