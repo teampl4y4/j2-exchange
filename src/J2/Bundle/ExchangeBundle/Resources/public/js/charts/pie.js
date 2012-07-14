@@ -1,18 +1,19 @@
 	$(function () {
 		var data = [];
-		var series = Math.floor(Math.random()*10)+1;
-		for( var i = 0; i<series; i++)
-		{
-			data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
-		}
+        data[0] = { label: 'Offer #1', data: Math.floor(Math.random()*100)+1 };
+        data[1] = { label: 'Offer #2', data: Math.floor(Math.random()*100)+1 };
+        data[2] = { label: 'Offer #3', data: Math.floor(Math.random()*100)+1 };
 	
-	$.plot($("#pie"), data, 
+	$.plot($("#donut"), data, 
 	{
 			series: {
 				pie: { 
 					show: true,
+					innerRadius: 0.5,
+					radius: 1,
 					label: {
 						show: false,
+						radius: 2/3,
 						formatter: function(label, series){
 							return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
 						},
@@ -28,8 +29,8 @@
 				container: null, // container (as jQuery object) to put legend in, null means default on top of graph
 				position: "ne", // position of default legend container within plot
 				margin: [5, 10], // distance from grid edge to default legend container within plot
-				backgroundColor: "#24272b", // null means auto-detect
-				backgroundOpacity: 0.8 // set to 0 to avoid background
+				backgroundColor: "#efefef", // null means auto-detect
+				backgroundOpacity: 1 // set to 0 to avoid background
 			},
 			grid: {
 				hoverable: true,

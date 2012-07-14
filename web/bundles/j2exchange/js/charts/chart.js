@@ -1,12 +1,12 @@
-$(function () {
+	$(function () {
     var sin = [], cos = [];
-    for (var i = 0; i < 21; i += 0.5) {
+    for (var i = 0; i < 31; i += 0.5) {
         sin.push([i, Math.sin(i)]);
         cos.push([i, Math.cos(i)]);
     }
 
     var plot = $.plot($(".chart"),
-           [ { data: sin, label: "sin(x)"}, { data: cos, label: "cos(x)" } ], {
+           [ { data: sin, label: "revenue"}, { data: cos, label: "orders" } ], {
                series: {
                    lines: { show: true },
                    points: { show: true }
@@ -22,16 +22,13 @@ $(function () {
             display: 'none',
             top: y + 5,
             left: x + 5,
-            border: '1px solid #191919',
-            padding: '2px 8px',
+            border: '1px solid #000',
+            padding: '2px',
 			'z-index': '9999',
             'background-color': '#202020',
 			'color': '#fff',
 			'font-size': '11px',
-            opacity: 0.85,
-			'border-radius': '2px',
-			'-webkit-border-radius': '2px',
-			'-moz-border-radius': '2px'
+            opacity: 0.8
         }).appendTo("body").fadeIn(200);
     }
 

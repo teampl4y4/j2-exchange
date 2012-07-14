@@ -12,49 +12,151 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <!-- Top navigation bar -->
-    <div id="topNav">
-        <div class="fixed">
-            <div class="wrapper">
-                <div class="welcome"><a href="#" title=""><img src="{{ asset('/bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, {{app.user.firstName}}!</span></div>
-                <div class="userNav">
-                    <ul>
-                        <li><a href="/profile" title=""><img src="{{ asset('/bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
-                        <li><a href="#" title=""><img src="{{ asset('/bundles/j2exchange/images/icons/topnav/settings.png') }}" alt="" /><span>Settings</span></a></li>
-                        <li><a href="/logout" title=""><img src="{{ asset('/bundles/j2exchange/images/icons/topnav/logout.png') }}" alt="" /><span>Logout</span></a></li>
-                    </ul>
-                </div>
-                <div class="fix"></div>
-            </div>
+
+    <!-- Left side content -->
+    <div id="leftSide">
+        <div class="logo"><a href="index.html"><img src="{{ asset('bundles/j2exchange/images/logo.png') }}" alt="" /></a></div>
+
+        <div class="sidebarSep mt0"></div>
+
+        <!-- General balance widget -->
+        <div class="genBalance">
+            <a href="#" title="" class="amount">
+                <span>30 Day Revenue:</span>
+                <span class="balanceAmount">$53,812</span>
+            </a>
+            <a href="#" title="" class="amChanges">
+                <strong class="sPositive">+27%</strong>
+            </a>
         </div>
-    </div>
 
-    <!-- Header -->
-    <div id="header" class="wrapper">
-        <div class="logo"><a href="/" title=""><img src="{{ asset('/bundles/j2exchange/images/exchangeLogo.png') }}" alt="" /></a></div>
-
-        <div class="middleNav">
+        <!-- Next update progress widget -->
+        <div class="nextUpdate">
             <ul>
-                {#<li class="iMes"><a href="#" title=""><span>Support tickets</span></a><span class="numberMiddle">9</span></li>#}
-                {#<li class="iStat"><a href="#" title=""><span>Statistics</span></a></li>#}
-                {#<li class="iUser"><a href="#" title=""><span>User list</span></a></li>#}
-                {#<li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>#}
+                <li>Next update in:</li>
+                <li>23 hrs 14 min</li>
             </ul>
+            <div class="pWrapper"><div class="progressG" title="78%"></div></div>
         </div>
-        <div class="fix"></div>
 
-    </div>
-
-
-    <!-- Content wrapper -->
-    <div class="wrapper">
+        <div class="sidebarSep"></div>
 
         <!-- Left navigation -->
-        <div class="leftNav">
         {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:mainMenu',
-            {firstClass: 'firstItem', lastClass: 'lastItem', currentClass: 'active'},
-            'custom') }}
+        {firstClass: 'firstItem', lastClass: 'lastItem', currentClass: 'active'},
+        'custom') }}
+
+    </div>
+
+
+    <!-- Right side -->
+    <div id="rightSide">
+
+        <!-- Top fixed navigation -->
+        <div class="topNav">
+            <div class="wrapper">
+                <div class="welcome"><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, Eugene!</span></div>
+                <div class="userNav">
+                    <ul>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/tasks.png') }}" alt="" /><span>Tasks</span></a></li>
+                        <li class="dd"><a title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/messages.png') }}" alt="" /><span>Messages</span><span class="numberTop">8</span></a>
+                            <ul class="userDropdown">
+                                <li><a href="#" title="" class="sAdd">new message</a></li>
+                                <li><a href="#" title="" class="sInbox">inbox</a></li>
+                                <li><a href="#" title="" class="sOutbox">outbox</a></li>
+                                <li><a href="#" title="" class="sTrash">trash</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/settings.png') }}" alt="" /><span>Settings</span></a></li>
+                        <li><a href="login.html" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/logout.png') }}" alt="" /><span>Logout</span></a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
         </div>
+
+        <!-- Responsive header -->
+        <div class="resp">
+            <div class="respHead">
+                <a href="index.html" title=""><img src="{{ asset('bundles/j2exchange/images/loginLogo.png') }}" alt="" /></a>
+            </div>
+
+            <div class="cLine"></div>
+            <div class="smalldd">
+                <span class="goTo"><img src="{{ asset('bundles/j2exchange/images/icons/light/home.png') }}" alt="" />Dashboard</span>
+
+                {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:smallMenu') }}
+                
+            </div>
+            <div class="cLine"></div>
+        </div>
+
+        <!-- Title area -->
+        <div class="titleArea">
+            <div class="wrapper">
+                <div class="pageTitle">
+                    <h5>{% block headline %}Your Exchange{% endblock %}</h5>
+                    <span>{% block catchphrase %}Magic is in the making...{% endblock %}</span>
+                </div>
+
+                <div class="middleNav">
+                    <ul>
+                        <li class="mUser"><a title=""><span class="users"></span></a>
+                            <ul class="mSub1">
+                                <li><a href="#" title="">Add user</a></li>
+                                <li><a href="#" title="">Statistics</a></li>
+                                <li><a href="#" title="">Orders</a></li>
+                            </ul>
+                        </li>
+                        <li class="mMessages"><a title=""><span class="messages"></span></a>
+                            <ul class="mSub2">
+                                <li><a href="#" title="">New tickets<span class="numberRight">8</span></a></li>
+                                <li><a href="#" title="">Pending tickets<span class="numberRight">12</span></a></li>
+                                <li><a href="#" title="">Closed tickets</a></li>
+                            </ul>
+                        </li>
+                        <li class="mFiles"><a href="#" title="Or you can use a tooltip" class="tipN"><span class="files"></span></a></li>
+                        <li class="mOrders"><a title=""><span class="orders"></span><span class="numberMiddle">8</span></a>
+                            <ul class="mSub4">
+                                <li><a href="#" title="">Pending uploads</a></li>
+                                <li><a href="#" title="">Statistics</a></li>
+                                <li><a href="#" title="">Trash</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- Page statistics and control buttons area -->
+        <div class="statsRow">
+        {% block middleNav %}
+            <div class="wrapper">
+                <div class="controlB">
+                    <ul>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/plus.png') }}" alt="" /><span>Add new session</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/database.png') }}" alt="" /><span>New DB entry</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/hire-me.png') }}" alt="" /><span>Add new user</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/statistics.png') }}" alt="" /><span>Check statistics</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/comment.png') }}" alt="" /><span>Review comments</span></a></li>
+                        <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/order-149.png') }}" alt="" /><span>Check orders</span></a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        {% endblock %}
+        </div>
+
+        <div class="line"></div>
+
+        <!-- Main content wrapper -->
+        <div class="wrapper">
 
         <!-- Content -->
         <div class="content">{% block content %}{% endblock %}</div>
@@ -67,6 +169,11 @@
     </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/excanvas.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/ui/jquery.collapsible.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/ui/jquery.tipsy.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/custom.js') }}"></script>
     {% block javascripts %}{% endblock %}
     </body>
 </html>

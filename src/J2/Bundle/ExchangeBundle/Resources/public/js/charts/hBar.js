@@ -53,27 +53,24 @@ ds_h.push({
             display: 'none',
             top: y - 35,
             left: x - 5,
-            border: '1px solid #191919',
-            padding: '1px 6px',
+            border: '1px solid #000',
+            padding: '1px 5px',
 			'z-index': '9999',
             'background-color': '#202020',
 			'color': '#fff',
 			'font-size': '11px',
-			'border-radius': '2px',
-			'-webkit-border-radius': '2px',
-			'-moz-border-radius': '2px',
             opacity: 0.8
         }).prependTo(rootElt).show();
     }
 
-$.plot($("#hBar"), ds_h, {
+$.plot($("#placeholder1_h"), ds_h, {
     grid:{
         hoverable:true
     }
 });
 
 //add tooltip event
-$("#hBar").bind("plothover", function (event, pos, item) {
+$("#placeholder1_h").bind("plothover", function (event, pos, item) {
     if (item) {
         if (previousPoint != item.datapoint) {
             previousPoint = item.datapoint;

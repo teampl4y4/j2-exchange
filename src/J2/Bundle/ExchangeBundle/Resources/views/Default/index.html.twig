@@ -1,97 +1,128 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}The Exchange{%endblock%}
-{% block content %}
-<div class="title"><h5>Your Exchange</h5></div>
 
-<div class="widget first">
-    <div class="widget first">
-        <div class="head"><h5 class="iGraph">Charts</h5></div>
-        <div class="body">
-            <div id="salesChart" class="chart"></div>
+{% block headline %}Dashboard{% endblock %}
+
+{% block middleNav %}
+<div class="wrapper statsItems">
+
+    <!-- Stats item -->
+    <div class="sItem ticketsStats">
+        <h2><a title="" class="value">$53,812<span>revenue</span></a></h2>
+        <div class="statsDetailed" id="s1">
+            <div class="statsContent">
+                <div class="sElements">
+                    <div class="sDisplay"><h4>5422</h4><span>new visits</span></div>
+                    <div class="sDisplay"><h4>19k+</h4><span>total</span></div>
+                    <div class="sDisplay"><h4>8520</h4><span>returned</span></div>
+                </div>
+            </div>
         </div>
+        <span class="changes">
+            <span class="posBar" values="5,20,15,20,18,16,14,20,15,16"><canvas height="16" width="49" style="display: inline-block; width: 49px; height: 16px; vertical-align: top;"></canvas></span>
+            <span class="positive">+27%</span>
+        </span>
+    </div>
+
+    <!-- Stats item -->
+    <div class="sItem visitsStats">
+        <h2><a title="" class="value">17%<span>conv rate</span></a></h2>
+        <div class="statsDetailed" id="s2">
+            <div class="statsContent">
+                <div class="sElements">
+                    <div class="sDisplay"><h4>842</h4><span>pending</span></div>
+                    <div class="sDisplay"><h4>24k+</h4><span>closed</span></div>
+                    <div class="sDisplay"><h4>1245</h4><span>total</span></div>
+                </div>
+                <span class="line"></span>
+                <div class="statsUpdate">
+                    <span>Next update in:</span>
+                    <span>10 hrs 55 min</span>
+                    <div class="contentProgress"><div original-title="68%" style="width: 68%;" class="barG tipS" id="bar2"></div></div>
+                </div>
+                <div class="statsDropBtn"><a href="#" class="button basic"><img src="{{ asset('bundles/j2exchange/images/icons/dark/bubbles2.png') }}" class="icon" alt=""><span>Support center</span></a></div>
+            </div>
+        </div>
+        <span class="changes">
+            <span class="posBar" values="5,10,15,20,18,16,14,20,15,16"><canvas height="16" width="49" style="display: inline-block; width: 49px; height: 16px; vertical-align: top;"></canvas></span>
+            <span class="positive">+0.6%</span>
+        </span>
+    </div>
+
+    <!-- Stats item -->
+    <div class="sItem ordersStats">
+        <h2><a title="" class="value">1258<span>orders</span></a></h2>
+        <div class="statsDetailed" id="s4">
+            <div class="statsContent">
+                <div class="sElements">
+                    <div class="sDisplay"><h4>578</h4><span>new orders</span></div>
+                    <div class="sDisplay"><h4>5486</h4><span>pending</span></div>
+                    <div class="sDisplay"><h4>16k+</h4><span>total</span></div>
+                </div>
+                <span class="line"></span>
+                <div class="statsUpdate">
+                    <span>Next update in:</span>
+                    <span>1 hr 19 min</span>
+                    <div class="contentProgress"><div original-title="89%" style="width: 89%;" class="barG tipS" id="bar4"></div></div>
+                </div>
+                <div class="statsDropBtn"><a href="#" class="button basic"><img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png') }}" class="icon" alt=""><span>View statistics</span></a></div>
+            </div>
+        </div>
+        <span class="changes">
+            <span class="negBar" values="5,10,15,20,18,16,14,20,15,16"><canvas height="16" width="49" style="display: inline-block; width: 49px; height: 16px; vertical-align: top;"></canvas></span>
+            <span class="negative">+0.6%</span>
+        </span>
     </div>
 </div>
+{% endblock%}
+
+{% block content %}
+    <!-- Lines chart -->
+    <div class="widget chartWrapper">
+        <div class="title">
+            <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
+            <h6>30 Day Revenue Report</h6>
+        </div>
+        <div class="body"><div class="chart"></div></div>
+    </div>
+
+    <div class="widgets">
+
+        <!-- Donut -->
+        <div class="oneThree">
+            <div class="widget">
+                <div class="title">
+                    <img src="{{ asset('bundles/j2exchange/images/icons/dark/chart3.png') }}" alt="" class="titleIcon" />
+                    <h6>Revenue Breakdown</h6>
+                </div>
+                <div class="body"><div class="pie" id="donut"></div></div>
+            </div>
+        </div>
+
+        <!-- Auto updating chart -->
+        <div class="twoOne">
+            <div class="widget chartWrapper">
+                <div class="title">
+                    <img src="{{ asset('bundles/j2exchange/images/icons/dark/priceTag.png') }}" alt="" class="titleIcon" />
+                    <h6>Inventory Breakdown</h6>
+                </div>
+                <div class="body"><div id="stackedBar" class="updating"></div></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
 {% endblock %}
 
 {% block javascripts %}
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.orderBars.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.pie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.resize.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.sparkline.min.js') }}"></script>
 
-<script type="text/javascript" src="/bundles/j2exchange/js/plugins/flot/jquery.flot.js"></script>
-<script type="text/javascript" src="/bundles/j2exchange/js/plugins/flot/jquery.flot.orderBars.js"></script>
-<script type="text/javascript" src="/bundles/j2exchange/js/plugins/flot/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="/bundles/j2exchange/js/plugins/flot/excanvas.min.js"></script>
-<script type="text/javascript" src="/bundles/j2exchange/js/plugins/flot/jquery.flot.resize.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        var sin = [], cos = [];
-        for (var i = 0; i < 21; i += 0.5) {
-            sin.push([i, Math.sin(i)]);
-            cos.push([i, Math.cos(i)]);
-        }
-
-        var plot = $.plot($(".chart"),
-            [ { data: sin, label: "sin(x)"}, { data: cos, label: "cos(x)" } ], {
-                series: {
-                    lines: { show: true },
-                    points: { show: true }
-                },
-                grid: { hoverable: true, clickable: true },
-                yaxis: { min: -1.1, max: 1.1 },
-                xaxis: { min: 0, max: 20 }
-            });
-
-        function showTooltip(x, y, contents) {
-            $('<div id="tooltip" class="tooltip">' + contents + '</div>').css( {
-                position: 'absolute',
-                display: 'none',
-                top: y + 5,
-                left: x + 5,
-                border: '1px solid #191919',
-                padding: '2px 8px',
-                'z-index': '9999',
-                'background-color': '#202020',
-                'color': '#fff',
-                'font-size': '11px',
-                opacity: 0.85,
-                'border-radius': '2px',
-                '-webkit-border-radius': '2px',
-                '-moz-border-radius': '2px'
-            }).appendTo("body").fadeIn(200);
-        }
-
-        var previousPoint = null;
-        $(".chart").bind("plothover", function (event, pos, item) {
-            $("#x").text(pos.x.toFixed(2));
-            $("#y").text(pos.y.toFixed(2));
-
-            if ($(".chart").length > 0) {
-                if (item) {
-                    if (previousPoint != item.dataIndex) {
-                        previousPoint = item.dataIndex;
-
-                        $("#tooltip").remove();
-                        var x = item.datapoint[0].toFixed(2),
-                                y = item.datapoint[1].toFixed(2);
-
-                        showTooltip(item.pageX, item.pageY,
-                                item.series.label + " of " + x + " = " + y);
-                    }
-                }
-                else {
-                    $("#tooltip").remove();
-                    previousPoint = null;
-                }
-            }
-        });
-
-        $(".chart").bind("plotclick", function (event, pos, item) {
-            if (item) {
-                $("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
-                plot.highlight(item.series, item.datapoint);
-            }
-        });
-
-    });
-</script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/pie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/stackedBar.js') }}"></script>
 {% endblock %}

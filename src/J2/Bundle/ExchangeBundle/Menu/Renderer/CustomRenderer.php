@@ -7,7 +7,7 @@ use Knp\Menu\Matcher\MatcherInterface;
 use Knp\Menu\Renderer\ListRenderer;
 
 /**
- * Renders MenuItem tree as unordered list
+ * Renders navigation with a <span>..</span> around the anchor text
  */
 class CustomRenderer extends ListRenderer implements \Knp\Menu\Renderer\RendererInterface
 {
