@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -30,21 +30,23 @@
             </a>
         </div>
 
-        <!-- Next update progress widget -->
-        <div class="nextUpdate">
-            <ul>
-                <li>Next update in:</li>
-                <li>23 hrs 14 min</li>
-            </ul>
-            <div class="pWrapper"><div class="progressG" title="78%"></div></div>
-        </div>
-
         <div class="sidebarSep"></div>
 
         <!-- Left navigation -->
         {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:mainMenu',
         {firstClass: 'firstItem', lastClass: 'lastItem', currentClass: 'active'},
         'custom') }}
+
+        <div class="sidebarSep"></div>
+
+        <!-- Next update progress widget -->
+        <div class="nextUpdate">
+            <ul>
+                <li><b>Offers Left:</b></li>
+                <li>~3 days worth</li>
+            </ul>
+            <div class="pWrapper"><div class="progressG" title="78%"></div></div>
+        </div>
 
     </div>
 
@@ -87,7 +89,7 @@
                 <span class="goTo"><img src="{{ asset('bundles/j2exchange/images/icons/light/home.png') }}" alt="" />Dashboard</span>
 
                 {{ knp_menu_render('J2ExchangeBundle:LeftNavigation:smallMenu') }}
-                
+
             </div>
             <div class="cLine"></div>
         </div>
@@ -173,6 +175,7 @@
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/excanvas.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/ui/jquery.collapsible.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/ui/jquery.tipsy.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/ui/jquery.progress.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/custom.js') }}"></script>
     {% block javascripts %}{% endblock %}
     </body>

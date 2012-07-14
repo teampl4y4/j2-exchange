@@ -196,9 +196,13 @@ $(function() {
     $('.tipW').tipsy({gravity: 'w',fade: true});
     $('.tipE').tipsy({gravity: 'e',fade: true});
 
-    //sparklines UI stuff
+    //===== sparklines UI stuff === //
     $('.negBar').sparkline('html', {type: 'bar', barColor: '#db6464'} );
     $('.posBar').sparkline('html', {type: 'bar', barColor: '#6daa24'} );
     $('.zeroBar').sparkline('html', {type: 'bar', barColor: '#4e8fc6'} );
+
+    // ==== PROGRESS BARS === //
+    var percent = $('.progressG').attr('title');
+    $('.progressG').animate({width: percent},1000);
 
 });

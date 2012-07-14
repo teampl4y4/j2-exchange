@@ -3,8 +3,15 @@
         data[0] = { label: 'Offer #1', data: Math.floor(Math.random()*100)+1 };
         data[1] = { label: 'Offer #2', data: Math.floor(Math.random()*100)+1 };
         data[2] = { label: 'Offer #3', data: Math.floor(Math.random()*100)+1 };
-	
-	$.plot($("#donut"), data, 
+        data[3] = { label: 'Offer #4', data: Math.floor(Math.random()*100)+1 };
+        data[4] = { label: 'Offer #5', data: Math.floor(Math.random()*100)+1 };
+        data[5] = { label: 'Offer #6', data: Math.floor(Math.random()*100)+1 };
+        data[6] = { label: 'Offer #7', data: Math.floor(Math.random()*100)+1 };
+        data[7] = { label: 'Offer #8', data: Math.floor(Math.random()*100)+1 };
+        data[8] = { label: 'Offer #9', data: Math.floor(Math.random()*100)+1 };
+        data[9] = { label: 'Offer #10', data: Math.floor(Math.random()*100)+1 };
+
+	$.plot($("#donut"), data,
 	{
 			series: {
 				pie: { 
