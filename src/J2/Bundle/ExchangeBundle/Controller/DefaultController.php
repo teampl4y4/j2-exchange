@@ -16,6 +16,11 @@ class DefaultController extends Controller
     {
         $em        = $this->getDoctrine()->getEntityManager();
         $exchange  = $em->getRepository('J2ExchangeBundle:Exchange')->find(1);
-        return array('exchange' => $exchange);
+        return array(
+            'exchange' => $exchange,
+            'ordersMonth' => 1258,
+            'revenueMonth' => 53812,
+            'conversionsMonth' => 17
+        );
     }
 }

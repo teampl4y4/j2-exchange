@@ -3,13 +3,14 @@
 {% block title %}The Exchange{%endblock%}
 
 {% block headline %}Dashboard{% endblock %}
+{% block tagLine %} {% endblock %}
 
 {% block middleNav %}
 <div class="wrapper statsItems">
 
     <!-- Stats item -->
     <div class="sItem ticketsStats">
-        <h2><a title="" class="value">$53,812<span>revenue</span></a></h2>
+        <h2><a title="" class="value">${{ revenueMonth | number_format(0) }}<span>revenue</span></a></h2>
         <div class="statsDetailed" id="s1">
             <div class="statsContent">
                 <div class="sElements">
@@ -34,7 +35,7 @@
 
     <!-- Stats item -->
     <div class="sItem visitsStats">
-        <h2><a title="" class="value">17%<span>conversions</span></a></h2>
+        <h2><a title="" class="value">{{ conversionsMonth | number_format(0) }}%<span>conversions</span></a></h2>
         <div class="statsDetailed" id="s2">
             <div class="statsContent">
                 <div class="sElements">
@@ -59,7 +60,7 @@
 
     <!-- Stats item -->
     <div class="sItem ordersStats">
-        <h2><a title="" class="value">1258<span>orders</span></a></h2>
+        <h2><a title="" class="value">{{ ordersMonth | number_format(0) }}<span>orders</span></a></h2>
         <div class="statsDetailed" id="s4">
             <div class="statsContent">
                 <div class="sElements">
@@ -91,7 +92,7 @@
             <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
             <h6>30 Day Revenue Report</h6>
         </div>
-        <div class="body"><div class="chart"></div></div>
+        <div class="body"><div id="revenueChart" class="chart"></div></div>
     </div>
 
     <div class="widgets">
@@ -130,14 +131,30 @@
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.resize.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.sparkline.min.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/chart.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/chart.js') }}"></script>#}
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/pie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/stackedBar.js') }}"></script>
 
     <script type="text/javascript">
         (function ($) {
-            //backbone magic goes here
+
+            var Revenue = Backbone.Model.extend({
+                var: null
+            });
+
+            var RevenueChartView = Backbone.View.extend({
+                initialize: function(){
+                    this.render();
+                },
+                render: function(){
+                    alert('hi');
+                }
+            });
+
+            var revChart = new RevenueChartView({ el: $('revenueChart') });
+
         })(jQuery);
+
     </script>
 
 {% endblock %}

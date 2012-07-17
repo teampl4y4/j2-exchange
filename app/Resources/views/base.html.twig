@@ -57,7 +57,7 @@
         <!-- Top fixed navigation -->
         <div class="topNav">
             <div class="wrapper">
-                <div class="welcome"><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, Eugene!</span></div>
+                <div class="welcome"><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/userPic.png') }}" alt="" /></a><span>Howdy, {{ app.user.emailCanonical }}</span></div>
                 <div class="userNav">
                     <ul>
                         <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
@@ -98,7 +98,7 @@
             <div class="wrapper">
                 <div class="pageTitle">
                     <h5>{% block headline %}Your Exchange{% endblock %}</h5>
-                    <span>{% block catchphrase %}Magic is in the making...{% endblock %}</span>
+                    <span>{% block tagLine %}Magic is in the making...{% endblock %}</span>
                 </div>
 
                 <div class="middleNav">
