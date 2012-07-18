@@ -210,7 +210,7 @@
 
                     $(".chart").bind("plotclick", function (event, pos, item) {
                         if (item) {
-                            $("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+                            showTooltip(item.pageX - 50, item.pageY - 50, "You clicked point " + item.dataIndex + " in " + item.series.label + ".");
                             plot.highlight(item.series, item.datapoint);
                         }
                     });
