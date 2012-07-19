@@ -87,6 +87,7 @@
 
 {% block content %}
     <!-- Lines chart -->
+    <button id="cBtn" class="cBtn">Change Graph Data</button>
     <div class="widget chartWrapper">
         <div class="title">
             <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
@@ -138,16 +139,25 @@
     <script type="text/javascript">
         (function ($) {
 
-            var Revenue = Backbone.Model.extend({
-                var: null
+            Revenue = Backbone.Model.extend({
+
+                changeData: function() {
+
+                    var sin = [], cos = [];
+                    for (var i = 0; i < 11; i += 0.5) {
+                        sin.push([i, Math.sin(i)]);
+                        cos.push([i, Math.cos(i)]);
+                    }
+
+                    this.set({ gData: [ { data: sin, label: 'revenue'}, { data: cos, label: 'orders' }] });
+                }
+
             });
 
-            var RevenueChartView = Backbone.View.extend({
+            RevenueChartView = Backbone.View.extend({
                 initialize: function(){
-                    this.render();
-                },
-                render: function(){
 
+                    this.revMod = new Revenue;
 
                     var sin = [], cos = [];
                     for (var i = 0; i < 31; i += 0.5) {
@@ -155,15 +165,28 @@
                         cos.push([i, Math.cos(i)]);
                     }
 
+                    this.revMod.set({ gData: [ { data: sin, label: 'revenue'}, { data: cos, label: 'orders'} ] });
+
+                    this.revMod.on('change:gData', function(x) {
+                        this.render();
+                    }, this);
+
+                    this.render();
+
+                    $('.cBtn').click(function(e) {
+                        this.revMod.changeData();
+                    }.bind(this));
+                },
+
+                render: function(){
+
                     var plot = $.plot($(".chart"),
-                        [ { data: sin, label: "revenue"}, { data: cos, label: "orders" } ], {
+                        this.revMod.get('gData'), {
                             series: {
                                 lines: { show: true },
                                 points: { show: true }
                             },
-                            grid: { hoverable: true, clickable: true },
-                            yaxis: { min: -1.1, max: 1.1 },
-                            xaxis: { min: 0, max: 20 }
+                            grid: { hoverable: true, clickable: true }
                         }
                     );
 
