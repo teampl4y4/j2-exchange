@@ -69,3 +69,13 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: J2\Bundle\ExchangeBundle\Entity\Users
+
+bazinga_faker:
+    orm: doctrine
+    entities:
+        J2\Bundle\ExchangeBundle\Entity\Companies:
+            number: 5
+            custom_formatters:
+                name:   { method: lexify, parameters: [ 'Company ???' ] }
+        J2\Bundle\ExchangeBundle\Entity\Users:
+            number: 5

@@ -1,0 +1,6 @@
+[submodule "vendor/bundles/Bazinga/Bundle/FakerBundle"]
+	path = vendor/bundles/Bazinga/Bundle/FakerBundle
+	url = git://github.com/willdurand/BazingaFakerBundle.git
+[submodule "vendor/faker"]
+	path = vendor/faker
+	url = git://github.com/fzaninotto/Faker.git
