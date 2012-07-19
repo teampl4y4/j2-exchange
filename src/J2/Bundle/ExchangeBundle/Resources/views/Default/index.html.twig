@@ -145,8 +145,9 @@
 
                     var sin = [], cos = [];
                     for (var i = 0; i < 11; i += 0.5) {
-                        sin.push([i, Math.sin(i)]);
-                        cos.push([i, Math.cos(i)]);
+                        var r  = Math.random() + (i);
+                        sin.push([i, Math.sin(r)]);
+                        cos.push([i, Math.cos(r)]);
                     }
 
                     this.set({ gData: [ { data: sin, label: 'revenue'}, { data: cos, label: 'orders' }] });
