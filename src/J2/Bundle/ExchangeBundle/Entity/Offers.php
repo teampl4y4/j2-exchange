@@ -3,6 +3,9 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use J2\Bundle\ExchangeBundle\Entity\Products;
+use J2\Bundle\ExchangeBundle\Entity\Companies;
+use J2\Bundle\ExchangeBundle\Entity\Users;
 
 /**
  * J2\Bundle\ExchangeBundle\Entity\Offers
@@ -22,11 +25,12 @@ class Offers
     private $id;
 
     /**
-     * @var integer $companyID
+     * @var Companies $company
      *
-     * @ORM\Column(name="companyID", type="integer")
+     * @ORM\OneToOne(targetEntity="Companies")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $companyID;
+    private $company;
 
     /**
      * @var string $name
@@ -64,13 +68,6 @@ class Offers
     private $createdAt;
 
     /**
-     * @var integer $createdBy
-     *
-     * @ORM\Column(name="createdBy", type="integer")
-     */
-    private $createdBy;
-
-    /**
      * @var datetime $updatedAt
      *
      * @ORM\Column(name="updatedAt", type="datetime")
@@ -78,9 +75,18 @@ class Offers
     private $updatedAt;
 
     /**
-     * @var integer $updatedBy
+     * @var Users $createdBy
      *
-     * @ORM\Column(name="updatedBy", type="integer")
+     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="createdBy", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $createdBy;
+
+    /**
+     * @var Users $updatedBy
+     *
+     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id", onDelete="CASCADE")
      */
     private $updatedBy;
 
@@ -92,11 +98,12 @@ class Offers
     private $active;
 
     /**
-     * @var integer $productID
+     * @var Product $product
      *
-     * @ORM\Column(name="productID", type="integer")
+     * @ORM\OneToOne(targetEntity="Products")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $productID;
+    private $product;
 
     /**
      * @var integer $available
@@ -104,6 +111,13 @@ class Offers
      * @ORM\Column(name="available", type="integer")
      */
     private $available;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
 
 
     /**
@@ -117,23 +131,23 @@ class Offers
     }
 
     /**
-     * Set companyID
+     * Set company
      *
-     * @param integer $companyID
+     * @param Companies $company
      */
-    public function setCompanyID($companyID)
+    public function setCompany($company)
     {
-        $this->companyID = $companyID;
+        $this->companyID = $company;
     }
 
     /**
-     * Get companyID
+     * Get company
      *
-     * @return integer 
+     * @return Companies 
      */
-    public function getCompanyID()
+    public function getCompany()
     {
-        return $this->companyID;
+        return $this->company;
     }
 
     /**
@@ -225,7 +239,6 @@ class Offers
     {
         $this->createdAt = $createdAt;
     }
-
     /**
      * Get createdAt
      *
@@ -239,7 +252,7 @@ class Offers
     /**
      * Set createdBy
      *
-     * @param integer $createdBy
+     * @param Users $createdBy
      */
     public function setCreatedBy($createdBy)
     {
@@ -249,11 +262,31 @@ class Offers
     /**
      * Get createdBy
      *
-     * @return integer 
+     * @return Users 
      */
     public function getCreatedBy()
     {
         return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param Users $updatedBy
+     */
+    public function setUpdatedBy($updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return Users 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 
     /**
@@ -274,26 +307,6 @@ class Offers
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * Set updatedBy
-     *
-     * @param integer $updatedBy
-     */
-    public function setUpdatedBy($updatedBy)
-    {
-        $this->updatedBy = $updatedBy;
-    }
-
-    /**
-     * Get updatedBy
-     *
-     * @return integer 
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updatedBy;
     }
 
     /**
@@ -334,6 +347,24 @@ class Offers
     public function getProductID()
     {
         return $this->productID;
+    }
+    
+    /**
+     *
+     * @param Product $product 
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+    
+    /**
+     *
+     * @return Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 
     /**

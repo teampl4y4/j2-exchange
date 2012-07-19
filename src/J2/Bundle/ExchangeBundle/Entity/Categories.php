@@ -5,12 +5,12 @@ namespace J2\Bundle\ExchangeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * J2\Bundle\ExchangeBundle\Entity\CompanyUsers
+ * J2\Bundle\ExchangeBundle\Entity\Categories
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CompanyUsersRepository")
+ * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CategoriesRepository")
  */
-class CompanyUsers
+class Categories
 {
     /**
      * @var integer $id
@@ -22,18 +22,18 @@ class CompanyUsers
     private $id;
 
     /**
-     * @var integer $companyID
+     * @var string $name
      *
-     * @ORM\Column(name="companyID", type="integer")
+     * @ORM\Column(name="name", type="string", length=100)
      */
-    private $companyID;
+    private $name;
 
     /**
-     * @var integer $userID
+     * @var text $description
      *
-     * @ORM\Column(name="userID", type="integer")
+     * @ORM\Column(name="description", type="text")
      */
-    private $userID;
+    private $description;
 
     /**
      * @var datetime $createdAt
@@ -49,6 +49,20 @@ class CompanyUsers
      */
     private $active;
 
+    /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
+
 
     /**
      * Get id
@@ -61,43 +75,43 @@ class CompanyUsers
     }
 
     /**
-     * Set companyID
+     * Set name
      *
-     * @param integer $companyID
+     * @param string $name
      */
-    public function setCompanyID($companyID)
+    public function setName($name)
     {
-        $this->companyID = $companyID;
+        $this->name = $name;
     }
 
     /**
-     * Get companyID
+     * Get name
      *
-     * @return integer 
+     * @return string 
      */
-    public function getCompanyID()
+    public function getName()
     {
-        return $this->companyID;
+        return $this->name;
     }
 
     /**
-     * Set userID
+     * Set description
      *
-     * @param integer $userID
+     * @param text $description
      */
-    public function setUserID($userID)
+    public function setDescription($description)
     {
-        $this->userID = $userID;
+        $this->description = $description;
     }
 
     /**
-     * Get userID
+     * Get description
      *
-     * @return integer 
+     * @return text 
      */
-    public function getUserID()
+    public function getDescription()
     {
-        return $this->userID;
+        return $this->description;
     }
 
     /**
@@ -138,5 +152,25 @@ class CompanyUsers
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

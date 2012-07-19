@@ -1,16 +1,17 @@
 <?php
 
 namespace J2\Bundle\ExchangeBundle\Entity;
+use J2\Bundle\ExchangeBundle\Entity\Users;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * J2\Bundle\ExchangeBundle\Entity\Exchange
+ * J2\Bundle\ExchangeBundle\Entity\Exchanges
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangeRepository")
+ * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangesRepository")
  */
-class Exchange
+class Exchanges
 {
     /**
      * @var integer $id
@@ -27,6 +28,24 @@ class Exchange
      * @ORM\Column(name="name", type="string", length=70)
      */
     private $name;
+
+    /**    
+     *
+     * @var Companies
+     *
+     * @ORM\ManyToOne(targetEntity="Companies")
+     * @ORM\JoinColumn(name="company_id", onDelete="CASCADE", referencedColumnName="id", nullable=false)
+     */
+    protected $companies;
+
+    /**    
+     *
+     * @var Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="exchange_id", onDelete="CASCADE", referencedColumnName="id", nullable=false)
+     */
+    protected $users;
 
     /**
      * @var datetime $createdAt
@@ -77,6 +96,46 @@ class Exchange
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set the companies
+     *
+     * @param $companies
+     */
+    public function setCompanies($companies)
+    {
+        $this->users = $users;
+    }
+
+    /**
+     * Get the companies
+     *
+     * @return ArrayCollection
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * Set the users
+     *
+     * @param $users
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+    }
+
+    /**
+     * Get the users
+     *
+     * @return ArrayCollection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use J2\Bundle\ExchangeBundle\Entity\Companies;
+use J2\Bundle\ExchangeBundle\Entity\Users;
+use J2\Bundle\ExchangeBundle\Entity\Offers;
 
 /**
  * J2\Bundle\ExchangeBundle\Entity\Products
@@ -43,11 +46,11 @@ class Products
     private $price;
 
     /**
-     * @var string $sku
+     * @var string $code
      *
-     * @ORM\Column(name="sku", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=255)
      */
-    private $sku;
+    private $code;
 
     /**
      * @var datetime $createdAt
@@ -55,13 +58,6 @@ class Products
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
-
-    /**
-     * @var integer $createdBy
-     *
-     * @ORM\Column(name="createdBy", type="integer")
-     */
-    private $createdBy;
 
     /**
      * @var boolean $active
@@ -76,20 +72,48 @@ class Products
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+    
+    /**
+     * Exchanges
+     *
+     * @ORM\ManyToMany(targetEntity="Offers")
+     * @ORM\JoinTable(name="product_offers",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")}
+     * )
+     */
+    protected $offers;
 
     /**
-     * @var integer $updatedBy
+     * @var Users $createdBy
      *
-     * @ORM\Column(name="updatedBy", type="integer")
+     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="createdBy", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $createdBy;
+
+    /**
+     * @var Users $updatedBy
+     *
+     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id", onDelete="CASCADE")
      */
     private $updatedBy;
 
     /**
-     * @var integer $companyID
+     * @var Company $company
      *
-     * @ORM\Column(name="companyID", type="integer")
+     * @ORM\ManyToOne(targetEntity="Companies")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $companyID;
+    private $company;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
 
 
     /**
@@ -163,23 +187,23 @@ class Products
     }
 
     /**
-     * Set sku
+     * Set code
      *
      * @param string $sku
      */
-    public function setSku($sku)
+    public function setCode($code)
     {
-        $this->sku = $sku;
+        $this->code = $code;
     }
 
     /**
-     * Get sku
+     * Get code
      *
      * @return string 
      */
-    public function getSku()
+    public function getCode()
     {
-        return $this->sku;
+        return $this->code;
     }
 
     /**
@@ -205,7 +229,7 @@ class Products
     /**
      * Set createdBy
      *
-     * @param integer $createdBy
+     * @param Users $createdBy
      */
     public function setCreatedBy($createdBy)
     {
@@ -215,7 +239,7 @@ class Products
     /**
      * Get createdBy
      *
-     * @return integer 
+     * @return Users 
      */
     public function getCreatedBy()
     {
@@ -223,23 +247,23 @@ class Products
     }
 
     /**
-     * Set active
+     * Set updatedBy
      *
-     * @param boolean $active
+     * @param Users $updatedBy
      */
-    public function setActive($active)
+    public function setUpdatedBy($updatedBy)
     {
-        $this->active = $active;
+        $this->updatedBy = $updatedBy;
     }
 
     /**
-     * Get active
+     * Get updatedBy
      *
-     * @return boolean 
+     * @return Users 
      */
-    public function getActive()
+    public function getUpdatedBy()
     {
-        return $this->active;
+        return $this->updatedBy;
     }
 
     /**
@@ -263,42 +287,42 @@ class Products
     }
 
     /**
-     * Set updatedBy
+     * Set active
      *
-     * @param integer $updatedBy
+     * @param boolean $active
      */
-    public function setUpdatedBy($updatedBy)
+    public function setActive($active)
     {
-        $this->updatedBy = $updatedBy;
+        $this->active = $active;
     }
 
     /**
-     * Get updatedBy
+     * Get active
      *
-     * @return integer 
+     * @return boolean 
      */
-    public function getUpdatedBy()
+    public function getActive()
     {
-        return $this->updatedBy;
+        return $this->active;
     }
 
     /**
-     * Set companyID
+     * Set company
      *
-     * @param integer $companyID
+     * @param Companies $company
      */
-    public function setCompanyID($companyID)
+    public function setCompany($company)
     {
-        $this->companyID = $companyID;
+        $this->companyID = $company;
     }
 
     /**
-     * Get companyID
+     * Get company
      *
-     * @return integer 
+     * @return Companies 
      */
-    public function getCompanyID()
+    public function getCompany()
     {
-        return $this->companyID;
+        return $this->company;
     }
 }

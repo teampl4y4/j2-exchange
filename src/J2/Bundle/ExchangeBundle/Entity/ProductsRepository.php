@@ -3,6 +3,7 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use J2\Bundle\ExchangeBundle\Entity\Products;
 
 /**
  * ProductsRepository
@@ -12,4 +13,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductsRepository extends EntityRepository
 {
+    /**
+     * Fetch all products by CompanyExchange
+     * @param J2\Bundle\ExchangeBundle\Entity\CompanyExchanges $companyEexchange 
+     * @return array 
+     */
+    public static function getProducts($companyExchange){}
+    
+    
+    /**
+     * Fetch an product by id from within a company exchange
+     * @param int $productID
+     * @param J2\Bundle\ExchangeBundle\Entity\CompanyExchanges $companyExchange 
+     * @return Products 
+     */
+    public static function getProduct($productID,$companyExchange){
+        return new Products();
+    }
 }

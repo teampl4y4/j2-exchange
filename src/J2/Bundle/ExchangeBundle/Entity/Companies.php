@@ -41,6 +41,28 @@ class Companies
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * Exchanges
+     *
+     * @ORM\ManyToMany(targetEntity="Exchanges")
+     * @ORM\JoinTable(name="company_exchanges",
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="exchange_id", referencedColumnName="id")}
+     * )
+     */
+    protected $exchanges;
+    
+    /**
+     * Users
+     *
+     * @ORM\ManyToMany(targetEntity="Users")
+     * @ORM\JoinTable(name="company_users",
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
+     * )
+     */
+    protected $users;
 
 
     /**
@@ -111,5 +133,25 @@ class Companies
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set the exchanges
+     *
+     * @param $exchanges
+     */
+    public function setExchanges($exchanges)
+    {
+        $this->exchanges = $exchanges;
+    }
+
+    /**
+     * Get the exchanges
+     *
+     * @return ArrayCollection
+     */
+    public function getExchanges()
+    {
+        return $this->exchanges;
     }
 }

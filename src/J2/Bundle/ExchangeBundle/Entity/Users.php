@@ -4,6 +4,7 @@ namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
+use J2\Bundle\ExchangeBundle\Entity\Companies;
 /**
  * J2\Bundle\ExchangeBundle\Entity\Users
  *
@@ -34,6 +35,25 @@ class Users extends BaseUser
      * @ORM\Column(name="lastName", type="string", length=50, nullable=true)
      */
     protected $lastName;
+
+    /**
+     * @var Company $company
+     *
+     * @ORM\OneToOne(targetEntity="Companies")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $company;
+    
+    /**
+     * Exchanges
+     *
+     * @ORM\ManyToMany(targetEntity="Exchanges")
+     * @ORM\JoinTable(name="user_exchanges",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="exchange_id", referencedColumnName="id")}
+     * )
+     */
+    protected $exchanges;
 
     /**
      * @var datetime $createdAt
@@ -165,6 +185,46 @@ class Users extends BaseUser
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Set company
+     *
+     * @param Companies $company
+     */
+    public function setCompany($company)
+    {
+        $this->companyID = $company;
+    }
+
+    /**
+     * Get company
+     *
+     * @return Companies 
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set the exchanges
+     *
+     * @param $exchanges
+     */
+    public function setExchanges($exchanges)
+    {
+        $this->exchanges = $exchanges;
+    }
+
+    /**
+     * Get the exchanges
+     *
+     * @return ArrayCollection
+     */
+    public function getExchanges()
+    {
+        return $this->exchanges;
     }
 
     /**

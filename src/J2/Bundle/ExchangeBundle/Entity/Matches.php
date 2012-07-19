@@ -5,12 +5,12 @@ namespace J2\Bundle\ExchangeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * J2\Bundle\ExchangeBundle\Entity\CompanyExchanges
+ * J2\Bundle\ExchangeBundle\Entity\Matches
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CompanyExchangesRepository")
+ * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\MatchesRepository")
  */
-class CompanyExchanges
+class Matches
 {
     /**
      * @var integer $id
@@ -22,18 +22,18 @@ class CompanyExchanges
     private $id;
 
     /**
-     * @var integer $companyID
+     * @var string $name
      *
-     * @ORM\Column(name="companyID", type="integer")
+     * @ORM\Column(name="name", type="string", length=100)
      */
-    private $companyID;
+    private $name;
 
     /**
-     * @var integer $exchangeID
+     * @var text $description
      *
-     * @ORM\Column(name="exchangeID", type="integer")
+     * @ORM\Column(name="description", type="text")
      */
-    private $exchangeID;
+    private $description;
 
     /**
      * @var datetime $createdAt
@@ -43,11 +43,25 @@ class CompanyExchanges
     private $createdAt;
 
     /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
      * @var boolean $active
      *
      * @ORM\Column(name="active", type="boolean")
      */
     private $active;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
 
 
     /**
@@ -61,43 +75,43 @@ class CompanyExchanges
     }
 
     /**
-     * Set companyID
+     * Set name
      *
-     * @param integer $companyID
+     * @param string $name
      */
-    public function setCompanyID($companyID)
+    public function setName($name)
     {
-        $this->companyID = $companyID;
+        $this->name = $name;
     }
 
     /**
-     * Get companyID
+     * Get name
      *
-     * @return integer 
+     * @return string 
      */
-    public function getCompanyID()
+    public function getName()
     {
-        return $this->companyID;
+        return $this->name;
     }
 
     /**
-     * Set exchangeID
+     * Set description
      *
-     * @param integer $exchangeID
+     * @param text $description
      */
-    public function setExchangeID($exchangeID)
+    public function setDescription($description)
     {
-        $this->exchangeID = $exchangeID;
+        $this->description = $description;
     }
 
     /**
-     * Get exchangeID
+     * Get description
      *
-     * @return integer 
+     * @return text 
      */
-    public function getExchangeID()
+    public function getDescription()
     {
-        return $this->exchangeID;
+        return $this->description;
     }
 
     /**
@@ -118,6 +132,26 @@ class CompanyExchanges
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**
