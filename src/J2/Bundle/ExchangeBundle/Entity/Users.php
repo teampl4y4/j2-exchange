@@ -39,17 +39,17 @@ class Users extends BaseUser
     /**
      * @var Company $company
      *
-     * @ORM\OneToOne(targetEntity="Companies")
+     * @ORM\ManyToOne(targetEntity="Companies")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $company;
     
     /**
-     * @var integer $companyId
+     * @var integer $company_id
      *
      * @ORM\Column(name="company_id", type="integer"))
      */
-    protected $companyId;
+    protected $company_id;
     
     /**
      * Exchanges

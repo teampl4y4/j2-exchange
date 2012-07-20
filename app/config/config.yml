@@ -81,7 +81,7 @@ bazinga_faker:
         J2\Bundle\ExchangeBundle\Entity\Users:
             number: 5
             custom_formatters:
-                companyId: { method: randomDigitNotNull }
+                company_id: { method: randomDigitNotNull }
                 active: { method: lexify, parameters: [ '1' ] }
                 password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
                 salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
@@ -89,5 +89,6 @@ bazinga_faker:
             number: 5
             custom_formatters:
                 companyId: { method: randomDigitNotNull }
+                code: { method: lexify, parameters: [ '1' ] }
                 active: { method: lexify, parameters: [ '1' ] }
 
