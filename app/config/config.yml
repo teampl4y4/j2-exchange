@@ -79,4 +79,3 @@ bazinga_faker:
                 company_id: { method: randomDigitNotNull }
                 code: { method: lexify, parameters: [ '1' ] }
                 active: { method: lexify, parameters: [ '1' ] }
-
