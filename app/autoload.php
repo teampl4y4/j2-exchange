@@ -18,7 +18,7 @@ $loader->registerNamespaces(array(
     'Knp\Bundle'       => __DIR__.'/../vendor/bundles',
     'Knp\Menu'         => __DIR__.'/../vendor/KnpMenu/src',
     'Bazinga'          => __DIR__.'/../vendor/bundles',
-    'Faker'            => __DIR__.'/../vendor/faker/src',
+    'Faker'            => __DIR__.'/../vendor/faker/src'
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
