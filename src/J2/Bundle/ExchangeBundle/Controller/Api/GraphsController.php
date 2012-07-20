@@ -61,7 +61,7 @@ class GraphsController extends AbstractApiController
     public function offersAction($daysBack = 30) {
 
         $data = array();
-        for($i=0; $i <= round($daysBack/15); $i++) {
+        for($i=0; $i <= round($daysBack/15)+1; $i++) {
             $data[] = array('label' => 'Offer #' . ($i + 1), 'data' => round(rand(1,9) + $i));
         }
 

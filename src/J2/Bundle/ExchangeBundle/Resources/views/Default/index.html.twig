@@ -87,16 +87,17 @@
 
 {% block content %}
     <!-- Lines chart -->
-    <button id="r90day" class="cBtn" days="90">90 Days</button>
-    <button id="r30day" class="cBtn" days="30">30 Days</button>
-    <button id="r7day" class="cBtn" days="6">7 Days</button>
+    <span>Filter Data by: </span>
+    <a class="button basic cBtn" days="90" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>90 Days</span></a>
+    <a class="button basic cBtn defaultDate" days="30" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>30 Days</span></a>
+    <a class="button basic cBtn" days="7" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>7 Days</span></a>
 
     <div id="loading" class="graphsloading">Loading...</div>
 
     <div class="widget chartWrapper">
         <div class="title">
             <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
-            <h6>30 Day Revenue Report</h6>
+            <h6>Revenue Report</h6>
         </div>
         <div class="body"><div id="revenueChart" class="chart"></div></div>
     </div>
@@ -178,7 +179,7 @@
                     success: updateInventoryGraph
                 });
 
-                //call to get inventory report
+                //call to get offers report
                 $.ajax({
                     url: '/api/graphs/offers/' + $(this).attr('days'),
                     dataType: 'json',
@@ -188,7 +189,7 @@
             });
 
             //default revenue graph data
-            $('#r30day').trigger('click');
+            $('.defaultDate').trigger('click');
 
         })(jQuery);
 

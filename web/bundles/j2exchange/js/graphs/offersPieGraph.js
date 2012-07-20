@@ -15,7 +15,7 @@
 
             var data = this.model.get('gData');
 
-            if(data) {
+            if(data && data.length > 0) {
                 $.plot(this.el, data,
                 {
                     series: {

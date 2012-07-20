@@ -15,7 +15,7 @@
 
             var data = this.model.get('gData');
 
-            if(data) {
+            if(data && data.length > 0) {
                 var stack = 0, bars = true, lines = false, steps = false;
 
                 $.plot(this.el, data, {
