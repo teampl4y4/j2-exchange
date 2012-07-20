@@ -40,7 +40,7 @@ class Users extends BaseUser
      * @var Company $company
      *
      * @ORM\OneToOne(targetEntity="Companies")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
     protected $company;
     
