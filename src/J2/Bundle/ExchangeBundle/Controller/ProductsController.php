@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
         $products = $this->getDoctrine()
                          ->getEntityManager()
-                         ->getRepository('J2ExchangeBundle:Products')
+                         ->getRepository('J2ExchangeBundle:Product')
                          ->findByUser($user);
 
         return array('products' => $products, 'company' => $user->getCompany());

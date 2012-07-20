@@ -68,17 +68,17 @@ knp_menu:
 fos_user:
     db_driver: orm 
     firewall_name: main
-    user_class: J2\Bundle\ExchangeBundle\Entity\Users
+    user_class: J2\Bundle\ExchangeBundle\Entity\User
     
 bazinga_faker:
     orm: doctrine
     entities:
-      J2\Bundle\ExchangeBundle\Entity\Companies:
+      J2\Bundle\ExchangeBundle\Entity\Company:
         number: 9
         custom_formatters:
           name:   { method: company }
           active: { method: lexify, parameters: [ '1' ] }
-      J2\Bundle\ExchangeBundle\Entity\Users:
+      J2\Bundle\ExchangeBundle\Entity\User:
         number: 5
         custom_formatters:
           company_id: { method: randomDigitNotNull }
@@ -92,16 +92,16 @@ bazinga_faker:
           credentialsExpireAt: { method: null }
           password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
           salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
-      J2\Bundle\ExchangeBundle\Entity\Products:
+      J2\Bundle\ExchangeBundle\Entity\Product:
         number: 9
         custom_formatters:
           company_id: { method: randomDigitNotNull }
           code: { method: lexify, parameters: [ '1' ] }
           active: { method: lexify, parameters: [ '1' ] }
-      J2\Bundle\ExchangeBundle\Entity\Offers:
+      J2\Bundle\ExchangeBundle\Entity\Offer:
         number: 20
         custom_formatters:
-          product_id: { method: null }
+          product_id: { method: randomDigitNotNull }
           company_id: { method: randomDigitNotNull }
           active: { method: lexify, parameters: [ '1' ] }
           available: { method: randomNumber, parameters: [ 3 ]  }

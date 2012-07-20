@@ -15,7 +15,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em        = $this->getDoctrine()->getEntityManager();
-        $exchange  = $em->getRepository('J2ExchangeBundle:Exchanges')->find(1);
+        $exchange  = $em->getRepository('J2ExchangeBundle:Exchange')->find(1);
         return array(
             'exchange' => $exchange,
             'ordersMonth' => 1258,
