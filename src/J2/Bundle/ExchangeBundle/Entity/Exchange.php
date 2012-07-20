@@ -49,11 +49,11 @@ class Exchange
     private $createdAt;
 
     /**
-     * @var boolean $isActive
+     * @var boolean $active
      *
-     * @ORM\Column(name="isActive", type="boolean")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $isActive;
+    private $active;
 
     public function __construct()
     {
@@ -153,13 +153,13 @@ class Exchange
     }
 
     /**
-     * Set isActive
+     * Set active
      *
-     * @param boolean $isActive
+     * @param boolean $active
      */
-    public function setIsActive($isActive)
+    public function setActive($active)
     {
-        $this->isActive = $isActive;
+        $this->active = $active;
     }
 
     /**
@@ -169,6 +169,6 @@ class Exchange
      */
     public function isActive()
     {
-        return $this->isActive;
+        return $this->active;
     }
 }
