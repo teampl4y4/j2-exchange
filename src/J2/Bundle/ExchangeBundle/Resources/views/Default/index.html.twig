@@ -87,11 +87,11 @@
 
 {% block content %}
     <!-- Lines chart -->
-    <button id="r90day" class="cBtn">90 Days</button>
-    <button id="r30day" class="cBtn">30 Days</button>
-    <button id="r7day" class="cBtn">7 Days</button>
+    <button id="r90day" class="cBtn" days="90">90 Days</button>
+    <button id="r30day" class="cBtn" days="30">30 Days</button>
+    <button id="r7day" class="cBtn" days="6">7 Days</button>
 
-    <div id="loading">Loading...</div>
+    <div id="loading" class="graphsloading">Loading...</div>
 
     <div class="widget chartWrapper">
         <div class="title">
@@ -110,7 +110,7 @@
                     <img src="{{ asset('bundles/j2exchange/images/icons/dark/chart3.png') }}" alt="" class="titleIcon" />
                     <h6>Revenue Breakdown</h6>
                 </div>
-                <div class="body"><div class="pie" id="donut"></div></div>
+                <div class="body"><div class="pie" id="offersChart"></div></div>
             </div>
         </div>
 
@@ -121,7 +121,7 @@
                     <img src="{{ asset('bundles/j2exchange/images/icons/dark/priceTag.png') }}" alt="" class="titleIcon" />
                     <h6>Inventory Breakdown</h6>
                 </div>
-                <div class="body"><div id="stackedBar" class="updating"></div></div>
+                <div class="body"><div id="inventoryChart" class="updating"></div></div>
             </div>
         </div>
         <div class="clear"></div>
@@ -139,55 +139,56 @@
 
 
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/pie.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/stackedBar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/graphs/revenueGraph.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/graphs/inventoryGraph.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/graphs/offersPieGraph.js') }}"></script>
 
     <script type="text/javascript">
         (function ($) {
 
-            var revModel = new J2.Models.RevenueGraphModel;
-            function changeGraph(data, status, xhr) { revModel.set( { gData: data.response }); }
+            var revenueModel = new J2.Models.RevenueGraphModel;
+            var inventoryModel = new J2.Models.InventoryGraphModel;
+            var offersModel = new J2.Models.OffersGraphModel;
 
-            $('#loading').ajaxStart(function() { $(this).show() });
-            $('#loading').ajaxStop(function() { $(this).hide() });
+            function updateRevenueGraph(data, status, xhr) { revenueModel.set( { gData: data.response }); }
+            function updateInventoryGraph(data, status, xhr) { inventoryModel.set( { gData: data.response }); }
+            function updateOffersModel(data, status, xhr) { offersModel.set( { gData: data.response }); }
 
-            $.ajax({
-                url: '/api/graphs/revenue/30',
-                dataType: 'json',
-                success: changeGraph
+            $('.graphsloading').ajaxStart(function() { $(this).show() });
+            $('.graphsloading').ajaxStop(function() { $(this).hide() });
+
+            var revenueChart   = new J2.RevenueGraph({ el: $('#revenueChart'), model: revenueModel });
+            var inventoryChart = new J2.InventoryGraph({ el: $('#inventoryChart'), model: inventoryModel });
+            var offersChart    = new J2.OffersPieGraph({ el: $('#offersChart'), model: offersModel });
+
+            //magic handler for all cBtns to update main revenue graph
+            $('.cBtn').click(function(e) {
+
+                //call to get revenue report
+                $.ajax({
+                    url: '/api/graphs/revenue/' + $(this).attr('days'),
+                    dataType: 'json',
+                    success: updateRevenueGraph
+                });
+
+                //call to get inventory report
+                $.ajax({
+                    url: '/api/graphs/inventory/' + $(this).attr('days'),
+                    dataType: 'json',
+                    success: updateInventoryGraph
+                });
+
+                //call to get inventory report
+                $.ajax({
+                    url: '/api/graphs/offers/' + $(this).attr('days'),
+                    dataType: 'json',
+                    success: updateOffersModel
+                });
+
             });
 
-            var revChart = new J2.RevenueGraph({ el: $('revenueChart'), model: revModel });
-
-            $('#r90day').click(function(e) {
-
-                $.ajax({
-                    url: '/api/graphs/revenue/90',
-                    dataType: 'json',
-                    success: changeGraph
-                });
-
-            }.bind(this));
-
-            $('#r30day').click(function(e) {
-
-                $.ajax({
-                    url: '/api/graphs/revenue/30',
-                    dataType: 'json',
-                    success: changeGraph
-                });
-
-            }.bind(this));
-
-            $('#r7day').click(function(e) {
-
-                $.ajax({
-                    url: '/api/graphs/revenue/7',
-                    dataType: 'json',
-                    success: changeGraph
-                });
-
-            }.bind(this));
+            //default revenue graph data
+            $('#r30day').trigger('click');
 
         })(jQuery);
 

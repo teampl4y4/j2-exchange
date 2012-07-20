@@ -16,7 +16,7 @@
             var data = this.model.get('gData');
 
             if(data) {
-                var plot = $.plot($(".chart"),
+                var plot = $.plot(this.el,
                     data, {
                         series: {
                             lines: { show: true },
