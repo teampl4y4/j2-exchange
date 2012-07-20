@@ -29,24 +29,6 @@ class Exchanges
      */
     private $name;
 
-    /**    
-     *
-     * @var Companies
-     *
-     * @ORM\ManyToOne(targetEntity="Companies")
-     * @ORM\JoinColumn(name="company_id", onDelete="CASCADE", referencedColumnName="id", nullable=false)
-     */
-    protected $companies;
-
-    /**    
-     *
-     * @var Users
-     *
-     * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumn(name="exchange_id", onDelete="CASCADE", referencedColumnName="id", nullable=false)
-     */
-    protected $users;
-
     /**
      * @var datetime $createdAt
      *

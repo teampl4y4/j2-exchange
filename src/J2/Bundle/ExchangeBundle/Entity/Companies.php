@@ -43,6 +43,13 @@ class Companies
     private $name;
     
     /**
+     * Deals
+     *
+     * @ORM\ManyToMany(targetEntity="Deals", inversedBy="companies")
+     */
+    protected $deals;
+    
+    /**
      * Exchanges
      *
      * @ORM\ManyToMany(targetEntity="Exchanges")
@@ -52,6 +59,13 @@ class Companies
      * )
      */
     protected $exchanges;
+    
+    /**
+     * Offers
+     *
+     * @ORM\OneToMany(targetEntity="Offers",mappedBy="company")
+     */
+    protected $offers;
     
     /**
      * Users

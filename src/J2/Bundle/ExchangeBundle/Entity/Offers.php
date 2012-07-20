@@ -27,10 +27,17 @@ class Offers
     /**
      * @var Companies $company
      *
-     * @ORM\OneToOne(targetEntity="Companies")
+     * @ORM\ManyToOne(targetEntity="Companies")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $company;
+    
+    /**
+     * @var integer $company_id
+     *
+     * @ORM\Column(name="company_id", type="integer"))
+     */
+    private $company_id;
 
     /**
      * @var string $name
@@ -49,14 +56,14 @@ class Offers
     /**
      * @var float $listPrice
      *
-     * @ORM\Column(name="listPrice", type="float")
+     * @ORM\Column(name="listPrice", type="decimal", precision=10, scale=2)
      */
     private $listPrice;
 
     /**
      * @var float $whisperPrice
      *
-     * @ORM\Column(name="whisperPrice", type="float")
+     * @ORM\Column(name="whisperPrice", type="decimal", precision=10, scale=2)
      */
     private $whisperPrice;
 
@@ -100,10 +107,17 @@ class Offers
     /**
      * @var Product $product
      *
-     * @ORM\OneToOne(targetEntity="Products")
+     * @ORM\ManyToOne(targetEntity="Products")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $product;
+    
+    /**
+     * @var integer $product_id
+     *
+     * @ORM\Column(name="product_id", type="integer"))
+     */
+    private $product_id;
 
     /**
      * @var integer $available

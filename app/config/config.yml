@@ -93,8 +93,16 @@ bazinga_faker:
           password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
           salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
       J2\Bundle\ExchangeBundle\Entity\Products:
-        number: 5
+        number: 9
         custom_formatters:
           company_id: { method: randomDigitNotNull }
           code: { method: lexify, parameters: [ '1' ] }
           active: { method: lexify, parameters: [ '1' ] }
+      J2\Bundle\ExchangeBundle\Entity\Offers:
+        number: 20
+        custom_formatters:
+          product_id: { method: null }
+          company_id: { method: randomDigitNotNull }
+          active: { method: lexify, parameters: [ '1' ] }
+          available: { method: randomNumber, parameters: [ 3 ]  }
+

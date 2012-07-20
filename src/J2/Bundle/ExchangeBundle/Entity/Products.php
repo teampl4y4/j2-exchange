@@ -41,7 +41,7 @@ class Products {
     /**
      * @var float $price
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
 
@@ -87,7 +87,7 @@ class Products {
     /**
      * @var Users $createdBy
      *
-     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="Users")
      * @ORM\JoinColumn(name="createdBy", referencedColumnName="id", onDelete="CASCADE")
      */
     private $createdBy;
@@ -95,13 +95,13 @@ class Products {
     /**
      * @var Users $updatedBy
      *
-     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="Users")
      * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id", onDelete="CASCADE")
      */
     private $updatedBy;
 
     /**
-     * @var Company $company
+     * @var Companies $company
      *
      * @ORM\ManyToOne(targetEntity="Companies")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")

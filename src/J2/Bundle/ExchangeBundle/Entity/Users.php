@@ -37,7 +37,7 @@ class Users extends BaseUser
     protected $lastName;
 
     /**
-     * @var Company $company
+     * @var Companies $company
      *
      * @ORM\ManyToOne(targetEntity="Companies")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
