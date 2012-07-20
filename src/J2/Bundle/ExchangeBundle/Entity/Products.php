@@ -83,13 +83,6 @@ class Products {
      * )
      */
     private $offers;
-    
-    /**
-     * @var integer $company_id
-     *
-     * @ORM\Column(name="company_id", type="integer"))
-     */
-    private $company_id;
 
     /**
      * @var Users $createdBy
@@ -114,6 +107,13 @@ class Products {
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $company;
+    
+    /**
+     * @var integer $company_id
+     *
+     * @ORM\Column(name="company_id", type="integer"))
+     */
+    private $company_id;
 
     public function __construct() {
         $this->createdAt = new \DateTime();
