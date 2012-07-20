@@ -70,24 +70,24 @@ fos_user:
     firewall_name: main
     user_class: J2\Bundle\ExchangeBundle\Entity\Users
 
-bazinga_faker:
-    orm: doctrine
-    entities:
-        J2\Bundle\ExchangeBundle\Entity\Companies:
-            number: 9
-            custom_formatters:
-                name:   { method: company }
-                active: { method: lexify, parameters: [ '1' ] }
-        J2\Bundle\ExchangeBundle\Entity\Users:
-            number: 5
-            custom_formatters:
-                companyId: { method: randomDigitNotNull }
-                active: { method: lexify, parameters: [ '1' ] }
-                password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
-                salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
-        J2\Bundle\ExchangeBundle\Entity\Products:
-            number: 5
-            custom_formatters:
-                companyId: { method: randomDigitNotNull }
-                active: { method: lexify, parameters: [ '1' ] }
+#bazinga_faker:
+#    orm: doctrine
+#    entities:
+#        J2\Bundle\ExchangeBundle\Entity\Companies:
+#            number: 9
+#            custom_formatters:
+#                name:   { method: company }
+#                active: { method: lexify, parameters: [ '1' ] }
+#        J2\Bundle\ExchangeBundle\Entity\Users:
+#            number: 5
+#            custom_formatters:
+#                companyId: { method: randomDigitNotNull }
+#                active: { method: lexify, parameters: [ '1' ] }
+#                password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
+#                salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
+#        J2\Bundle\ExchangeBundle\Entity\Products:
+#            number: 5
+#            custom_formatters:
+#                companyId: { method: randomDigitNotNull }
+#                active: { method: lexify, parameters: [ '1' ] }
 

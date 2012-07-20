@@ -132,118 +132,27 @@
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.flot.resize.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/plugins/charts/jquery.sparkline.min.js') }}"></script>
 
-    {#<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/chart.js') }}"></script>#}
+
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/pie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/charts/stackedBar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/graphs/revenueGraph.js') }}"></script>
 
     <script type="text/javascript">
         (function ($) {
 
-            Revenue = Backbone.Model.extend({
+            var revModel = new J2.Models.RevenueGraphModel;
+            function changeGraph(data, status, xhr)
+            {
+                revModel.set( { gData: data.response });
+            }
 
-                changeData: function() {
-
-                    var sin = [], cos = [];
-                    for (var i = 0; i < 11; i += 0.5) {
-                        var r  = Math.random() + (i);
-                        sin.push([i, Math.sin(r)]);
-                        cos.push([i, Math.cos(r)]);
-                    }
-
-                    this.set({ gData: [ { data: sin, label: 'revenue'}, { data: cos, label: 'orders' }] });
-                }
-
+            $.ajax({
+                url: '/api/graphs/revenue',
+                dataType: 'json',
+                success: changeGraph
             });
 
-            RevenueChartView = Backbone.View.extend({
-                initialize: function(){
-
-                    this.revMod = new Revenue;
-
-                    var sin = [], cos = [];
-                    for (var i = 0; i < 31; i += 0.5) {
-                        sin.push([i, Math.sin(i)]);
-                        cos.push([i, Math.cos(i)]);
-                    }
-
-                    this.revMod.set({ gData: [ { data: sin, label: 'revenue'}, { data: cos, label: 'orders'} ] });
-
-                    this.revMod.on('change:gData', function(x) {
-                        this.render();
-                    }, this);
-
-                    this.render();
-
-                    $('.cBtn').click(function(e) {
-                        this.revMod.changeData();
-                    }.bind(this));
-                },
-
-                render: function(){
-
-                    var plot = $.plot($(".chart"),
-                        this.revMod.get('gData'), {
-                            series: {
-                                lines: { show: true },
-                                points: { show: true }
-                            },
-                            grid: { hoverable: true, clickable: true }
-                        }
-                    );
-
-                    function showTooltip(x, y, contents) {
-                        $('<div id="tooltip" class="tooltip">' + contents + '</div>').css( {
-                            position: 'absolute',
-                            display: 'none',
-                            top: y + 5,
-                            left: x + 5,
-                            border: '1px solid #000',
-                            padding: '2px',
-                            'z-index': '9999',
-                            'background-color': '#202020',
-                            'color': '#fff',
-                            'font-size': '11px',
-                            opacity: 0.8
-                        }).appendTo("body").fadeIn(200);
-                    }
-
-                    var previousPoint = null;
-                    $(".chart").bind("plothover", function (event, pos, item) {
-                        $("#x").text(pos.x.toFixed(2));
-                        $("#y").text(pos.y.toFixed(2));
-
-                        if ($(".chart").length > 0) {
-                            if (item) {
-                                if (previousPoint != item.dataIndex) {
-                                    previousPoint = item.dataIndex;
-
-                                    $("#tooltip").remove();
-                                    var x = item.datapoint[0].toFixed(2),
-                                            y = item.datapoint[1].toFixed(2);
-
-                                    showTooltip(item.pageX, item.pageY,
-                                            item.series.label + " on " + x + " = " + y);
-                                }
-                            }
-                            else {
-                                $("#tooltip").remove();
-                                previousPoint = null;
-                            }
-                        }
-                    });
-
-                    $(".chart").bind("plotclick", function (event, pos, item) {
-                        if (item) {
-                            showTooltip(item.pageX - 50, item.pageY - 50, "You clicked point " + item.dataIndex + " in " + item.series.label + ".");
-                            plot.highlight(item.series, item.datapoint);
-                        }
-                    });
-
-
-                }
-            });
-
-            var revChart = new RevenueChartView({ el: $('revenueChart') });
+            var revChart = new J2.RevenueGraph({ el: $('revenueChart'), model: revModel });
 
         })(jQuery);
 
