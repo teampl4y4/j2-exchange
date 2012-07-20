@@ -87,7 +87,10 @@
 
 {% block content %}
     <!-- Lines chart -->
-    <button id="cBtn" class="cBtn">Change Graph Data</button>
+    <button id="r90day" class="cBtn">90 Days</button>
+    <button id="r30day" class="cBtn">30 Days</button>
+    <button id="r7day" class="cBtn">7 Days</button>
+
     <div class="widget chartWrapper">
         <div class="title">
             <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
@@ -141,18 +144,45 @@
         (function ($) {
 
             var revModel = new J2.Models.RevenueGraphModel;
-            function changeGraph(data, status, xhr)
-            {
-                revModel.set( { gData: data.response });
-            }
+            function changeGraph(data, status, xhr) { revModel.set( { gData: data.response }); }
 
             $.ajax({
-                url: '/api/graphs/revenue',
+                url: '/api/graphs/revenue/30',
                 dataType: 'json',
                 success: changeGraph
             });
 
             var revChart = new J2.RevenueGraph({ el: $('revenueChart'), model: revModel });
+
+            $('#r90day').click(function(e) {
+
+                $.ajax({
+                    url: '/api/graphs/revenue/90',
+                    dataType: 'json',
+                    success: changeGraph
+                });
+
+            }.bind(this));
+
+            $('#r30day').click(function(e) {
+
+                $.ajax({
+                    url: '/api/graphs/revenue/30',
+                    dataType: 'json',
+                    success: changeGraph
+                });
+
+            }.bind(this));
+
+            $('#r7day').click(function(e) {
+
+                $.ajax({
+                    url: '/api/graphs/revenue/7',
+                    dataType: 'json',
+                    success: changeGraph
+                });
+
+            }.bind(this));
 
         })(jQuery);
 

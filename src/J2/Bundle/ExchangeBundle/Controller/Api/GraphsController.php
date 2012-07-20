@@ -15,14 +15,22 @@ use Symfony\Component\HttpFoundation\Response;
 class GraphsController extends AbstractApiController
 {
     /**
-     * @Route("/revenue")
+     * @Route("/revenue/{daysBack}")
      * @Method({"GET"})
      */
-    public function revenueAction() {
+    public function revenueAction($daysBack = 30) {
+
+        $revenue = array( 'data' => array(), 'label' => 'revenue');
+        $orders  = array( 'data' => array(), 'label' => 'orders');
+
+        for($i=0; $i<=$daysBack; $i++) {
+            $revenue['data'][] = array($i, cos($i+1));
+            $orders['data'][]  = array($i, cos($i+5));
+        }
 
         $gData = array(
-            array( 'data' => array(0 => array(0, 1), 1 => array(1, 4), 2 => array(2, 8)), 'label' => 'revenue' ),
-            array( 'data' => array(0 => array(0, 1), 1 => array(1, 2), 2 => array(2, 3)), 'label' => 'orders' )
+            $revenue,
+            $orders
         );
 
         return $this->success($gData);
