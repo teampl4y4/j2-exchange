@@ -19,7 +19,14 @@ class ProductsController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $user     = $this->get('security.context')->getToken()->getUser();
+
+        $products = $this->getDoctrine()
+                         ->getEntityManager()
+                         ->getRepository('J2ExchangeBundle:Products')
+                         ->findByUser($user);
+
+        return array('products' => $products, 'company' => $user->getCompany());
     }
     
     public function addAction(){

@@ -30,4 +30,13 @@ class ProductsRepository extends EntityRepository
     public static function getProduct($productID,$companyExchange){
         return new Products();
     }
+
+    public function findByUser(Users $user)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->where('p.company = :company')
+           ->setParameter('company', $user->getCompany());
+
+        return $qb->getQuery()->execute();
+    }
 }

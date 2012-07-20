@@ -3,5 +3,24 @@
 {% block title %} Your Products {%endblock%}
 
 {% block content %}
-    Products Here
+
+<div class="widget">
+    <div class="title"><img src="{{ asset('bundles/j2exchange/images/icons/dark/imagesList.png') }}" alt="" class="titleIcon"><h6>{{company.name}}'s Products</h6></div>
+    <div class="body">
+
+        <div class="list plusB">
+            <strong class="red">Products</strong>
+            <ul>
+                {% for product in products %}
+                <li>{{ product.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+    <ol>
+    </ol>
+
 {% endblock %}
