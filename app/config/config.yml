@@ -81,7 +81,11 @@ bazinga_faker:
         J2\Bundle\ExchangeBundle\Entity\Users:
             number: 5
             custom_formatters:
+<<<<<<< HEAD
                 companyId: { method: randomDigitNotNull }
+=======
+                company_id: { method: randomDigitNotNull }
+>>>>>>> 6e8fd97c4d9b51188e2c8496ab521c31f8db7689
                 active: { method: lexify, parameters: [ '1' ] }
                 password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
                 salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
@@ -89,5 +93,9 @@ bazinga_faker:
             number: 5
             custom_formatters:
                 companyId: { method: randomDigitNotNull }
+<<<<<<< HEAD
+=======
+                code: { method: lexify, parameters: [ '1' ] }
+>>>>>>> 6e8fd97c4d9b51188e2c8496ab521c31f8db7689
                 active: { method: lexify, parameters: [ '1' ] }
 

@@ -122,23 +122,23 @@ class Products
     }
 
     /**
-     * Set company_id
+     * Set companyId
      *
      * @param int $companyID
      */
     public function setCompanyId($companyID)
     {
-        $this->company_id = $companyID;
+        $this->companyId = $companyID;
     }
 
     /**
-     * Get company_id
+     * Get companyId
      *
      * @return int 
      */
     public function getCompanyId()
     {
-        return $this->company_id;
+        return $this->companyId;
     }
 
 
