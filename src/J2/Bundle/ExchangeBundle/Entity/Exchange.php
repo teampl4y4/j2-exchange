@@ -58,7 +58,7 @@ class Exchange
     public function __construct()
     {
         $this->setCreatedAt( new \DateTime() );
-        $this->setIsActive(true);
+        $this->setActive(true);
     }
 
 

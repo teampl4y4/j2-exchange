@@ -73,6 +73,11 @@ fos_user:
 bazinga_faker:
     orm: doctrine
     entities:
+      J2\Bundle\ExchangeBundle\Entity\Exchange:
+        number: 9
+        custom_formatters:
+          active: { method: lexify, parameters: [ '1' ] }
+          name: { method: bothify, parameters: [ 'Exchange #' ] }
       J2\Bundle\ExchangeBundle\Entity\Company:
         number: 9
         custom_formatters:
