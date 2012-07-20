@@ -77,16 +77,16 @@ class Offers
     /**
      * @var Users $createdBy
      *
-     * @ORM\OneToOne(targetEntity="Users")
-     * @ORM\JoinColumn(name="createdBy", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="createdBy", referencedColumnName="id")
      */
     private $createdBy;
 
     /**
      * @var Users $updatedBy
      *
-     * @ORM\OneToOne(targetEntity="Users")
-     * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id")
      */
     private $updatedBy;
 
