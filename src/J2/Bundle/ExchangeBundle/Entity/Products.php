@@ -13,8 +13,8 @@ use J2\Bundle\ExchangeBundle\Entity\Offers;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ProductsRepository")
  */
-class Products
-{
+class Products {
+
     /**
      * @var integer $id
      *
@@ -72,7 +72,7 @@ class Products
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-    
+
     /**
      * Exchanges
      *
@@ -82,14 +82,14 @@ class Products
      *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")}
      * )
      */
-    protected $offers;
+    private $offers;
     
     /**
-     * @var integer $companyId
+     * @var integer $company_id
      *
      * @ORM\Column(name="company_id", type="integer"))
      */
-    private $companyId;
+    private $company_id;
 
     /**
      * @var Users $createdBy
@@ -115,30 +115,29 @@ class Products
      */
     private $company;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->createdAt = new \DateTime();
-        $this->active    = true;
+        $this->active = true;
     }
 
     /**
-     * Set companyId
+     * Set company_id
      *
      * @param int $companyID
      */
     public function setCompanyId($companyID)
     {
-        $this->companyId = $companyID;
+        $this->company_id = $companyID;
     }
 
     /**
-     * Get companyId
+     * Get company_id
      *
      * @return int 
      */
     public function getCompanyId()
     {
-        return $this->companyId;
+        return $this->company_id;
     }
 
 
@@ -147,8 +146,7 @@ class Products
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -157,8 +155,7 @@ class Products
      *
      * @param string $name
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
@@ -167,8 +164,7 @@ class Products
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -177,8 +173,7 @@ class Products
      *
      * @param text $description
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
     }
 
@@ -187,8 +182,7 @@ class Products
      *
      * @return text 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -197,8 +191,7 @@ class Products
      *
      * @param float $price
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
     }
 
@@ -207,8 +200,7 @@ class Products
      *
      * @return float 
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
@@ -217,8 +209,7 @@ class Products
      *
      * @param string $sku
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
     }
 
@@ -227,8 +218,7 @@ class Products
      *
      * @return string 
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -237,8 +227,7 @@ class Products
      *
      * @param datetime $createdAt
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
     }
 
@@ -247,8 +236,7 @@ class Products
      *
      * @return datetime 
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->createdAt;
     }
 
@@ -257,8 +245,7 @@ class Products
      *
      * @param Users $createdBy
      */
-    public function setCreatedBy($createdBy)
-    {
+    public function setCreatedBy($createdBy) {
         $this->createdBy = $createdBy;
     }
 
@@ -267,8 +254,7 @@ class Products
      *
      * @return Users 
      */
-    public function getCreatedBy()
-    {
+    public function getCreatedBy() {
         return $this->createdBy;
     }
 
@@ -277,8 +263,7 @@ class Products
      *
      * @param Users $updatedBy
      */
-    public function setUpdatedBy($updatedBy)
-    {
+    public function setUpdatedBy($updatedBy) {
         $this->updatedBy = $updatedBy;
     }
 
@@ -287,8 +272,7 @@ class Products
      *
      * @return Users 
      */
-    public function getUpdatedBy()
-    {
+    public function getUpdatedBy() {
         return $this->updatedBy;
     }
 
@@ -297,8 +281,7 @@ class Products
      *
      * @param datetime $updatedAt
      */
-    public function setUpdatedAt($updatedAt)
-    {
+    public function setUpdatedAt($updatedAt) {
         $this->updatedAt = $updatedAt;
     }
 
@@ -307,8 +290,7 @@ class Products
      *
      * @return datetime 
      */
-    public function getUpdatedAt()
-    {
+    public function getUpdatedAt() {
         return $this->updatedAt;
     }
 
@@ -317,8 +299,7 @@ class Products
      *
      * @param boolean $active
      */
-    public function setActive($active)
-    {
+    public function setActive($active) {
         $this->active = $active;
     }
 
@@ -327,8 +308,7 @@ class Products
      *
      * @return boolean 
      */
-    public function getActive()
-    {
+    public function getActive() {
         return $this->active;
     }
 
@@ -337,8 +317,7 @@ class Products
      *
      * @param Companies $company
      */
-    public function setCompany($company)
-    {
+    public function setCompany($company) {
         $this->companyID = $company;
     }
 
@@ -347,8 +326,8 @@ class Products
      *
      * @return Companies 
      */
-    public function getCompany()
-    {
+    public function getCompany() {
         return $this->company;
     }
+
 }
