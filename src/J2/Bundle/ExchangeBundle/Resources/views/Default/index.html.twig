@@ -91,12 +91,14 @@
     <button id="r30day" class="cBtn">30 Days</button>
     <button id="r7day" class="cBtn">7 Days</button>
 
+    <div id="loading">Loading...</div>
+
     <div class="widget chartWrapper">
         <div class="title">
             <img src="{{ asset('bundles/j2exchange/images/icons/dark/graph.png') }}" alt="" class="titleIcon" />
             <h6>30 Day Revenue Report</h6>
         </div>
-        <div class="body"><div id="revenueChart" class="chart">Loading...</div></div>
+        <div class="body"><div id="revenueChart" class="chart"></div></div>
     </div>
 
     <div class="widgets">
@@ -145,6 +147,9 @@
 
             var revModel = new J2.Models.RevenueGraphModel;
             function changeGraph(data, status, xhr) { revModel.set( { gData: data.response }); }
+
+            $('#loading').ajaxStart(function() { $(this).show() });
+            $('#loading').ajaxStop(function() { $(this).hide() });
 
             $.ajax({
                 url: '/api/graphs/revenue/30',
