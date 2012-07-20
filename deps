@@ -73,3 +73,10 @@
     git=https://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=/bundles/FOS/UserBundle
     version=v1.2.0
+
+[BazingaFakerBundle]
+    git=https://github.com/willdurand/BazingaFakerBundle.git
+    target=/bundles/Bazinga/Bundle/FakerBundle
+
+[FakerBundle]
+    git=https://github.com/fzaninotto/Faker.git

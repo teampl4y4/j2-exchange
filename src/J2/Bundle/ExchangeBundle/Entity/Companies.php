@@ -56,13 +56,16 @@ class Companies
     /**
      * Users
      *
-     * @ORM\ManyToMany(targetEntity="Users")
-     * @ORM\JoinTable(name="company_users",
-     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
-     * )
+     * @ORM\OneToMany(targetEntity="Users",mappedBy="company")
      */
     protected $users;
+
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->active    = true;
+    }
 
 
     /**

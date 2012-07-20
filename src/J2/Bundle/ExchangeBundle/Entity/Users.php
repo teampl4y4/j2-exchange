@@ -45,6 +45,13 @@ class Users extends BaseUser
     protected $company;
     
     /**
+     * @var integer $companyId
+     *
+     * @ORM\Column(name="company_id", type="integer"))
+     */
+    protected $companyId;
+    
+    /**
      * Exchanges
      *
      * @ORM\ManyToMany(targetEntity="Exchanges")
@@ -125,6 +132,26 @@ class Users extends BaseUser
     public function getFirstName()
     {
         return $this->firstName;
+    }
+
+    /**
+     * Set company_id
+     *
+     * @param int $companyID
+     */
+    public function setCompanyId($companyID)
+    {
+        $this->company_id = $companyID;
+    }
+
+    /**
+     * Get company_id
+     *
+     * @return int 
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
     }
 
     /**

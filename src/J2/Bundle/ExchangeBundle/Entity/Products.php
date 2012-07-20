@@ -83,6 +83,13 @@ class Products
      * )
      */
     protected $offers;
+    
+    /**
+     * @var integer $companyId
+     *
+     * @ORM\Column(name="company_id", type="integer"))
+     */
+    private $companyId;
 
     /**
      * @var Users $createdBy
@@ -110,9 +117,28 @@ class Products
 
     public function __construct()
     {
-        parent::__construct();
         $this->createdAt = new \DateTime();
         $this->active    = true;
+    }
+
+    /**
+     * Set company_id
+     *
+     * @param int $companyID
+     */
+    public function setCompanyId($companyID)
+    {
+        $this->company_id = $companyID;
+    }
+
+    /**
+     * Get company_id
+     *
+     * @return int 
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
     }
 
 
