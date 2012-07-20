@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new J2ExchangeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Bazinga\Bundle\FakerBundle\BazingaFakerBundle()
+//            new Bazinga\Bundle\FakerBundle\BazingaFakerBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
