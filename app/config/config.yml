@@ -83,11 +83,11 @@ bazinga_faker:
         custom_formatters:
           company_id: { method: randomDigitNotNull }
           active: { method: lexify, parameters: [ '1' ] }
-          expires_at: { method: null }
-          credentials_expired: { method: lexify, parameters: [ '0' ] }
-          locked: { method: lexify, parameters: [ '0' ] }
-          expired: { method: lexify, parameters: [ '0' ] }
-          credentials_expire_at: { method: null }
+          #expires_at: { method: null }
+          #credentials_expired: { method: lexify, parameters: [ '0' ] }
+          #locked: { method: lexify, parameters: [ '0' ] }
+          #expired: { method: lexify, parameters: [ '0' ] }
+          #credentials_expire_at: { method: null }
           password:   { method: lexify, parameters: [ 'ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==' ] }
           salt:   { method: lexify, parameters: [ 't6oczzuzq1w04808kwwowc4k88kkc0w' ] }
       J2\Bundle\ExchangeBundle\Entity\Products:
