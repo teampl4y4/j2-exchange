@@ -17,15 +17,7 @@
 				pie: { 
 					show: true,
 					innerRadius: 0.5,
-					radius: 1,
-					label: {
-						show: false,
-						radius: 2/3,
-						formatter: function(label, series){
-							return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
-						},
-						threshold: 0.1
-					}
+					radius: 1
 				}
 			},
 			legend: {
@@ -42,26 +34,8 @@
 			grid: {
 				hoverable: true,
 				clickable: true
-			},
-	});
-	$("#interactive").bind("plothover", pieHover);
-	$("#interactive").bind("plotclick", pieClick);
-	
-	});
-	
-	function pieHover(event, pos, obj) 
-	{
-		if (!obj)
-					return;
-		percent = parseFloat(obj.series.percent).toFixed(2);
-		$("#hover").html('<span style="font-weight: bold; color: '+obj.series.color+'">'+obj.series.label+' ('+percent+'%)</span>');
-	}
-	function pieClick(event, pos, obj) 
-	{
-		if (!obj)
-					return;
-		percent = parseFloat(obj.series.percent).toFixed(2);
-		alert(''+obj.series.label+': '+percent+'%');
-	}
+			}
+	})
+});
 
 	

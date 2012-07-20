@@ -11,4 +11,22 @@
 
     });
 
+
+    namespace.Models.InventoryGraphModel = Backbone.Model.extend({
+
+        initialize: function() {
+
+        }
+
+    });
+
+
+    namespace.Models.OffersGraphModel = Backbone.Model.extend({
+
+        initialize: function() {
+
+        }
+
+    });
+
 })(window.J2 = window.J2 || {});
