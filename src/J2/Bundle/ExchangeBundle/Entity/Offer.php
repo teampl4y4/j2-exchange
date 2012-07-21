@@ -10,7 +10,7 @@ use J2\Bundle\ExchangeBundle\Entity\Users;
 /**
  * J2\Bundle\ExchangeBundle\Entity\Offer
  *
- * @ORM\Table(name="offer")
+ * @ORM\Table(name="offers")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\OfferRepository")
  */
 class Offer

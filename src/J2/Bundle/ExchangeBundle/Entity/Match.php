@@ -5,10 +5,10 @@ namespace J2\Bundle\ExchangeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * J2\Bundle\ExchangeBundle\Entity\Matches
+ * J2\Bundle\ExchangeBundle\Entity\Match
  *
  * @ORM\Table(name="matches")
- * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\MatchesRepository")
+ * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\MatchRepository")
  */
 class Match
 {
