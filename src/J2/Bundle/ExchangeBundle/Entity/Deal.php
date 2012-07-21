@@ -39,7 +39,7 @@ class Deal
      * Offers
      *
      * @ORM\ManyToMany(targetEntity="Offer")
-     * @ORM\JoinTable(name="offer_deals",
+     * @ORM\JoinTable(
      *      joinColumns={@ORM\JoinColumn(name="deal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")}
      * )

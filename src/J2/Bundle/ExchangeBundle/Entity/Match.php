@@ -36,6 +36,31 @@ class Match
     private $description;
 
     /**
+     * @var float $price
+     *
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     */
+    private $price;
+
+    /**
+     * @var integer $available
+     *
+     * @ORM\Column(name="available", type="integer")
+     */
+    private $available;
+    
+    /**
+     * Offers
+     *
+     * @ORM\ManyToMany(targetEntity="Offer")
+     * @ORM\JoinTable(
+     *      joinColumns={@ORM\JoinColumn(name="match_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")}
+     * )
+     */
+    private $offers;
+
+    /**
      * @var datetime $createdAt
      *
      * @ORM\Column(name="createdAt", type="datetime")
@@ -172,5 +197,45 @@ class Match
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set available
+     *
+     * @param integer $available
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+    }
+
+    /**
+     * Get available
+     *
+     * @return integer 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }
