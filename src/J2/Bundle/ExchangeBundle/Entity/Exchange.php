@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * J2\Bundle\ExchangeBundle\Entity\Exchange
  *
  * @ORM\Table(name="exchanges")
- * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangesRepository")
+ * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangeRepository")
  */
 class Exchange
 {

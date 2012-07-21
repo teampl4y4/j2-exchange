@@ -88,9 +88,9 @@
 {% block content %}
     <!-- Lines chart -->
     <span>Filter Data by: </span>
-    <a class="button basic cBtn" days="90" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>90 Days</span></a>
-    <a class="button basic cBtn defaultDate" days="30" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>30 Days</span></a>
-    <a class="button basic cBtn" days="7" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>7 Days</span></a>
+    <a class="button basic cBtn" data-days="90" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>90 Days</span></a>
+    <a class="button basic cBtn defaultDate" data-days="30" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>30 Days</span></a>
+    <a class="button basic cBtn" data-days="7" style="margin: 5px;"><img src="{{ asset('bundles/j2exchange/images/icons/dark/dayCalendar.png') }}" alt="" class="icon"><span>7 Days</span></a>
 
     <div id="loading" class="graphsloading">Loading...</div>
 
@@ -167,21 +167,21 @@
 
                 //call to get revenue report
                 $.ajax({
-                    url: '/api/graphs/revenue/' + $(this).attr('days'),
+                    url: '/api/graphs/revenue/' + $(this).attr('data-days'),
                     dataType: 'json',
                     success: updateRevenueGraph
                 });
 
                 //call to get inventory report
                 $.ajax({
-                    url: '/api/graphs/inventory/' + $(this).attr('days'),
+                    url: '/api/graphs/inventory/' + $(this).attr('data-days'),
                     dataType: 'json',
                     success: updateInventoryGraph
                 });
 
                 //call to get offers report
                 $.ajax({
-                    url: '/api/graphs/offers/' + $(this).attr('days'),
+                    url: '/api/graphs/offers/' + $(this).attr('data-days'),
                     dataType: 'json',
                     success: updateOffersModel
                 });
