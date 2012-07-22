@@ -352,9 +352,9 @@ class Product {
     /**
      * Set offers
      *
-     * @param ArrayCollection $offers
+     * @param \Doctrine\Common\Collections\ArrayCollection $offers
      */
-    public function setOffers(ArrayCollection $offers) {
+    public function setOffers(\Doctrine\Common\Collections\ArrayCollection $offers) {
         $this->offers = $offers;
     }
 
