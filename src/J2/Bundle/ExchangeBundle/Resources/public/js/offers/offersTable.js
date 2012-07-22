@@ -7,6 +7,7 @@
         , className: 'offer-row'
 
         , events: {
+            "click .offerToggle" : "toggleState"
         }
 
         , render: function(){
@@ -37,14 +38,24 @@
                     html: this.model.get('matches'),
                     style: 'text-align: center'
                 })
-
-                , $('<td></td>', {
-                    html: this.model.get('active'),
-                    style: 'text-align: center'
-                })
             )
 
+            if(this.model.get('active') > 0) {
+                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled"></a></td>');
+            } else {
+                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/cross.png" alt="enabled"></a></td>');
+            }
+
             return this;
+        }
+
+        , toggleState: function()
+        {
+            if(this.model.get('active') > 0) {
+                alert('currently on - need to turn off');
+            } else {
+                alert('currently off - need to turn on');
+            }
         }
 
     });
