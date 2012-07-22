@@ -37,7 +37,8 @@ class OfferRepository extends EntityRepository
      * @return ArrayCollection 
      */
     public function findMatchesByOffer($offerID, $limit){
-        
+
+        //TODO build this magical piece of software
         $sql = 'SELECT * from offers where id!='.$offerID.' order by rand() limit '.$limit;
 
         return $this->_em->getConnection()->fetchAll($sql);
