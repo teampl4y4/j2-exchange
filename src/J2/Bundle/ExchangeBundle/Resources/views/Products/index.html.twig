@@ -16,25 +16,42 @@
 {% endblock%}
 
 {% block content %}
-<div class="widgets">
-    <div class="oneTwo">
-
+<div class="oneTwo">
+    <div class="widgets">
         <div class="widget">
-            <div class="title"><img src="{{ asset('bundles/j2exchange/images/icons/dark/imagesList.png') }}" alt="" class="titleIcon"><h6>{{company.name}}'s Products</h6></div>
-            <div class="body">
-
-                <div class="list plusB">
-                    <strong class="red">Products</strong>
-                    <ul>
-                        {% for product in products %}
-                        <li>{{ product.name }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
+            <div class="title">
+                <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
+                <h6>{{ company.name }} Products</h6>
             </div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>ID/SKU</td>
+                    <td>Offers</td>
+                    <td>Active</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="#">{{ product.name | truncate(25, false, '..') }}</a></td>
+                        <td align="center">{{ product.price | craue_currency }}</td>
+                        <td align="center">{{ product.code }}</td>
+                        <td align="center">{{ product.offers | length }}</td>
+                        <td align="center">
+                            {% if product.active > 0 %}
+                                <img src="{{ asset('bundles/j2exchange/images/icons/color/tick.png')}}" alt="enabled">
+                            {% else %}
+                                <img src="{{ asset('bundles/j2exchange/images/icons/color/cross.png')}}" alt="disabled">
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-
     </div>
 </div>
 {% endblock %}

@@ -350,6 +350,25 @@ class Product {
     }
 
     /**
+     * Set offers
+     *
+     * @param ArrayCollection $offers
+     */
+    public function setOffers(ArrayCollection $offers) {
+        $this->offers = $offers;
+    }
+
+    /**
+     * Get offers
+     *
+     * @return ArrayCollection
+     */
+    public function getOffers() {
+        return $this->offers;
+    }
+
+
+    /**
      * Set exchange
      *
      * @param Exchange $exchange

@@ -32,10 +32,9 @@ class ProductRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p');
         $qb->where('p.company = :company')
-           ->andWhere('p.active = :active')
+           ->andWhere('p.exchange = :exchange')
            ->setParameter('company', $user->getCompany())
-           ->setParameter('exchange', $user->getCurrentExchange())
-           ->setParameter('active', true);
+           ->setParameter('exchange', $user->getCurrentExchange());
 
         return $qb->getQuery()->execute();
     }
