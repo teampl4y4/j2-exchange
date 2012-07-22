@@ -11,14 +11,28 @@
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body class="nobg loginPage">
+        <div class="topNav">
+            <div class="wrapper"><div class="userNav">
+            <ul>
+                <li><a href="#" title=""><img src="images/icons/topnav/mainWebsite.png" alt=""><span>Main website</span></a></li>
+                <li><a href="#" title=""><img src="images/icons/topnav/profile.png" alt=""><span>Contact admin</span></a></li>
+                <li><a href="#" title=""><img src="images/icons/topnav/messages.png" alt=""><span>Support</span></a></li>
+                <li><a href="login.html" title=""><img src="images/icons/topnav/settings.png" alt=""><span>Settings</span></a></li>
+            </ul>
+        </div>
+                <div class="clear"></div>
+            </div>
+        </div>
     <!-- Main content wrapper -->
     <div class="loginWrapper">
-        <div class="loginPanel">
-            <div class="head"><h5 class="iUser">Login</h5></div>
-                {% block content %}{% endblock %}
+        <div class="widget">
+            <div class="title"><img src="images/icons/dark/files.png" alt="" class="titleIcon"><h6>Login panel</h6></div>
+            {% block content %}{% endblock %}
         </div>
     </div>
+
+    
     <div id="footer">
         <div class="wrapper">
             <span>&copy; Copyright 2011. All rights reserved. It's Brain admin theme by <a href="#" title="">Eugene Kopyov</a></span>
