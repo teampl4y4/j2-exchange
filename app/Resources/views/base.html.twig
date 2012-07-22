@@ -61,11 +61,11 @@
                 <div class="userNav">
                     <ul>
                         <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
-                        <li class="dd"><a title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/tasks.png') }}" alt="" /><span>Exchange: <b>Exchange 1</b></span><span class="numberTop">3</span></a>
+                        <li class="dd"><a title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/tasks.png') }}" alt="" /><span>Exchange: <b>{{ app.user.currentExchange.name }}</b></span><span class="numberTop">{{ app.user.exchanges | length }}</span></a>
                             <ul class="userDropdown">
-                                <li><a href="#" title="" class="sInbox"><em>Exchange 1</em></a></li>
-                                <li><a href="#" title="" class="sInbox">Exchange 2</a></li>
-                                <li><a href="#" title="" class="sInbox">Exchange 3</a></li>
+                                {% for exchange in app.user.exchanges %}
+                                <li><a href="{{ path('_set_active_exchange', { 'id': exchange.id }) }}" title="" class="sInbox">{{ exchange.name }}</a></li>
+                                {% endfor %}
                                 <li><a href="#" title="" class="sAdd">Create Exchange</a></li>
                             </ul>
                         </li>

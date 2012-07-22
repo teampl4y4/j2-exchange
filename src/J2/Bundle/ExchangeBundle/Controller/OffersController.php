@@ -18,12 +18,13 @@ class OffersController extends Controller
      */
     public function indexAction()
     {
+        /** @var $user \J2\Bundle\ExchangeBundle\Entity\User */
         $user     = $this->get('security.context')->getToken()->getUser();
 
         $offers = $this->getDoctrine()
             ->getEntityManager()
             ->getRepository('J2ExchangeBundle:Offer')
-            ->getActiveOffersByCompany($user->getCompany());
+            ->findActiveOffersByExchange($user->getCurrentExchange());
 
         return array('offers' => $offers, 'company' => $user->getCompany());
     }

@@ -19,12 +19,12 @@ class OfferRepository extends EntityRepository
      * @param Company $company
      * @return array 
      */
-    public function getActiveOffersByCompany(Company $company){
+    public function findActiveOffersByExchange(Exchange $exchange){
 
         $qb = $this->createQueryBuilder('o');
-        $qb->where('o.company = :company')
+        $qb->where('o.exchange = :exchange')
             ->andWhere('o.active = :active')
-            ->setParameter('company', $company)
+            ->setParameter('exchange', $exchange)
             ->setParameter('active', true);
 
         return $qb->getQuery()->execute();

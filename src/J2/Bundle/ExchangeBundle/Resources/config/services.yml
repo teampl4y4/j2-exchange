@@ -6,3 +6,8 @@ services:
         tags:
             # The alias is what is used to retrieve the menu
             - { name: knp_menu.renderer, alias: custom }
+
+    twig.extension.j2exchange.text_extension:
+            class: J2\Bundle\ExchangeBundle\Twig\Text
+            tags:
+                - { name: twig.extension }

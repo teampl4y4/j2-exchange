@@ -24,12 +24,18 @@
                 <tbody>
                 {% for offer in offers %}
                     <tr>
-                        <td align="center">{{ offer.available }}</td>
-                        <td>{{ offer.name }}</td>
-                        <td>${{ offer.listPrice | number_format(2) }}</td>
-                        <td>${{ offer.whisperPrice | number_format(2) }}</td>
+                        <td align="center"><a href="#" class="webStatsLink">{{ offer.available }}</a></td>
+                        <td><a href="#">{{ offer.name | truncate(25, false, '..') }}</a></td>
+                        <td>{{ offer.listPrice | craue_currency }}</td>
+                        <td>{{ offer.whisperPrice | craue_currency }}</td>
                         <td>xx</td>
-                        <td>{{ offer.active }}</td>
+                        <td>
+                            {% if offer.active > 0 %}
+                                <img src="{{ asset('bundles/j2exchange/images/icons/color/tick.png')}}" alt="enabled">
+                            {% else %}
+                                <img src="{{ asset('bundles/j2exchange/images/icons/color/cross.png')}}" alt="disabled">
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

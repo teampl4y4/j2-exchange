@@ -74,6 +74,10 @@
     target=/bundles/FOS/UserBundle
     version=v1.2.0
 
+[CraueTwigExtensionsBundle]
+    git=https://github.com/craue/TwigExtensionsBundle.git
+    target=bundles/Craue/TwigExtensionsBundle
+
 [BazingaFakerBundle]
     git=https://github.com/willdurand/BazingaFakerBundle.git
     target=/bundles/Bazinga/Bundle/FakerBundle
