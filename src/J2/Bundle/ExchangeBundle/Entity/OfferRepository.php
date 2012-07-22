@@ -29,4 +29,17 @@ class OfferRepository extends EntityRepository
 
         return $qb->getQuery()->execute();
     }
+    
+    /**
+     * Fetch matches offers
+     * @param int $offerID
+     * @param int $limit
+     * @return ArrayCollection 
+     */
+    public function findMatchesByOffer($offerID, $limit){
+        
+        $sql = 'SELECT * from offers where id!='.$offerID.' order by rand() limit '.$limit;
+
+        return $this->_em->getConnection()->fetchAll($sql);
+    }
 }
