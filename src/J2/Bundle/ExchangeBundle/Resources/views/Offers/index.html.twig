@@ -3,5 +3,39 @@
 {% block title %} Your Offers {%endblock%}
 
 {% block content %}
-    Offers Here
+<div class="oneTwo">
+    <div class="widgets">
+        <div class="widget">
+            <div class="title">
+                <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
+                <h6>{{ company.name }} Offers</h6>
+            </div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                <thead>
+                <tr>
+                    <td width="80">Remaining</td>
+                    <td>Name</td>
+                    <td width="80">List Price</td>
+                    <td width="80">Whisper Price</td>
+                    <td width="80">Matches</td>
+                    <td width="80">Active</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for offer in offers %}
+                    <tr>
+                        <td align="center">{{ offer.available }}</td>
+                        <td>{{ offer.name }}</td>
+                        <td>{{ offer.listPrice }}</td>
+                        <td>{{ offer.whisperPrice }}</td>
+                        <td>xx</td>
+                        <td>{{ offer.active }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
