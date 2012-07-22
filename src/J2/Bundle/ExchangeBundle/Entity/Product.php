@@ -27,7 +27,7 @@ class Product {
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
 
@@ -48,7 +48,7 @@ class Product {
     /**
      * @var string $code
      *
-     * @ORM\Column(name="code", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=100)
      */
     private $code;
 
