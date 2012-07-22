@@ -112,6 +112,14 @@ class Product {
     private $updatedBy;
 
     /**
+     * @var Exchange $exchange
+     *
+     * @ORM\ManyToOne(targetEntity="Exchange")
+     * @ORM\JoinColumn(name="exchange_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $exchange;
+
+    /**
      * @var Company $company
      *
      * @ORM\ManyToOne(targetEntity="Company")
@@ -328,7 +336,7 @@ class Product {
      *
      * @param Company $company
      */
-    public function setCompany($company) {
+    public function setCompany(Company $company) {
         $this->companyID = $company;
     }
 
@@ -339,6 +347,24 @@ class Product {
      */
     public function getCompany() {
         return $this->company;
+    }
+
+    /**
+     * Set exchange
+     *
+     * @param Exchange $exchange
+     */
+    public function setExchange(Exchange $exchange) {
+        $this->exchange = $exchange;
+    }
+
+    /**
+     * Get exchange
+     *
+     * @return Exchange
+     */
+    public function getExchange() {
+        return $this->exchange;
     }
 
 }

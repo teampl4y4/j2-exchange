@@ -13,30 +13,28 @@ use J2\Bundle\ExchangeBundle\Entity\Products;
  */
 class ProductRepository extends EntityRepository
 {
-    /**
-     * Fetch all products by CompanyExchange
-     * @param J2\Bundle\ExchangeBundle\Entity\CompanyExchanges $companyEexchange 
-     * @return array 
-     */
-    public static function getProducts($companyExchange){}
-    
     
     /**
      * Fetch an product by id from within a company exchange
-     * @param int $productID
-     * @param J2\Bundle\ExchangeBundle\Entity\CompanyExchanges $companyExchange 
-     * @return Products 
+     * @param int $productID 
+     * @return Product
      */
-    public static function getProduct($productID,$companyExchange){
-        return new Products();
+    public function findProduct($productID){
+        return $this->find($productID);
     }
 
-    public function findByUser(Users $user)
+    /**
+     *
+     * @param User $user
+     * @return type 
+     */
+    public function findByUser(User $user)
     {
         $qb = $this->createQueryBuilder('p');
         $qb->where('p.company = :company')
            ->andWhere('p.active = :active')
            ->setParameter('company', $user->getCompany())
+           ->setParameter('exchange', $user->getCurrentExchange())
            ->setParameter('active', true);
 
         return $qb->getQuery()->execute();
