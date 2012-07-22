@@ -32,13 +32,9 @@ class Exchange
     /**
      * Companies
      *
-     * @ORM\ManyToMany(targetEntity="Company")
-     * @ORM\JoinTable(
-     *      joinColumns={@ORM\JoinColumn(name="deal_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToMany(targetEntity="Company", mappedBy="Exchanges")
+     * 
      */
-    
     private $companies;
 
     /**

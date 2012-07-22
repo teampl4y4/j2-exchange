@@ -45,7 +45,7 @@ class Company
     /**
      * Deal
      *
-     * @ORM\ManyToMany(targetEntity="Deal", inversedBy="companies")
+     * @ORM\ManyToMany(targetEntity="Deal", mappedBy="companies")
      */
     protected $deals;
     

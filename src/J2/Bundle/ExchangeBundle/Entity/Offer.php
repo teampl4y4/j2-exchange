@@ -120,6 +120,14 @@ class Offer
     private $product_id;
 
     /**
+     * @var Exchange $exchange
+     *
+     * @ORM\ManyToOne(targetEntity="Exchange")
+     * @ORM\JoinColumn(name="exchange_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $exchange;
+
+    /**
      * @var integer $available
      *
      * @ORM\Column(name="available", type="integer")
@@ -398,5 +406,23 @@ class Offer
     public function getAvailable()
     {
         return $this->available;
+    }
+
+    /**
+     * Set exchange
+     *
+     * @param Exchange $exchange
+     */
+    public function setExchange(Exchange $exchange) {
+        $this->exchange = $exchange;
+    }
+
+    /**
+     * Get exchange
+     *
+     * @return Exchange
+     */
+    public function getExchange() {
+        return $this->exchange;
     }
 }

@@ -55,7 +55,6 @@ class Deal
      *      inverseJoinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")}
      * )
      */
-    
     private $companies;
 
     /**
