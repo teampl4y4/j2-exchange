@@ -25,8 +25,6 @@ class OffersController extends Controller
             ->getRepository('J2ExchangeBundle:Offer')
             ->getActiveOffersByCompany($user->getCompany());
 
-        var_dump($offers);
-
         return array('offers' => $offers, 'company' => $user->getCompany());
     }
 }
