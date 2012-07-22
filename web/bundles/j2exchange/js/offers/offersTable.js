@@ -3,27 +3,50 @@
     namespace.OfferTableRow = Backbone.View.extend({
 
           tagName: 'tr'
+
         , className: 'offer-row'
+
         , events: {
-            "click" : "showOff"
         }
 
         , render: function(){
+            console.log('rendering row');
             this.$el.empty().append(
-                '<td align="center">' + this.model.get('quantity') + '</td>' +
-                '<td>' + this.model.get('name') + '</td>' +
-                '<td align="center">$' + this.model.get('listPrice') + '</td>' +
-                '<td align="center">$' + this.model.get('whisperPrice') + '</td>' +
-                '<td align="center">' + this.model.get('matches') + '</td>' +
-                '<td align="center">' + this.model.get('active') + '</td>'
+
+                $('<td></td>', {
+                    html: '<a href="#" class="webStatsLink">' + this.model.get('quantity') + '</a>',
+                    style: 'text-align: center'
+                })
+
+                , $('<td></td>', {
+                    html: '<a href="#">' + this.model.get('name') + '</a>',
+
+                })
+
+                , $('<td></td>', {
+                    html: '$' + this.model.get('listPrice'),
+                    style: 'text-align: center'
+                })
+
+                , $('<td></td>', {
+                    html: '$' + this.model.get('whisperPrice'),
+                    style: 'text-align: center'
+                })
+
+                , $('<td></td>', {
+                    html: this.model.get('matches'),
+                    style: 'text-align: center'
+                })
+
+                , $('<td></td>', {
+                    html: this.model.get('active'),
+                    style: 'text-align: center'
+                })
             )
 
-            return this.$el;
+            return this;
         }
 
-        , showOff: function() {
-            alert("I am showing off " + this.model.get('name'));
-        }
     });
 
     namespace.OffersTable = Backbone.View.extend({
@@ -32,19 +55,28 @@
 
         , initialize: function() {
             this.collection.on('remove', this.render, this);
-            this.collection.on('add', this.render, this);
+            this.collection.on('add', this.addRow, this);
+            this.collection.on('reset', this.render, this);
         }
 
         , render: function() {
             var $el = $(this.el);
             $el.empty();
-            this.collection.each( function(model) {
-                $el.append( new namespace.OfferTableRow({ model: model}).render() )
-            });
+
             if ( !this.collection.size() ) {
                 $el.append($('<tr><td colspan="100%" style="text-align: left;"><em>You have no offers.</em></td></tr>'));
             }
-            return $el;
+            this.collection.each( function(model) {
+                that.addRow(model);
+            });
+
+            return this;
+        }
+
+        , addRow: function(model) {
+            console.info('Adding Single Row');
+            this.$('.no-offers').remove();
+            this.$el.append(new J2.OfferTableRow({model: model}).render().$el);
         }
     });
 

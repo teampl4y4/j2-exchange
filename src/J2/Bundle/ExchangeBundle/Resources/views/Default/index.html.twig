@@ -191,6 +191,22 @@
             //default revenue graph data
             $('.defaultDate').trigger('click');
 
+
+
+            //===== sparklines UI stuff === //
+
+            if($('.negBar')) {
+                $('.negBar').sparkline('html', {type: 'bar', barColor: '#db6464'} );
+            }
+
+            if($('.posBar')) {
+                $('.posBar').sparkline('html', {type: 'bar', barColor: '#6daa24'} );
+            }
+
+            if($('.zeroBar')) {
+                $('.zeroBar').sparkline('html', {type: 'bar', barColor: '#4e8fc6'} );
+            }
+
         })(jQuery);
 
     </script>
