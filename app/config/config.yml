@@ -86,6 +86,7 @@ bazinga_faker:
       J2\Bundle\ExchangeBundle\Entity\User:
         number: 5
         custom_formatters:
+          current_exchange_id: { method: randomDigitNotNull }
           company_id: { method: randomDigitNotNull }
           username: { method: email }
           active: { method: lexify, parameters: [ '1' ] }

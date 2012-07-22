@@ -113,6 +113,14 @@ class Offer
     private $product;
     
     /**
+     * Matches
+     *
+     * @ORM\ManyToMany(targetEntity="Match", mappedBy="offers")
+     * 
+     */
+    private $matches;
+    
+    /**
      * @var integer $product_id
      *
      * @ORM\Column(name="product_id", type="integer"))
@@ -368,6 +376,24 @@ class Offer
     public function getProductID()
     {
         return $this->product_id;
+    }
+    
+    /**
+     *
+     * @param ArrayCollection $matches 
+     */
+    public function setMatches($matches)
+    {
+        $this->matches = $matches;
+    }
+    
+    /**
+     *
+     * @return ArrayCollection 
+     */
+    public function getMatches()
+    {
+        return $this->matches;
     }
     
     /**
