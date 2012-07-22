@@ -10,7 +10,7 @@
                 <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
                 <h6>{{ company.name }} Offers</h6>
             </div>
-            <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+            <table id="offersTable" cellpadding="0" cellspacing="0" width="100%" class="sTable">
                 <thead>
                 <tr>
                     <td>Remaining</td>
@@ -21,7 +21,7 @@
                     <td>Active</td>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="offersBody">
                 {% for offer in offers %}
                     <tr>
                         <td align="center"><a href="#" class="webStatsLink">{{ offer.available }}</a></td>
@@ -45,3 +45,25 @@
 </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/offers/offersTable.js') }}"></script>
+    <script type="text/javascript">
+        (function ($) {
+
+            var offers = new Backbone.Collection;
+
+            var offersTable = new J2.OffersTable({
+                collection: offers
+            });
+
+            $('#offersBody').replaceWith(offersTable.el);
+
+            offers.add([
+                { quantity: 100, name: 'foo', listPrice: 100, whisperPrice: 50, matches: 3, active: 1 },
+                { quantity: 1, name: 'tara smith', listPrice: 9, whisperPrice: 5, matches: 1, active: 1 }
+            ]);
+
+        })(jQuery);
+    </script>
+{%endblock%}

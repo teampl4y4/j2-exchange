@@ -29,4 +29,12 @@
 
     });
 
+    namespace.Models.OfferModel = Backbone.Model.extend({
+
+        initialize: function() {
+
+        }
+
+    });
+
 })(window.J2 = window.J2 || {});
