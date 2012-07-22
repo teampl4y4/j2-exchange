@@ -43,6 +43,14 @@ class User extends BaseUser
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $company;
+
+    /**
+     * @var Exchange $currentExchange
+     *
+     * @ORM\ManyToOne(targetEntity="Exchange")
+     * @ORM\JoinColumn(name="current_exchange_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $currentExchange;
     
     /**
      * @var integer $company_id
@@ -212,6 +220,26 @@ class User extends BaseUser
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Set current exchange
+     *
+     * @param Exchange $company
+     */
+    public function setCurrentExchange($exchange)
+    {
+        $this->currentExchange = $exchange;
+    }
+
+    /**
+     * Get current exchange
+     *
+     * @return Exchange
+     */
+    public function getCurrentExchange()
+    {
+        return $this->currentExchange;
     }
 
     /**
