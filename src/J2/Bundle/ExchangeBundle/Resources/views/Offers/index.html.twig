@@ -26,10 +26,10 @@
                     <tr>
                         <td align="center"><a href="#" class="webStatsLink">{{ offer.available }}</a></td>
                         <td><a href="#">{{ offer.name | truncate(25, false, '..') }}</a></td>
-                        <td>{{ offer.listPrice | craue_currency }}</td>
-                        <td>{{ offer.whisperPrice | craue_currency }}</td>
-                        <td>{{ offer.matches | length }}</td>
-                        <td>
+                        <td align="center">{{ offer.listPrice | craue_currency }}</td>
+                        <td align="center">{{ offer.whisperPrice | craue_currency }}</td>
+                        <td align="center">{{ offer.matches | length }}</td>
+                        <td align="center">
                             {% if offer.active > 0 %}
                                 <img src="{{ asset('bundles/j2exchange/images/icons/color/tick.png')}}" alt="enabled">
                             {% else %}
