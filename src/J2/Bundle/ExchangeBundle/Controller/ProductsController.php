@@ -41,8 +41,19 @@ class ProductsController extends Controller
         
     }
     
-    public function viewAction(){
-        
+    /**
+     * @Route("/product/{id}", name="_product")
+     * @Template()
+     */
+    public function viewAction($id){
+        $user     = $this->get('security.context')->getToken()->getUser();
+
+        $product = $this->getDoctrine()
+                         ->getEntityManager()
+                         ->getRepository('J2ExchangeBundle:Product')
+                         ->findOneBy(array('id' => $id, 'company_id' => $user->getCompany()->getId()));
+
+        return array('product' => $product, 'company' => $user->getCompany());
     }
     
     public function saveAction(){

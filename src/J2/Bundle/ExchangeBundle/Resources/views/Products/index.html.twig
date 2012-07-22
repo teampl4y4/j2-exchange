@@ -16,7 +16,7 @@
 {% endblock%}
 
 {% block content %}
-<div class="oneTwo">
+<div class="oneOne">
     <div class="widgets">
         <div class="widget">
             <div class="title">
@@ -36,7 +36,7 @@
                 <tbody>
                 {% for product in products %}
                     <tr>
-                        <td><a href="#">{{ product.name | truncate(25, false, '..') }}</a></td>
+                        <td><a href="{{ path( '_product', {'id': product.id }) }}">{{ product.name | truncate(25, false, '..') }}</a></td>
                         <td align="center">{{ product.price | craue_currency }}</td>
                         <td align="center">{{ product.code }}</td>
                         <td align="center">{{ product.offers | length }}</td>
