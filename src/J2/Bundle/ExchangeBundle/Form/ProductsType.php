@@ -13,13 +13,8 @@ class ProductsType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('price')
-            ->add('sku')
-            ->add('createdAt')
-            ->add('createdBy')
+            ->add('code')
             ->add('active')
-            ->add('updatedAt')
-            ->add('updatedBy')
-            ->add('companyID')
         ;
     }
 

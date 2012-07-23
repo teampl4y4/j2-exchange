@@ -5,6 +5,7 @@ namespace J2\Bundle\ExchangeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use J2\Bundle\ExchangeBundle\Form\ProductsType;
 
 /**
  * Products Controller
@@ -29,16 +30,32 @@ class ProductsController extends Controller
         return array('products' => $products, 'company' => $user->getCompany());
     }
     
+    /**
+     * @Route("/add", name="_add_product")
+     * @Template()
+     */
     public function addAction(){
-        
+        $user     = $this->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new ProductsType());
+        return array('form' => $form->createView(), 'company' => $user->getCompany());
     }
     
     public function deleteAction(){
         
     }
     
-    public function editAction(){
-        
+    /**
+     * @Route("/edit/{id}", name="_edit_product")
+     * @Template()
+     */
+    public function editAction($id){
+        $user     = $this->get('security.context')->getToken()->getUser();
+        $product = $this->getDoctrine()
+                         ->getEntityManager()
+                         ->getRepository('J2ExchangeBundle:Product')
+                         ->findOneBy(array('id' => $id, 'company_id' => $user->getCompany()->getId()));
+        $form = $this->createForm(new ProductsType(),$product);
+        return array('product' => $product, 'form' => $form->createView(), 'company' => $user->getCompany());
     }
     
     /**
