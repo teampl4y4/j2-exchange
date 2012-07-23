@@ -11,6 +11,7 @@
             <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/plus.png') }}" alt=""><span>Add New Product</span></a></li>
             <li><a href="{{ path( '_products') }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/library.png') }}" alt=""><span>Back to Catalog</span></a></li>
             <li><a href="{{ path( '_edit_product', {'id': product.id }) }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/edit.png') }}" alt=""><span>Edit Product</span></a></li>
+            <li><a href="{{ path( '_delete_product', {'id': product.id }) }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/busy.png') }}" alt=""><span>Delete Product</span></a></li>
         </ul>
         <div class="clear"></div>
     </div>

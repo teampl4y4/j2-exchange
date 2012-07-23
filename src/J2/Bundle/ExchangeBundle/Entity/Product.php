@@ -90,7 +90,7 @@ class Product {
      * @ORM\ManyToMany(targetEntity="Offer")
      * @ORM\JoinTable(
      *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      */
     private $offers;

@@ -22,6 +22,18 @@ class ProductRepository extends EntityRepository
     public function findProduct($productID){
         return $this->find($productID);
     }
+    
+    /**
+     * Delete a company product
+     * @param int $productID 
+     * @param int $company
+     * @return boolean
+     */
+    public function deleteProduct($productID,$companyID){
+        $product = $this->findOneBy(array('id'=>$productID,'company_id'=>$companyID));
+        $this->getEntityManager()->remove($product);
+        $this->getEntityManager()->flush();
+    }
 
     /**
      *

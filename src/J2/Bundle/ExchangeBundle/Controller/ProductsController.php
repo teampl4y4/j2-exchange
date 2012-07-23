@@ -40,8 +40,17 @@ class ProductsController extends Controller
         return array('form' => $form->createView(), 'company' => $user->getCompany());
     }
     
-    public function deleteAction(){
-        
+    
+    /**
+     * @Route("/delete/{id}", name="_delete_product")
+     */
+    public function deleteAction($id){
+        $user     = $this->get('security.context')->getToken()->getUser();
+        $deleted = $this->getDoctrine()
+                         ->getEntityManager()
+                         ->getRepository('J2ExchangeBundle:Product')
+                         ->deleteProduct($id,$user->getCompany()->getId());
+        return $this->redirect($this->generateUrl("_products"));
     }
     
     /**
