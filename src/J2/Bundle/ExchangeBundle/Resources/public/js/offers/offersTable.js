@@ -15,12 +15,12 @@
             this.$el.empty().append(
 
                 $('<td></td>', {
-                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('matches').length + '</a>',
-                    style: 'text-align: center'
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('name') + '</a>'
                 })
 
                 , $('<td></td>', {
-                    html: '<a href="/offers/offer/' + this.model.get('id') + '">' + this.model.get('name') + '</a>'
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('matches').length + '</a>',
+                    style: 'text-align: center'
                 })
 
                 , $('<td></td>', {

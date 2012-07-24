@@ -13,8 +13,8 @@
             <table id="offersTable" cellpadding="0" cellspacing="0" width="100%" class="sTable">
                 <thead>
                 <tr>
-                    <td>Matches</td>
                     <td>Name</td>
+                    <td>Matches</td>
                     <td>List Price</td>
                     <td>Whisper Price</td>
                     <td>Remaining</td>
@@ -24,8 +24,8 @@
                 <tbody id="offersBody">
                 {% for offer in offers %}
                     <tr>
-                        <td align="center"><a href="#" class="webStatsLink">{{ offer.matches | length }}</a></td>
                         <td><a href="#">{{ offer.name | truncate(25, false, '..') }}</a></td>
+                        <td align="center"><a href="#" class="webStatsLink">{{ offer.matches | length }}</a></td>
                         <td align="center">{{ offer.listPrice | craue_currency }}</td>
                         <td align="center">{{ offer.whisperPrice | craue_currency }}</td>
                         <td align="center">{{ offer.available }}</td>
