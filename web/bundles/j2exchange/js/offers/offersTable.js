@@ -25,7 +25,7 @@
                 })
 
                 , $('<td></td>', {
-                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('matches').length + '</a>',
+                    html: '<b>' + this.model.get('matches').length + '</b>',
                     style: 'text-align: center'
                 })
 
@@ -109,7 +109,6 @@
         }
 
         , addRow: function(model) {
-            console.info('Adding Single Row');
             this.$('.no-offers').remove();
             this.$el.append(new J2.OfferTableRow({model: model}).render().$el);
         }

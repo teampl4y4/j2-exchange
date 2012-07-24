@@ -24,8 +24,8 @@
                 <tbody id="offersBody">
                 {% for offer in offers %}
                     <tr>
-                        <td><a href="#">{{ offer.name | truncate(25, false, '..') }}</a></td>
-                        <td align="center"><a href="#" class="webStatsLink">{{ offer.matches | length }}</a></td>
+                        <td><a href="#" class="webStatsLink">{{ offer.name | truncate(25, false, '..') }}</a></td>
+                        <td align="center">{{ offer.matches | length }}</td>
                         <td align="center">{{ offer.listPrice | craue_currency }}</td>
                         <td align="center">{{ offer.whisperPrice | craue_currency }}</td>
                         <td align="center">{{ offer.available }}</td>
