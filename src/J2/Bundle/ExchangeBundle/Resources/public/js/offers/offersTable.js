@@ -11,7 +11,13 @@
         }
 
         , render: function(){
-            console.log('rendering row');
+
+            if(this.model.get('active') == 0) {
+                this.$el.addClass('disabled');
+            } else {
+                this.$el.removeClass('disabled');
+            }
+
             this.$el.empty().append(
 
                 $('<td></td>', {
@@ -66,9 +72,13 @@
         , toggleState: function()
         {
             if(this.model.get('active') > 0) {
-                alert('currently on - need to turn off');
+                //TODO need to make an ajax call to set active = 0
+                this.model.set('active', 0);
+                this.render();
             } else {
-                alert('currently off - need to turn on');
+                //TODO need to make an ajax call to set active = 1
+                this.model.set('active', 1);
+                this.render();
             }
         }
 

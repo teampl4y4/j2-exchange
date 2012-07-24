@@ -779,6 +779,8 @@ html ul.tabs li.activeTab a { color: #2E6B9B; }
 /* Website statistics widget */
 
 .webStatsLink { color: #2e6b9b; font-size: 16px; font-weight: bold; }
+tr.disabled a.webStatsLink { color: #999; font-size: 14px; font-weight: normal; }
+
 .statsPlus, .statsMinus { padding-left: 20px; }
 .statsPlus { background: url(../../bundles/j2exchange/images/icons/grown.png) no-repeat 0 2px; color: #599414; }
 .statsMinus { background: url(../../bundles/j2exchange/images/icons/dropped.png) no-repeat 0 2px; color: #a73939; }
@@ -1014,7 +1016,7 @@ table thead td.headerSortDown span { background: url(../../bundles/j2exchange/im
 .formNote { display: block; text-align: left; font-size: 11px; padding-top: 5px; color: #939393; }
 
 .req { float: right; margin-left: 5px; display: block; color: #DB6464; }
-.disabled { color: #c0c0c0; }
+.disabled { color: #c0c0c0 !important; }
 
 
 .sliderSpecs > label { font-size: 11px; margin-right: 10px; }
