@@ -21,10 +21,15 @@ class MatchController extends AbstractApiController
     public function findAction($id,$limit) {
         $user = $this->get('security.context')->getToken()->getUser();
 
+        $offer = $this->getDoctrine()
+            ->getEntityManager()
+            ->getRepository('J2ExchangeBundle:Offer')
+            ->find($id);
+
         $matches = $this->getDoctrine()
                 ->getEntityManager()
                 ->getRepository('J2ExchangeBundle:Offer')
-                ->findMatchesByOffer($id,$limit);
+                ->findMatchesByOffer($offer,$limit);
 
         return $this->success($matches);
     }
