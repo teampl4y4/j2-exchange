@@ -15,13 +15,12 @@
             this.$el.empty().append(
 
                 $('<td></td>', {
-                    html: '<a href="#" class="webStatsLink">' + this.model.get('quantity') + '</a>',
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('matches').length + '</a>',
                     style: 'text-align: center'
                 })
 
                 , $('<td></td>', {
-                    html: '<a href="#">' + this.model.get('name') + '</a>',
-
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '">' + this.model.get('name') + '</a>'
                 })
 
                 , $('<td></td>', {
@@ -35,15 +34,30 @@
                 })
 
                 , $('<td></td>', {
-                    html: this.model.get('matches'),
+                    html: this.model.get('available'),
                     style: 'text-align: center'
                 })
             )
 
             if(this.model.get('active') > 0) {
-                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled"></a></td>');
+
+                this.$el.append(
+                    '<td style="text-align: center">' +
+                        '<a href="#" class="offerToggle">' +
+                            '<img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled">' +
+                        '</a>' +
+                    '</td>'
+                );
+
             } else {
-                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/cross.png" alt="enabled"></a></td>');
+
+                this.$el.append(
+                    '<td style="text-align: center">' +
+                        '<a href="#" class="offerToggle">' +
+                            '<img src="/bundles/j2exchange/images/icons/color/cross.png" alt="disabled">' +
+                        '</a>' +
+                    '</td>'
+                );
             }
 
             return this;

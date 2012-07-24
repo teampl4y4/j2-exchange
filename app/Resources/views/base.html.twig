@@ -62,6 +62,7 @@
                 <div class="userNav">
                     <ul>
                         <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/profile.png') }}" alt="" /><span>Profile</span></a></li>
+                        {% if app.user.currentExchange %}
                         <li class="dd"><a title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/tasks.png') }}" alt="" /><span>Exchange: <b>{{ app.user.currentExchange.name }}</b></span><span class="numberTop">{{ app.user.exchanges | length }}</span></a>
                             <ul class="userDropdown">
                                 {% for exchange in app.user.exchanges %}
@@ -70,6 +71,7 @@
                                 <li><a href="#" title="" class="sAdd">Create Exchange</a></li>
                             </ul>
                         </li>
+                        {% endif %}
                         <li><a href="#" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/settings.png') }}" alt="" /><span>Settings</span></a></li>
                         <li><a href="/logout" title=""><img src="{{ asset('bundles/j2exchange/images/icons/topnav/logout.png') }}" alt="" /><span>Logout</span></a></li>
                     </ul>

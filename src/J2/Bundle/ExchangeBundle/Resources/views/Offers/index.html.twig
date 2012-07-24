@@ -13,22 +13,22 @@
             <table id="offersTable" cellpadding="0" cellspacing="0" width="100%" class="sTable">
                 <thead>
                 <tr>
-                    <td>Remaining</td>
+                    <td>Matches</td>
                     <td>Name</td>
                     <td>List Price</td>
                     <td>Whisper Price</td>
-                    <td>Matches</td>
+                    <td>Remaining</td>
                     <td>Active</td>
                 </tr>
                 </thead>
                 <tbody id="offersBody">
                 {% for offer in offers %}
                     <tr>
-                        <td align="center"><a href="#" class="webStatsLink">{{ offer.available }}</a></td>
+                        <td align="center"><a href="#" class="webStatsLink">{{ offer.matches | length }}</a></td>
                         <td><a href="#">{{ offer.name | truncate(25, false, '..') }}</a></td>
                         <td align="center">{{ offer.listPrice | craue_currency }}</td>
                         <td align="center">{{ offer.whisperPrice | craue_currency }}</td>
-                        <td align="center">{{ offer.matches | length }}</td>
+                        <td align="center">{{ offer.available }}</td>
                         <td align="center">
                             {% if offer.active > 0 %}
                                 <img src="{{ asset('bundles/j2exchange/images/icons/color/tick.png')}}" alt="enabled">
@@ -65,11 +65,15 @@
 
             $('#offersBody').replaceWith(offersTable.el);
 
-            offers.add([
-                { quantity: 100, name: 'foo', listPrice: 100, whisperPrice: 50, matches: 3, active: 1 },
-                { quantity: 24, name: 'bar', listPrice: 49, whisperPrice: 35, matches: 11, active: 1 },
-                { quantity: 412, name: 'zoo', listPrice: 92, whisperPrice: 25, matches: 5, active: 1 }
-            ]);
+            function updateOffers(data, status, xhr) {
+                offers.add( data.response );
+            }
+
+            $.ajax({
+                url: '/api/offers',
+                dataType: 'json',
+                success: updateOffers
+            });
 
         })(jQuery);
     </script>
