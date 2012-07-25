@@ -84,3 +84,15 @@
 
 [FakerBundle]
     git=https://github.com/fzaninotto/Faker.git
+
+[KhepinYamlFixturesBundle]
+    git=https://github.com/khepin/KhepinYamlFixturesBundle
+    target=/Khepin/YamlFixturesBundle
+
+[doctrine-fixtures]
+    git=http://github.com/doctrine/data-fixtures.git
+
+[DoctrineFixturesBundle]
+    git=http://github.com/doctrine/DoctrineFixturesBundle.git
+    target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+    version=origin/2.0

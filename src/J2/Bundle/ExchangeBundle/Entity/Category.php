@@ -52,13 +52,12 @@ class Category
     /**
      * @var datetime $updatedAt
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 
     public function __construct()
     {
-        parent::__construct();
         $this->createdAt = new \DateTime();
         $this->active    = true;
     }

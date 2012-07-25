@@ -69,7 +69,7 @@ class Product {
     /**
      * @var datetime $updatedAt
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -126,37 +126,10 @@ class Product {
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $company;
-    
-    /**
-     * @var integer $company_id
-     *
-     * @ORM\Column(name="company_id", type="integer"))
-     */
-    private $company_id;
 
     public function __construct() {
         $this->createdAt = new \DateTime();
         $this->active = true;
-    }
-
-    /**
-     * Set company_id
-     *
-     * @param int $companyID
-     */
-    public function setCompanyId($companyID)
-    {
-        $this->company_id = $companyID;
-    }
-
-    /**
-     * Get company_id
-     *
-     * @return int 
-     */
-    public function getCompanyId()
-    {
-        return $this->company_id;
     }
 
 
@@ -337,7 +310,7 @@ class Product {
      * @param Company $company
      */
     public function setCompany(Company $company) {
-        $this->companyID = $company;
+        $this->company = $company;
     }
 
     /**
@@ -352,9 +325,27 @@ class Product {
     /**
      * Set offers
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $offers
+     * @param ArrayCollection $categories
      */
-    public function setOffers(\Doctrine\Common\Collections\ArrayCollection $offers) {
+    public function setCategories($categories) {
+        $this->categories = $categories;
+    }
+
+    /**
+     * Get offers
+     *
+     * @return ArrayCollection
+     */
+    public function getCategories() {
+        return $this->categories;
+    }
+
+    /**
+     * Set offers
+     *
+     * @param ArrayCollection $offers
+     */
+    public function setOffers($offers) {
         $this->offers = $offers;
     }
 

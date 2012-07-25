@@ -1,0 +1,47 @@
+model: J2\Bundle\ExchangeBundle\Entity\User
+persistence: orm
+fixtures:
+  oakley_user:
+    username: oakley@j2exchange.com
+    email: oakley@j2exchange.com
+    password: ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==
+    salt: t6oczzuzq1w04808kwwowc4k88kkc0w
+    company: oakley_co
+    currentExchange: exchange1
+    exchanges:
+      - exchange1
+      - exchange2
+      - exchange3
+  diesel_user:
+    username: diesel@j2exchange.com
+    email: diesel@j2exchange.com
+    password: ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==
+    salt: t6oczzuzq1w04808kwwowc4k88kkc0w
+    company: diesel_co
+    currentExchange: exchange1
+    exchanges:
+      - exchange1
+      - exchange2
+      - exchange3
+  hyatt_user:
+    username: hyatt@j2exchange.com
+    email: hyatt@j2exchange.com
+    password: ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==
+    salt: t6oczzuzq1w04808kwwowc4k88kkc0w
+    company: hyatt_co
+    currentExchange: exchange1
+    exchanges:
+      - exchange1
+      - exchange2
+      - exchange3
+  spa_user:
+    username: spa@j2exchange.com
+    email: spa@j2exchange.com
+    password: ZkkySvkGrXIgjLKeQMu9/ObT2OtO91IbvRWxGgvkyQjKGoZ7LKh7ZbeAKmqW0hjMpDUZxfVsvWNl0QHhFYlEvg==
+    salt: t6oczzuzq1w04808kwwowc4k88kkc0w
+    company: spa_co
+    currentExchange: exchange1
+    exchanges:
+      - exchange1
+      - exchange2
+      - exchange3

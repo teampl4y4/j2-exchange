@@ -31,13 +31,6 @@ class Offer
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $company;
-    
-    /**
-     * @var integer $company_id
-     *
-     * @ORM\Column(name="company_id", type="integer"))
-     */
-    private $company_id;
 
     /**
      * @var string $name
@@ -77,7 +70,7 @@ class Offer
     /**
      * @var datetime $updatedAt
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -119,13 +112,6 @@ class Offer
      * 
      */
     private $matches;
-    
-    /**
-     * @var integer $product_id
-     *
-     * @ORM\Column(name="product_id", type="integer"))
-     */
-    private $product_id;
 
     /**
      * @var Exchange $exchange
@@ -166,7 +152,7 @@ class Offer
      */
     public function setCompany($company)
     {
-        $this->companyID = $company;
+        $this->company = $company;
     }
 
     /**
@@ -356,26 +342,6 @@ class Offer
     public function getActive()
     {
         return $this->active;
-    }
-
-    /**
-     * Set productID
-     *
-     * @param integer $productID
-     */
-    public function setProductID($productID)
-    {
-        $this->product_id = $productID;
-    }
-
-    /**
-     * Get productID
-     *
-     * @return integer 
-     */
-    public function getProductID()
-    {
-        return $this->product_id;
     }
     
     /**

@@ -1,0 +1,24 @@
+model: J2\Bundle\ExchangeBundle\Entity\Category
+persistence: orm
+fixtures:
+    sunglasses:
+        name: sunglasses
+        description: consumer sunglasses
+    jeans:
+        name: jeans
+        description: consumer jeans
+    spa:
+        name: spa treatments
+        description: any spa treatments
+    hotel:
+        name: hotel room
+        description: hotel rooms
+    vacation:
+        name: vacation
+        description: vacation related items
+    clothing:
+        name: clothing
+        description: any clothing
+    accessories:
+        name: accessories
+        description: any accessories

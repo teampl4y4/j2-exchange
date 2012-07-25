@@ -1,0 +1,81 @@
+model: J2\Bundle\ExchangeBundle\Entity\Product
+persistence: orm
+fixtures:
+    oakley1:
+        company: oakley_co
+        exchange: exchange1
+        name: Signature Polarized Jupiter Squared
+        price: 200
+        code: OO9135-10
+        description: Polished Black/Black Iridium Polarized
+        categories:
+          - sunglasses
+          - accessories
+    oakley2:
+        company: oakley_co
+        exchange: exchange1
+        name: Polarized Radar Path
+        price: 260
+        code: 09-674J
+        description: Jet Black/Black Iridium Polarized
+        categories:
+          - sunglasses
+          - accessories
+    diesel1:
+        company: diesel_co
+        exchange: exchange1
+        name: Shioner
+        price: 328
+        code: 0801A
+        description: Denim cotton, Worn effect, Dark wash, Low waisted, Button, zip fly closure, Five pockets, Logo details, Small studs, Stitched trimmed
+        categories:
+          - clothing
+          - jeans
+    diesel2:
+        company: diesel_co
+        exchange: exchange1
+        name: Viker
+        price: 278
+        code: 0801M
+        description: Aged effect, Denim cotton, Dark wash, Mid Rise, Button closing, Five pockets, Straight leg cut, Cuffed hems, Logo details, Small studs  
+        categories:
+          - clothing
+          - jeans
+    hyatt1:
+        company: hyatt_co
+        exchange: exchange1
+        name: Oceanfront Maui
+        price: 400
+        code: HI-34123
+        description: 1 night ocean front room at Hyatt Regency Maui
+        categories:
+          - vacation
+          - hotel
+    hyatt2:
+        company: hyatt_co
+        exchange: exchange1
+        name: Vail
+        price: 350
+        code: CO-34123
+        description: 1 night ocean front room at Park Hyatt Beaver Creek
+        categories:
+          - vacation
+          - hotel
+    spa1:
+        company: spa_co
+        exchange: exchange1
+        name: 4 hours massage
+        price: 250
+        code: 4hrmsg
+        description: 4 hours of massage
+        categories:
+          - spa
+    spa2:
+        company: spa_co
+        exchange: exchange1
+        name: Indulge yourself package
+        price: 400
+        code: indulge
+        description: $400 in spa treatements.  2 hr massage, facial, mani/pedi, hair styling, makeover
+        categories:
+          - spa

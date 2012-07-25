@@ -155,7 +155,7 @@ class Company
     /**
      * Set the exchanges
      *
-     * @param $exchanges
+     * @param Exchange $exchanges
      */
     public function setExchanges($exchanges)
     {

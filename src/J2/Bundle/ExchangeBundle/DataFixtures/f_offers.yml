@@ -1,0 +1,84 @@
+model: J2\Bundle\ExchangeBundle\Entity\Offer
+persistence: orm
+fixtures:
+    oakley_offer1:
+        name: Signature Polarized Jupiter Squared Discount
+        description: Discount on Jupiter Squared sunglasses
+        list_price: 200
+        whisper_price: 100
+        product: oakley1
+        available: 50
+        company: oakley_co
+        exchange: exchange1
+    oakley_offer2:
+        name: Polarized Radar Path Discount
+        description: Discount on Polarized Radar Path sunglasses
+        list_price: 260
+        whisper_price: 150
+        product: oakley2
+        available: 100
+        company: oakley_co
+        exchange: exchange1
+    diesel_offer1:
+        name: Polarized Radar Path Discount
+        description: Discount on Polarized Radar Path sunglasses
+        list_price: 328
+        whisper_price: 200
+        product: oakley2
+        available: 150
+        company: diesel_co
+        exchange: exchange1
+    diesel_offer2:
+        name: Shioner Sellout
+        description: Discount on Shioner jeans
+        list_price: 278
+        whisper_price: 150
+        product: diesel1
+        available: 100
+        company: diesel_co
+        exchange: exchange1
+    oakley_offer2:
+        name: Viker jeans end of season clearance
+        description: Clearance of Viker jeans
+        list_price: 260
+        whisper_price: 150
+        product: diesel2
+        available: 100
+        company: oakley_co
+        exchange: exchange1
+    hyatt_offer1:
+        name: Maui Oceanfront Sale
+        description: Discount on oceanfrom Maui rooms
+        list_price: 400
+        whisper_price: 250
+        product: hyatt1
+        available: 20
+        company: hyatt_co
+        exchange: exchange1
+    hyatt_offer2:
+        name: Vail room discount
+        description: Discount on rooms in Vail, CO
+        list_price: 350
+        whisper_price: 200
+        product: hyatt2
+        available: 10
+        company: hyatt_co
+        exchange: exchange1
+    spa_offer1:
+        name: 4 hours of massage
+        description: Sale on 4 hr massage
+        list_price: 250
+        whisper_price: 150
+        product: spa1
+        available: 10
+        company: spa_co
+        exchange: exchange1
+    spa_offer2:
+        name: Indulge Package discount
+        description: Discount on indulge package
+        list_price: 400
+        whisper_price: 150
+        product: spa2
+        available: 10
+        company: spa_co
+        exchange: exchange1

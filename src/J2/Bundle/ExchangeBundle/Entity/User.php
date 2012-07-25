@@ -53,13 +53,6 @@ class User extends BaseUser
     protected $currentExchange;
     
     /**
-     * @var integer $company_id
-     *
-     * @ORM\Column(name="company_id", type="integer", nullable=true))
-     */
-    protected $company_id;
-    
-    /**
      * Exchanges
      *
      * @ORM\ManyToMany(targetEntity="Exchange")
@@ -141,27 +134,7 @@ class User extends BaseUser
     {
         return $this->firstName;
     }
-
-    /**
-     * Set company_id
-     *
-     * @param int $companyID
-     */
-    public function setCompanyId($companyID)
-    {
-        $this->company_id = $companyID;
-    }
-
-    /**
-     * Get company_id
-     *
-     * @return int 
-     */
-    public function getCompanyId()
-    {
-        return $this->company_id;
-    }
-
+    
     /**
      * Set lastName
      *
@@ -180,6 +153,16 @@ class User extends BaseUser
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
     }
 
     /**
@@ -247,9 +230,9 @@ class User extends BaseUser
      *
      * @param Company $company
      */
-    public function setCompany($company)
+    public function setCompany(Company $company)
     {
-        $this->companyID = $company;
+        $this->company = $company;
     }
 
     /**

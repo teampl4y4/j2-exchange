@@ -1,0 +1,9 @@
+model: J2\Bundle\ExchangeBundle\Entity\Exchange
+persistence: orm
+fixtures:
+    exchange1:
+        name: Exchange 1
+    exchange2:
+        name: Exchange 2
+    exchange3:
+        name: Exchange 3

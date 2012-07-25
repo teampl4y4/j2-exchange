@@ -43,7 +43,7 @@
             if(this.model.get('active') > 0) {
                 this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled"></a></td>');
             } else {
-                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/cross.png" alt="enabled"></a></td>');
+                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/cross.png" alt="disabled"></a></td>');
             }
 
             return this;

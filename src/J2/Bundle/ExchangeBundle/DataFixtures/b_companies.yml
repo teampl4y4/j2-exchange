@@ -1,0 +1,27 @@
+model: J2\Bundle\ExchangeBundle\Entity\Company
+persistence: orm
+fixtures:
+    oakley_co:
+        name: Oakley
+        exchanges:
+          - exchange1
+          - exchange2
+          - exchange3
+    diesel_co:
+        name: Diesel
+        exchanges:
+          - exchange1
+          - exchange2
+          - exchange3
+    hyatt_co:
+        name: Hyatt
+        exchanges:
+          - exchange1
+          - exchange2
+          - exchange3
+    spa_co:
+        name: Rejuvenate Spa
+        exchanges:
+          - exchange1
+          - exchange2
+          - exchange3

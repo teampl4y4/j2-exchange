@@ -21,14 +21,16 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new J2ExchangeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Bazinga\Bundle\FakerBundle\BazingaFakerBundle(),
-            new Craue\TwigExtensionsBundle\CraueTwigExtensionsBundle()
+            new Craue\TwigExtensionsBundle\CraueTwigExtensionsBundle(),
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Khepin\YamlFixturesBundle\KhepinYamlFixturesBundle();
+            $bundles[] = new Bazinga\Bundle\FakerBundle\BazingaFakerBundle();
         }
 
         return $bundles;

@@ -21,3 +21,7 @@ monolog:
 
 assetic:
     use_controller: true
+    
+khepin_yaml_fixtures:
+  resources:
+      - J2ExchangeBundle

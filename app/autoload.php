@@ -19,7 +19,10 @@ $loader->registerNamespaces(array(
     'Knp\Menu'         => __DIR__.'/../vendor/KnpMenu/src',
     'Bazinga'          => __DIR__.'/../vendor/bundles',
     'Faker'            => __DIR__.'/../vendor/faker/src',
-    'Craue'            => __DIR__.'/../vendor/bundles'
+    'Craue'            => __DIR__.'/../vendor/bundles',
+    'Khepin\YamlFixturesBundle'            => __DIR__.'/../vendor/',
+    'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
+    'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib'
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
