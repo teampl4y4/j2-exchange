@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} {{ offer.name | truncate(35, false, '..') }} {%endblock%}
+{% block headline %} {{ offer.name | truncate(35, false, '..') }} {% endblock %}
+{% block tagLine %} {{ offer.description | truncate(50, false, '...') }} {% endblock %}
+
+{% block content %}
+
+    {{offer.name}}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{%endblock%}

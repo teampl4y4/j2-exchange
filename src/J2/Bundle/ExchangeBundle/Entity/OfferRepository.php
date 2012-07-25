@@ -32,15 +32,36 @@ class OfferRepository extends EntityRepository
     
     /**
      * Fetch matches offers
-     * @param int $offerID
+     * @param Offer $offer
      * @param int $limit
-     * @return ArrayCollection 
+     * @return array
      */
-    public function findMatchesByOffer($offerID, $limit){
+    public function findMatchesByOffer(Offer $offer, $limit){
 
-        //TODO build this magical piece of software
-        $sql = 'SELECT * from offers where id!='.$offerID.' order by rand() limit '.$limit;
+        $limitWhipserPrice = floor($offer->getListPrice() - $offer->getWhisperPrice());
 
-        return $this->_em->getConnection()->fetchAll($sql);
+        //add our percentage of 10%
+        $limitWhipserPrice = $limitWhipserPrice * .9;
+
+        $sql = '
+            SELECT
+                *
+            FROM
+                offers o
+            WHERE
+                o.id != ' . $offer->getId() . ' AND
+                o.whisperPrice <= (' . $limitWhipserPrice  . ') AND
+                o.exchange_id != ' . $offer->getExchange()->getId() . ' AND
+                o.active = 1 AND
+                o.available > 0
+            ORDER BY
+                o.listPrice DESC,
+                o.whisperPrice ASC';
+
+        if($limit > 0) {
+            $sql .= ' LIMIT ' . $limit;
+        }
+
+        return $this->_em->getConnection()->fetchAll($sql . ';');
     }
 }

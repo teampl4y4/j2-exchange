@@ -11,17 +11,22 @@
         }
 
         , render: function(){
-            console.log('rendering row');
+
+            if(this.model.get('active') == 0) {
+                this.$el.addClass('disabled');
+            } else {
+                this.$el.removeClass('disabled');
+            }
+
             this.$el.empty().append(
 
                 $('<td></td>', {
-                    html: '<a href="#" class="webStatsLink">' + this.model.get('quantity') + '</a>',
-                    style: 'text-align: center'
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('name') + '</a>'
                 })
 
                 , $('<td></td>', {
-                    html: '<a href="#">' + this.model.get('name') + '</a>',
-
+                    html: '<b>' + this.model.get('matches').length + '</b>',
+                    style: 'text-align: center'
                 })
 
                 , $('<td></td>', {
@@ -35,15 +40,30 @@
                 })
 
                 , $('<td></td>', {
-                    html: this.model.get('matches'),
+                    html: this.model.get('available'),
                     style: 'text-align: center'
                 })
             )
 
             if(this.model.get('active') > 0) {
-                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled"></a></td>');
+
+                this.$el.append(
+                    '<td style="text-align: center">' +
+                        '<a href="#" class="offerToggle">' +
+                            '<img src="/bundles/j2exchange/images/icons/color/tick.png" alt="enabled">' +
+                        '</a>' +
+                    '</td>'
+                );
+
             } else {
-                this.$el.append('<td style="text-align: center"><a href="#" class="offerToggle"><img src="/bundles/j2exchange/images/icons/color/cross.png" alt="disabled"></a></td>');
+
+                this.$el.append(
+                    '<td style="text-align: center">' +
+                        '<a href="#" class="offerToggle">' +
+                            '<img src="/bundles/j2exchange/images/icons/color/cross.png" alt="disabled">' +
+                        '</a>' +
+                    '</td>'
+                );
             }
 
             return this;
@@ -52,9 +72,13 @@
         , toggleState: function()
         {
             if(this.model.get('active') > 0) {
-                alert('currently on - need to turn off');
+                //TODO need to make an ajax call to set active = 0
+                this.model.set('active', 0);
+                this.render();
             } else {
-                alert('currently off - need to turn on');
+                //TODO need to make an ajax call to set active = 1
+                this.model.set('active', 1);
+                this.render();
             }
         }
 
@@ -85,7 +109,6 @@
         }
 
         , addRow: function(model) {
-            console.info('Adding Single Row');
             this.$('.no-offers').remove();
             this.$el.append(new J2.OfferTableRow({model: model}).render().$el);
         }
