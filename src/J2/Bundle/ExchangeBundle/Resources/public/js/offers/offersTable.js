@@ -82,11 +82,22 @@
         , toggleState: function()
         {
             if(this.model.get('active') > 0) {
-                //TODO need to make an ajax call to set active = 0
+                
+                $.ajax({
+                    url: '/api/offers/setActive/' + this.model.get('id') + '/0',
+                    dataType: 'json'
+                });
+                
                 this.model.set('active', 0);
                 this.render();
+                
             } else {
-                //TODO need to make an ajax call to set active = 1
+                
+                $.ajax({
+                    url: '/api/offers/setActive/' + this.model.get('id') + '/1',
+                    dataType: 'json'
+                });
+                
                 this.model.set('active', 1);
                 this.render();
             }

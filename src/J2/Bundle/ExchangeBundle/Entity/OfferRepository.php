@@ -30,6 +30,11 @@ class OfferRepository extends EntityRepository
         return $qb->getQuery()->execute();
     }
     
+    /**
+     * Return the active offers by the user using their company and current exchange
+     * @param User $user
+     * @return array
+     */
     public function findActiveOffersByUser(User $user)
     {
 
@@ -40,6 +45,23 @@ class OfferRepository extends EntityRepository
             ->setParameter('exchange', $user->getCurrentExchange())
             ->setParameter('company', $user->getCompany())
             ->setParameter('active', true);
+
+        return $qb->getQuery()->execute();
+    }
+    
+    /**
+     * Return the offers by the user using their company and current exchange
+     * @param User $user
+     * @return array
+     */
+    public function findOffersByUser(User $user)
+    {
+
+        $qb = $this->createQueryBuilder('o');
+        $qb->where('o.exchange = :exchange')
+            ->andWhere('o.company = :company')
+            ->setParameter('exchange', $user->getCurrentExchange())
+            ->setParameter('company', $user->getCompany());
 
         return $qb->getQuery()->execute();
     }

@@ -24,7 +24,7 @@ class OffersController extends Controller
         $offers = $this->getDoctrine()
             ->getEntityManager()
             ->getRepository('J2ExchangeBundle:Offer')
-            ->findActiveOffersByUser($user);
+            ->findOffersByUser($user);
 
         return array('offers' => $offers, 'company' => $user->getCompany());
     }

@@ -24,21 +24,29 @@ class OffersController extends AbstractApiController
         $offers = $this->getDoctrine()
             ->getEntityManager()
             ->getRepository('J2ExchangeBundle:Offer')
-            ->findActiveOffersByUser($user);
+            ->findOffersByUser($user);
 
         return $this->success($offers);
     }
 
     /**
-     * @Route("/test", name="_api_test")
+     * @Route("/setActive/{id}/{active}", name="_api_offers_setActive")
      */
-    public function testAction() {
-        $product = $this->getDoctrine()
-                         ->getEntityManager()
-                         ->getRepository('J2ExchangeBundle:Product')
-                         ->findOneBy(array('id' => 1));
+    public function setActive($id, $active) {
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        /* @var $offer \J2\Bundle\ExchangeBundle\Entity\Offer */
+        $offer = $em->getRepository('J2ExchangeBundle:Offer')
+                    ->findOneBy(array('id' => $id));
+        
+        if($offer instanceof \J2\Bundle\ExchangeBundle\Entity\Offer) {
+            $offer->setActive($active);
+            $em->persist($offer);
+            $em->flush();
+        }
 
-        return $this->success($product);
+        return $this->success($offer);
     }
 
 }
