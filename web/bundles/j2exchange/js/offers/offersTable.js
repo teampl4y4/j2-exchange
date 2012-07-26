@@ -56,6 +56,7 @@
                 );
 
             } else {
+
                 this.$el.append(
                     '<td style="text-align: center">' +
                         '<a href="#" class="offerToggle">' +
