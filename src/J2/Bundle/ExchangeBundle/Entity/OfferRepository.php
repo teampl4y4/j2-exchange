@@ -30,6 +30,20 @@ class OfferRepository extends EntityRepository
         return $qb->getQuery()->execute();
     }
     
+    public function findActiveOffersByUser(User $user)
+    {
+
+        $qb = $this->createQueryBuilder('o');
+        $qb->where('o.exchange = :exchange')
+            ->andWhere('o.active = :active')
+            ->andWhere('o.company = :company')
+            ->setParameter('exchange', $user->getCurrentExchange())
+            ->setParameter('company', $user->getCompany())
+            ->setParameter('active', true);
+
+        return $qb->getQuery()->execute();
+    }
+    
     /**
      * Fetch matches offers
      * @param Offer $offer

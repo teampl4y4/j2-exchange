@@ -17,15 +17,25 @@
             } else {
                 this.$el.removeClass('disabled');
             }
+            
+            var matchesCount = 0;
+            if(this.model.get('matches').length > 0) {
+                matchesCount = this.model.get('matches').length;
+            }
+            
+            var offerName = this.model.get('name');
+            if(offerName.length > 25) {
+                offerName = offerName.substring(0,25) + '..';
+            }
 
             this.$el.empty().append(
 
                 $('<td></td>', {
-                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + this.model.get('name') + '</a>'
+                    html: '<a href="/offers/offer/' + this.model.get('id') + '" class="webStatsLink">' + offerName + '</a>'
                 })
 
                 , $('<td></td>', {
-                    html: '<b>' + this.model.get('matches').length + '</b>',
+                    html: '<b>' + matchesCount + '</b>',
                     style: 'text-align: center'
                 })
 
