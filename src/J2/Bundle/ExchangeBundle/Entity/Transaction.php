@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="transactions")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\TransactionRepository")
  */
-class Transaction
+class Transaction implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -111,5 +111,9 @@ class Transaction
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

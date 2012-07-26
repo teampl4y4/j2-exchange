@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="matches")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\MatchRepository")
  */
-class Match
+class Match implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -237,5 +237,9 @@ class Match
     public function getAvailable()
     {
         return $this->available;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

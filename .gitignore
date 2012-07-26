@@ -3,3 +3,4 @@ app/cache/prod/*
 app/logs/*
 .idea*
 app/config/*.ini
+/nbproject/private/

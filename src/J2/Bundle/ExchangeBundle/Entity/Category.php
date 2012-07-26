@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="categories")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CategoryRepository")
  */
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -171,5 +171,9 @@ class Category
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

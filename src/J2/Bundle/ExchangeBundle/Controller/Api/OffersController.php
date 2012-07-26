@@ -50,4 +50,16 @@ class OffersController extends AbstractApiController
         return $this->success($offers);
     }
 
+    /**
+     * @Route("/test", name="_api_test")
+     */
+    public function testAction() {
+        $product = $this->getDoctrine()
+                         ->getEntityManager()
+                         ->getRepository('J2ExchangeBundle:Product')
+                         ->findOneBy(array('id' => 1));
+
+        return $this->success($product);
+    }
+
 }

@@ -13,7 +13,7 @@ use J2\Bundle\ExchangeBundle\Entity\Offer;
  * @ORM\Table(name="products")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ProductRepository")
  */
-class Product {
+class Product implements \JsonSerializable {
 
     /**
      * @var integer $id
@@ -352,7 +352,7 @@ class Product {
     /**
      * Get offers
      *
-     * @return ArrayCollection
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getOffers() {
         return $this->offers;
@@ -375,6 +375,10 @@ class Product {
      */
     public function getExchange() {
         return $this->exchange;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 
 }

@@ -13,7 +13,7 @@ use J2\Bundle\ExchangeBundle\Entity\Users;
  * @ORM\Table(name="offers")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\OfferRepository")
  */
-class Offer
+class Offer implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -416,5 +416,9 @@ class Offer
      */
     public function getExchange() {
         return $this->exchange;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

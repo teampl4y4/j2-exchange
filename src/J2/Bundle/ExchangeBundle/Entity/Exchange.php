@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="exchanges")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangeRepository")
  */
-class Exchange
+class Exchange implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -166,5 +166,21 @@ class Exchange
     public function isActive()
     {
         return $this->active;
+    }
+    
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+        $obj = array();
+        foreach($vars as $key=>$var){
+            if(is_array($var)){
+                
+            }
+            elseif(is_object($var)){
+                
+            }
+            else
+                $obj[$key]= $var;
+        }
+        return $obj;
     }
 }

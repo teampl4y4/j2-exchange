@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="offer_match_pricing_strategies")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\OfferMatchPricingStrategyRepository")
  */
-class OfferMatchPricingStrategy
+class OfferMatchPricingStrategy implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -167,5 +167,9 @@ class OfferMatchPricingStrategy
     public function getMatch()
     {
         return $this->match;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

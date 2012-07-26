@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="deals")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\DealRepository")
  */
-class Deal
+class Deal implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -160,5 +160,9 @@ class Deal
     public function getOrderTotal()
     {
         return $this->orderTotal;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }

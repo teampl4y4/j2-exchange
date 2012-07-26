@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="companies")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CompanyRepository")
  */
-class Company
+class Company implements \JsonSerializable
 {
     /**
      * @var integer $id
@@ -170,5 +170,9 @@ class Company
     public function getExchanges()
     {
         return $this->exchanges;
+    }
+    
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }
