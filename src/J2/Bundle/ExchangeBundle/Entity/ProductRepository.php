@@ -19,8 +19,12 @@ class ProductRepository extends EntityRepository
      * @param int $productID 
      * @return Product
      */
-    public function findProduct($productID){
-        return $this->find($productID);
+    public function findOneByUser($productID,$user){
+        $params=array();
+        $params['id']=$productID;
+        $params['company']=$user->getCompany()->getId();
+        $params['exchange']=$user->getCurrentExchange()->getId();
+        return $this->findOneBy($params);
     }
     
     /**
@@ -29,8 +33,8 @@ class ProductRepository extends EntityRepository
      * @param int $company
      * @return boolean
      */
-    public function deleteProduct($productID,$companyID){
-        $product = $this->findOneBy(array('id'=>$productID,'company_id'=>$companyID));
+    public function deleteProduct($productID,$user){
+        $product = $this->findOneBy(array('id'=>$productID,'company_id'=>$user->getCompany()->getId()));
         $this->getEntityManager()->remove($product);
         $this->getEntityManager()->flush();
     }

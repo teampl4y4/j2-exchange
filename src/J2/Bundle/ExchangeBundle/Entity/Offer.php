@@ -3,9 +3,6 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use J2\Bundle\ExchangeBundle\Entity\Products;
-use J2\Bundle\ExchangeBundle\Entity\Companies;
-use J2\Bundle\ExchangeBundle\Entity\Users;
 
 /**
  * J2\Bundle\ExchangeBundle\Entity\Offer

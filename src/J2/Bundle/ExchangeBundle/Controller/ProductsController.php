@@ -49,7 +49,7 @@ class ProductsController extends Controller
         $deleted = $this->getDoctrine()
                          ->getEntityManager()
                          ->getRepository('J2ExchangeBundle:Product')
-                         ->deleteProduct($id,$user->getCompany()->getId());
+                         ->deleteProduct($id,$user);
         return $this->redirect($this->generateUrl("_products"));
     }
     
@@ -62,7 +62,7 @@ class ProductsController extends Controller
         $product = $this->getDoctrine()
                          ->getEntityManager()
                          ->getRepository('J2ExchangeBundle:Product')
-                         ->findOneBy(array('id' => $id, 'company_id' => $user->getCompany()->getId()));
+                         ->findOneByUser($id,$user);
         $form = $this->createForm(new ProductsType(),$product);
         return array('product' => $product, 'form' => $form->createView(), 'company' => $user->getCompany());
     }
@@ -77,7 +77,7 @@ class ProductsController extends Controller
         $product = $this->getDoctrine()
                          ->getEntityManager()
                          ->getRepository('J2ExchangeBundle:Product')
-                         ->findOneBy(array('id' => $id, 'company_id' => $user->getCompany()->getId()));
+                         ->findOneByUser($id,$user);
 
         return array('product' => $product, 'company' => $user->getCompany());
     }

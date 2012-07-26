@@ -56,7 +56,7 @@ class OffersController extends AbstractApiController
     public function testAction() {
         $product = $this->getDoctrine()
                          ->getEntityManager()
-                         ->getRepository('J2ExchangeBundle:Product')
+                         ->getRepository('J2ExchangeBundle:Offer')
                          ->findOneBy(array('id' => 1));
 
         return $this->success($product);

@@ -378,7 +378,12 @@ class Product implements \JsonSerializable {
     }
     
     public function jsonSerialize() {
-        return get_object_vars($this);
+        $offers = $this->getOffers();
+        $arr = get_object_vars($this);
+        foreach($offers as $offer){
+        die(print_r($offer->jsonSerialize()));
+        }
+        return $arr;
     }
 
 }
