@@ -51,7 +51,7 @@ class OfferRepository extends EntityRepository
             WHERE
                 o.id != ' . $offer->getId() . ' AND
                 o.whisperPrice <= (' . $limitWhipserPrice  . ') AND
-                o.exchange_id != ' . $offer->getExchange()->getId() . ' AND
+                o.exchange_id = ' . $offer->getExchange()->getId() . ' AND
                 o.active = 1 AND
                 o.available > 0
             ORDER BY

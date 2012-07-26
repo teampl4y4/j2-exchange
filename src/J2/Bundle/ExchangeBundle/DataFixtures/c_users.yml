@@ -8,6 +8,7 @@ fixtures:
     salt: t6oczzuzq1w04808kwwowc4k88kkc0w
     company: oakley_co
     currentExchange: exchange1
+    enabled: 1
     exchanges:
       - exchange1
       - exchange2
@@ -19,6 +20,7 @@ fixtures:
     salt: t6oczzuzq1w04808kwwowc4k88kkc0w
     company: diesel_co
     currentExchange: exchange1
+    enabled: 1
     exchanges:
       - exchange1
       - exchange2
@@ -30,6 +32,7 @@ fixtures:
     salt: t6oczzuzq1w04808kwwowc4k88kkc0w
     company: hyatt_co
     currentExchange: exchange1
+    enabled: 1
     exchanges:
       - exchange1
       - exchange2
@@ -41,6 +44,7 @@ fixtures:
     salt: t6oczzuzq1w04808kwwowc4k88kkc0w
     company: spa_co
     currentExchange: exchange1
+    enabled: 1
     exchanges:
       - exchange1
       - exchange2
