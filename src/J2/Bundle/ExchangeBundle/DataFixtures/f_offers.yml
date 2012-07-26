@@ -19,15 +19,6 @@ fixtures:
         available: 100
         company: oakley_co
         exchange: exchange1
-    diesel_offer1:
-        name: Polarized Radar Path Discount
-        description: Discount on Polarized Radar Path sunglasses
-        list_price: 328
-        whisper_price: 200
-        product: oakley2
-        available: 150
-        company: diesel_co
-        exchange: exchange1
     diesel_offer2:
         name: Shioner Sellout
         description: Discount on Shioner jeans
