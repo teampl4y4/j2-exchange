@@ -416,6 +416,16 @@ class Offer implements \JsonSerializable
     }
     
     public function jsonSerialize() {
-        return get_object_vars($this);
+        
+        $matches  = $this->getMatches();
+        $arr      = get_object_vars($this);
+        
+        $arr['matches'] = array();
+        foreach($matches as $match) {
+            $arr['matches'][] = $match->jsonSerialize();
+        }
+        
+        return $arr;
+        
     }
 }
