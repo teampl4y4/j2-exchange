@@ -87,11 +87,7 @@ class Product implements \JsonSerializable {
     /**
      * Offers
      *
-     * @ORM\ManyToMany(targetEntity="Offer")
-     * @ORM\JoinTable(
-     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id", onDelete="CASCADE")}
-     * )
+     * @ORM\OneToMany(targetEntity="Offer",mappedBy="product")
      */
     private $offers;
 
@@ -378,11 +374,10 @@ class Product implements \JsonSerializable {
     }
     
     public function jsonSerialize() {
-        $offers = $this->getOffers();
         $arr = get_object_vars($this);
-        foreach($offers as $offer){
-        die(print_r($offer->jsonSerialize()));
-        }
+        $arr['offers'] = array();
+        foreach($this->getOffers() as $offer)
+            $arr['offers'][]['name'] = $offer->getName();
         return $arr;
     }
 
