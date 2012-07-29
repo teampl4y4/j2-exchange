@@ -100,4 +100,28 @@ class OfferRepository extends EntityRepository
 
         return $this->_em->getConnection()->fetchAll($sql . ';');
     }
+
+
+
+    /**
+     * Finds all the related offers matches to this offer
+     *
+     * return ArrayCollection
+     */
+    public function findMatchedOffersOnOffer(Offer $offer)
+    {
+        $qb = $this->createQueryBuilder('o');
+        $qb->select('o, m, c, p, o2, c2, p2, cats')
+           ->leftJoin('o.matches', 'm')
+           ->leftJoin('o.company', 'c')
+           ->leftJoin('o.product', 'p')
+           ->leftJoin('m.offers', 'o2')
+           ->leftJoin('o2.company', 'c2')
+           ->leftJoin('o2.product', 'p2')
+           ->leftJoin('p2.categories', 'cats')
+           ->andWhere('o2.id = :offer')
+           ->setParameter('offer', $offer->getId());
+
+        return $qb->getQuery()->execute();
+    }
 }

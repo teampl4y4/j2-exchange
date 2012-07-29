@@ -38,9 +38,12 @@ class OffersController extends Controller
         /** @var $user \J2\Bundle\ExchangeBundle\Entity\User */
         $user     = $this->get('security.context')->getToken()->getUser();
 
-        $offer = $this->getDoctrine()
-            ->getEntityManager()
-            ->getRepository('J2ExchangeBundle:Offer')
+        /** @var $offerRepository \J2\Bundle\ExchangeBundle\Entity\OfferRepository */
+        $offerRepository = $this->getDoctrine()
+                                ->getEntityManager()
+                                ->getRepository('J2ExchangeBundle:Offer');
+
+        $offer = $offerRepository
             ->findOneBy(array(
                 'id' => $id,
                 'exchange' => $user->getCurrentExchange()->getId()
@@ -51,6 +54,8 @@ class OffersController extends Controller
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Offer not found');
         }
 
-        return array('offer' => $offer);
+        $matches = $offerRepository->findMatchedOffersOnOffer($offer);
+
+        return array('offer' => $offer, 'matches' => $matches);
     }
 }
