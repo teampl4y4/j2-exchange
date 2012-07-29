@@ -16,9 +16,9 @@ class LeftNavigation extends ContainerAware
         $menu = $factory->createItem('root', array('childrenAttributes' => array('id' => 'menu')));
         $menu->setChildrenAttribute('class', 'nav');
 
-        $menu->addChild('Dashboard', array('route' => '_dashboard', 'attributes' => array('class' => 'dash')));
-        $menu->addChild('Catalog', array('route' => '_products', 'attributes' => array('class' => 'products')));
-        $menu->addChild('Offers', array('route' => '_offers', 'attributes' => array('class' => 'offers')));
+        $menu->addChild('Dashboard', array('route' => '_dashboard',  'attributes' => array( 'class' => 'dash')));
+        $menu->addChild('Catalog',   array('route' => '_products',   'attributes' => array( 'class' => 'products')));
+        $menu->addChild('Offers',    array('route' => '_offers',     'attributes' => array( 'class' => 'offers')));
 
         return $menu;
     }
@@ -28,9 +28,9 @@ class LeftNavigation extends ContainerAware
         $menu = $factory->createItem('root', array('childrenAttributes' => array('id' => 'menu')));
         $menu->setChildrenAttribute('class', 'nav');
 
-        $menu->addChild('Dashboard', array('route' => '_dashboard', 'attributes' => array('class' => 'dash')));
-        $menu->addChild('Catalog', array('route' => '_products', 'attributes' => array('class' => 'products')));
-        $menu->addChild('Offers', array('route' => '_offers', 'attributes' => array('class' => 'offers')));
+        $menu->addChild('Dashboard', array('route' => '_dashboard', 'attributes' => array( 'class' => 'dash' )));
+        $menu->addChild('Catalog',   array('route' => '_products',  'attributes' => array( 'class' => 'products' )));
+        $menu->addChild('Offers',    array('route' => '_offers',    'attributes' => array( 'class' => 'offers' )));
 
         return $menu;
     }
