@@ -3,7 +3,7 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-use J2\Bundle\ExchangeBundle\Entity\Offers;
+use J2\Bundle\ExchangeBundle\Entity\Offer;
 
 /**
  * OfferRepository
