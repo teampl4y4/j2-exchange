@@ -22,6 +22,7 @@
                         <td>Retail Price</td>
                         <td>Remaining</td>
                         <td>Added Value</td>
+                        <td>Type</td>
                     </tr>
                 </thead>
 
@@ -31,10 +32,15 @@
                         {% if matchedOffer.id != offer.id %}
                             <tr>
                                 <td><a href="#" class="webStatsLink"> {{ matchedOffer.product.name }} </a></td>
-                                <td align="center">{{ matchedOffer.company.name }} </td>
+                                <td align="center"><a href="#">{{ matchedOffer.company.name }}</a></td>
                                 <td align="center">{{ matchedOffer.listPrice }} </td>
                                 <td align="center">{{ match.available }}</td>
-                                <td align="center">{{ (match.price + offer.listPrice) | craue_currency }}</td>
+                                <td align="center" class="green"><b>{{ (matchedOffer.listPrice / offer.listPrice) * 100 }}%</b></td>
+                                <td align="center">
+                                    {% for category in matchedOffer.product.categories %}
+                                    <span class="blueBack">{{ category.name }}</span>
+                                    {% endfor %}
+                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}
