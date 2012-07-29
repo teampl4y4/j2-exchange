@@ -169,18 +169,6 @@ class Exchange implements \JsonSerializable
     }
     
     public function jsonSerialize() {
-        $vars = get_object_vars($this);
-        $obj = array();
-        foreach($vars as $key=>$var){
-            if(is_array($var)){
-                
-            }
-            elseif(is_object($var)){
-                
-            }
-            else
-                $obj[$key]= $var;
-        }
-        return $obj;
+        return get_object_vars($this);
     }
 }

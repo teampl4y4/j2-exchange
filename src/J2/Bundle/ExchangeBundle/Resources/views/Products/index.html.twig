@@ -23,7 +23,7 @@
                 <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
                 <h6>{{ company.name }} Products</h6>
             </div>
-            <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+            <table id="productsTable" cellpadding="0" cellspacing="0" width="100%" class="sTable">
                 <thead>
                 <tr>
                     <td>Name</td>
@@ -33,7 +33,7 @@
                     <td>Active</td>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="productsBody">
                 {% for product in products %}
                     <tr>
                         <td><a href="{{ path( '_product', {'id': product.id }) }}">{{ product.name | truncate(40, false, '..') }}</a></td>
@@ -55,3 +55,30 @@
     </div>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/products/productsTable.js') }}"></script>
+    <script type="text/javascript">
+        (function ($) {
+
+            var products = new Backbone.Collection;
+
+            var productsTable = new J2.ProductsTable({
+                collection: products
+            });
+
+            $('#productsBody').replaceWith(productsTable.el);
+
+            function updateProducts(data, status, xhr) {
+                products.add( data.response );
+            }
+
+            $.ajax({
+                url: '/api/products',
+                dataType: 'json',
+                success: updateProducts
+            });
+
+        })(jQuery);
+    </script>
+{%endblock%}
