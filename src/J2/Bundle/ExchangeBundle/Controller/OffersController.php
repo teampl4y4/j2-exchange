@@ -46,7 +46,8 @@ class OffersController extends Controller
         $offer = $offerRepository
             ->findOneBy(array(
                 'id' => $id,
-                'exchange' => $user->getCurrentExchange()->getId()
+                'exchange' => $user->getCurrentExchange()->getId(),
+                'company' => $user->getCompany()->getId()
         ));
 
         if(!$offer) {
