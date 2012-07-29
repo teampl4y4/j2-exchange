@@ -120,6 +120,7 @@ class OfferRepository extends EntityRepository
            ->leftJoin('o2.product', 'p2')
            ->leftJoin('p2.categories', 'cats')
            ->andWhere('o2.id = :offer')
+           ->andHaving($qb->expr()->neq('o.id', $offer->getId()))
            ->setParameter('offer', $offer->getId());
 
         return $qb->getQuery()->execute();
