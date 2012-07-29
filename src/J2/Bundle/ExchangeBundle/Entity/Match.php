@@ -238,6 +238,15 @@ class Match implements \JsonSerializable
     {
         return $this->available;
     }
+
+    /**
+     * Get Offers
+     * @return ArrayCollection
+     */
+    public function getOffers()
+    {
+        return $this->offers;
+    }
     
     public function jsonSerialize() {
         return get_object_vars($this);
