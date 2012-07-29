@@ -10,7 +10,7 @@
 
         <div class="widget">
             <div class="title">
-                <img src="{{ asset('bundles/j2exchange/images/icons/dark/imagesList.png')}}" alt="Matches" class="titleIcon">
+                <img src="{{ asset('bundles/j2exchange/images/icons/dark/imagesList.png') }}" alt="Matches" class="titleIcon">
                 <h6>Offer Matches For {{ offer.name }}</h6>
             </div>
 
@@ -27,13 +27,17 @@
 
                 <tbody id="offersBody">
                 {% for match in offer.matches %}
-                    <tr>
-                        <td><a href="#" class="webStatsLink"> ??? </a></td>
-                        <td align="center"> ??? </td>
-                        <td align="center"> ??? </td>
-                        <td align="center">{{ match.available }}</td>
-                        <td align="center">{{ (match.price + offer.listPrice) | craue_currency }}</td>
-                    </tr>
+                    {% for matchedOffer in match.offers %}
+                        {% if matchedOffer.id != offer.id %}
+                            <tr>
+                                <td><a href="#" class="webStatsLink"> {{ matchedOffer.product.name }} </a></td>
+                                <td align="center">{{ matchedOffer.company.name }} </td>
+                                <td align="center">{{ matchedOffer.listPrice }} </td>
+                                <td align="center">{{ match.available }}</td>
+                                <td align="center">{{ (match.price + offer.listPrice) | craue_currency }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
                 </tbody>
             </table>
@@ -47,4 +51,4 @@
 
 {% block javascripts %}
 
-{%endblock%}
+{% endblock %}
