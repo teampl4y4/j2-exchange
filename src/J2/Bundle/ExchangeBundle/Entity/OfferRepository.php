@@ -88,7 +88,8 @@ class OfferRepository extends EntityRepository
                 o.id != ' . $offer->getId() . ' AND
                 o.whisperPrice <= (' . $limitWhipserPrice  . ') AND
                 o.exchange_id = ' . $offer->getExchange()->getId() . ' AND
-                o.active = 1 AND
+                o.active = 1  AND
+                o.company_id != ' . $offer->getCompany()->getId() . '
                 o.available > 0
             ORDER BY
                 o.listPrice DESC,
@@ -120,8 +121,10 @@ class OfferRepository extends EntityRepository
            ->leftJoin('o2.product', 'p2')
            ->leftJoin('p2.categories', 'cats')
            ->andWhere('o2.id = :offer')
+           ->andWhere('c.id != :company')
            ->andHaving($qb->expr()->neq('o.id', $offer->getId()))
-           ->setParameter('offer', $offer->getId());
+           ->setParameter('offer', $offer->getId())
+           ->setParameter('company', $offer->getCompany()->getId());
 
         return $qb->getQuery()->execute();
     }
