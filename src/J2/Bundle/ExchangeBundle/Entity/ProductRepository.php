@@ -4,6 +4,7 @@ namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use J2\Bundle\ExchangeBundle\Entity\Product;
+use J2\Bundle\ExchangeBundle\Entity\User;
 
 /**
  * ProductsRepository
@@ -17,9 +18,10 @@ class ProductRepository extends EntityRepository
     /**
      * Fetch an product by id from within a company exchange
      * @param int $productID 
-     * @return Product
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     * @return J2\Bundle\ExchangeBundle\Entity\Product
      */
-    public function findOneByUser($productID,$user){
+    public function findOneByUser($productID, User $user){
         $params=array();
         $params['id']=$productID;
         $params['company']=$user->getCompany()->getId();
@@ -27,8 +29,12 @@ class ProductRepository extends EntityRepository
         return $this->findOneBy($params);
     }
     
+    /**
+     * Create a product
+     * @param stdClass $data
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     */
     public function create($data,$user){
-        $product = new Product();
         $product->setName($data->name);
         $product->setCode($data->code);
         $product->setPrice($data->price);
@@ -38,6 +44,28 @@ class ProductRepository extends EntityRepository
         $product->setDescription($data->description);
         $this->getEntityManager()->persist($product);
         $this->getEntityManager()->flush();
+        return true;
+    }
+    
+    /**
+     * Update a product
+     * @param int $id
+     * @param stdClass $data
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     */
+    public function update($id,$data,$user){
+        $product = $this->findOneByUser($id, $user);
+        if(!$product instanceof Product)
+            return false;
+        $product->setName($data->name);
+        $product->setCode($data->code);
+        $product->setPrice($data->price);
+        $product->setUpdatedBy($user);
+        $product->setUpdatedAt(new \DateTime());
+        $product->setDescription($data->description);
+        $this->getEntityManager()->persist($product);
+        $this->getEntityManager()->flush();
+        return true;
     }
             
 
@@ -45,10 +73,10 @@ class ProductRepository extends EntityRepository
     /**
      * Delete a company product
      * @param int $productID 
-     * @param int $company
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
      * @return boolean
      */
-    public function deleteProduct($productID,$user){
+    public function deleteProduct($productID,User $user){
         $product = $this->findOneBy(array('id'=>$productID,'company_id'=>$user->getCompany()->getId()));
         $this->getEntityManager()->remove($product);
         $this->getEntityManager()->flush();

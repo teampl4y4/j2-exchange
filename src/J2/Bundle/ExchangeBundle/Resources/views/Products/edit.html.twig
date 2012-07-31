@@ -20,7 +20,7 @@
 {% block content %}
 <div class="oneOne">
     <div class="widgets">
-        <form>
+        <form id="productForm" action="return false">
             <fieldset>
                 <div class="widget">
                     <div class="title">
@@ -148,3 +148,44 @@
     </div>
 </div>
 {% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
+<script type="text/javascript">
+(function ($) {
+    var product = Backbone.Model.extend({
+        defaults: {
+            name: '{{product.name}}',
+            code: '{{product.code}}',
+            price: '{{product.price}}',
+            description: '{{product.description}}',
+            active: {{product.active}}
+        },
+        url: '{{ path( '_update_product', {'id': product.id }) }}'
+    });
+
+    var productView = Backbone.View.extend({
+        initialize: function() {
+            _.bindAll(this);
+        }
+    });
+    var myProduct;
+    var myView;
+    $(document).ready(function(){
+        myProduct = new product();
+        myView = new productView({
+            el: $('#productForm'),
+            model: myProduct
+        });
+
+        myView.populate('j2_bundle_exchangebundle_productstype');
+        myView.parse('j2_bundle_exchangebundle_productstype');
+    });
+    $("#productForm").submit(function(event){
+        event.preventDefault();
+        myView.parse('j2_bundle_exchangebundle_productstype');
+        myProduct.save();
+    });
+
+})(jQuery);
+</script>
+{%endblock%}

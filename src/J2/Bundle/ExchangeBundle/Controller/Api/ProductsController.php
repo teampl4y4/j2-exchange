@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
  * @Route("/api/products")
  */
 class ProductsController extends AbstractApiController {
+    
+    private static $create_error = "Product could not be added.";
+    private static $update_error = "Product could not be updated.";
 
     /**
      * @Route("/", name="_api_products")
@@ -58,6 +61,23 @@ class ProductsController extends AbstractApiController {
                     ->getEntityManager()
                     ->getRepository('J2ExchangeBundle:Product')
                     ->create($params, $user);
+            return $this->success($data);
+        }
+    }
+    
+    /**
+     * @Method("POST")
+     * @Route("/update/{id}", name="_update_product")
+     */
+    public function updateAction($id){
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $params = json_decode($content); // 2nd param to get as array
+            $data = $this->getDoctrine()
+                    ->getEntityManager()
+                    ->getRepository('J2ExchangeBundle:Product')
+                    ->update($id, $params, $user);
             return $this->success($data);
         }
     }

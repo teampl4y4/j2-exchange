@@ -83,11 +83,4 @@ class ProductsController extends Controller
 
         return array('product' => $product, 'company' => $user->getCompany());
     }
-    
-    /**
-     * @Method("PUT")
-     * @Route("/{id}", name="_save_product")
-     */
-    public function saveAction(){
-    }
 }
