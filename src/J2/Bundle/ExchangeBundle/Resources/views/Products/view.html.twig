@@ -103,3 +103,35 @@
     </div>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+        <script type="text/javascript">
+            (function ($) {
+
+                var products = new Backbone.Collection;
+
+                var productsTable = new J2.ProductsTable({
+                    collection: products
+                });
+
+                $('#productsBody').replaceWith(productsTable.el);
+
+                function updateProducts(data, status, xhr) {
+                    products.add( data.response );
+                }
+
+                $.ajax({
+                    url: '/api/products',
+                    dataType: 'json',
+                    success: updateProducts
+                });
+            
+                function deleteProduct(id){
+                    product = products.get(id);
+                    product.destroy();
+                    products.remove(product);
+                }
+
+            })(jQuery);
+            </script>
+{%endblock%}

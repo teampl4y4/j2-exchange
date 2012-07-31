@@ -19,7 +19,7 @@
 {% block content %}
 <div class="oneOne">
     <div class="widgets">
-        <form>
+        <form id="productForm" action="return false">
             <fieldset>
                 <div class="widget">
                     <div class="title">
@@ -30,49 +30,91 @@
                         <label for="maxRangeAmount">Name:</label>
                         <div class="formRight">
                             {{ form_widget(form.name) }}
-                            <div class="fix"></div>
+                                <div class="fix"></div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label for="maxRangeAmount">ID/SKU:</label>
-                        <div class="formRight">
+                        <div class="formRow">
+                            <label for="maxRangeAmount">ID/SKU:</label>
+                            <div class="formRight">
                             {{ form_widget(form.code) }}
-                            <div class="fix"></div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>Price:</label>
-                        <div class="formRight">
+                                    <div class="fix"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="formRow">
+                                <label>Price:</label>
+                                <div class="formRight">
                             {{ form_widget(form.price) }}
-                            <div class="fix"></div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>Description:</label>
-                        <div class="formRight">
+                                        <div class="fix"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="formRow">
+                                    <label>Description:</label>
+                                    <div class="formRight">
                             {{ form_widget(form.description) }}
-                            <div class="fix"></div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>Active:</label>
-                        <div class="formRight">
+                                            <div class="fix"></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="formRow">
+                                        <label>Active:</label>
+                                        <div class="formRight">
                             {{ form_widget(form.active) }}
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
                     {{ form_widget(form._token) }}
-                    <div class="formSubmit">
-                        <input type="submit" value="submit" class="redB">
+                                        <div class="formSubmit">
+                                            <input type="submit" value="submit" class="redB">
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
-                    <div class="clear"></div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</div>
 {% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
+<script type="text/javascript">
+(function ($) {
+    var product = Backbone.Model.extend({
+        defaults: {
+            name: '',
+            code: '',
+            price: '',
+            description: '',
+            active: 1
+        },
+        url: '{{ path( '_create_product') }}'
+    });
+
+    var productView = Backbone.View.extend({
+        initialize: function() {
+            _.bindAll(this);
+        }
+    });
+    var myProduct;
+    var myView;
+    $(document).ready(function(){
+        myProduct = new product();
+        myView = new productView({
+            el: $('#productForm'),
+            model: myProduct
+        });
+
+        myView.populate('j2_bundle_exchangebundle_productstype');
+        myView.parse('j2_bundle_exchangebundle_productstype');
+    });
+    $("#productForm").submit(function(event){
+        event.preventDefault();
+        myView.parse('j2_bundle_exchangebundle_productstype');
+        myProduct.save();
+    });
+
+})(jQuery);
+</script>
+{%endblock%}

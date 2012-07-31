@@ -5,6 +5,7 @@ namespace J2\Bundle\ExchangeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use J2\Bundle\ExchangeBundle\Form\ProductsType;
 
 /**
@@ -42,7 +43,8 @@ class ProductsController extends Controller
     
     
     /**
-     * @Route("/delete/{id}", name="_delete_product")
+     * @Method("DELETE")
+     * @Route("/{id}", name="_delete_product")
      */
     public function deleteAction($id){
         $user     = $this->get('security.context')->getToken()->getUser();
@@ -82,7 +84,10 @@ class ProductsController extends Controller
         return array('product' => $product, 'company' => $user->getCompany());
     }
     
+    /**
+     * @Method("PUT")
+     * @Route("/{id}", name="_save_product")
+     */
     public function saveAction(){
-        
     }
 }

@@ -3,7 +3,7 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-use J2\Bundle\ExchangeBundle\Entity\Products;
+use J2\Bundle\ExchangeBundle\Entity\Product;
 
 /**
  * ProductsRepository
@@ -27,6 +27,21 @@ class ProductRepository extends EntityRepository
         return $this->findOneBy($params);
     }
     
+    public function create($data,$user){
+        $product = new Product();
+        $product->setName($data->name);
+        $product->setCode($data->code);
+        $product->setPrice($data->price);
+        $product->setCreatedBy($user);
+        $product->setCompany($user->getCompany());
+        $product->setExchange($user->getCurrentExchange());
+        $product->setDescription($data->description);
+        $this->getEntityManager()->persist($product);
+        $this->getEntityManager()->flush();
+    }
+            
+
+
     /**
      * Delete a company product
      * @param int $productID 
