@@ -13,7 +13,8 @@ use J2\Bundle\ExchangeBundle\Entity\Offer;
  * @ORM\Table(name="products")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ProductRepository")
  */
-class Product implements \JsonSerializable {
+class Product
+{
 
     /**
      * @var integer $id

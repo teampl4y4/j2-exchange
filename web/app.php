@@ -1,11 +1,4 @@
 <?php
-if (!interface_exists("JsonSerializable", false)) {
-    interface JsonSerializable {
-
-        public function jsonSerialize();
-    }
-}
-
 require_once __DIR__ . '/../app/bootstrap.php.cache';
 require_once __DIR__ . '/../app/AppKernel.php';
 

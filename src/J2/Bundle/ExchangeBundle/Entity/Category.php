@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="categories")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\CategoryRepository")
  */
-class Category implements \JsonSerializable
+class Category
 {
     /**
      * @var integer $id

@@ -11,7 +11,7 @@ use J2\Bundle\ExchangeBundle\Entity\Company;
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\UserRepository")
  */
-class User extends BaseUser implements \JsonSerializable
+class User extends BaseUser
 {
     /**
      * @var integer $id

@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="exchanges")
  * @ORM\Entity(repositoryClass="J2\Bundle\ExchangeBundle\Entity\ExchangeRepository")
  */
-class Exchange implements \JsonSerializable
+class Exchange
 {
     /**
      * @var integer $id
