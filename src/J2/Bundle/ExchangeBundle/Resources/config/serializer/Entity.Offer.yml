@@ -24,6 +24,5 @@ J2\Bundle\ExchangeBundle\Entity\Offer:
         expose: true
       active:
         expose: true
-#      product:
-#        expose: true
-# ---- RELATIONSHIPS BOMB FOR SOME REASON ----
+      product:
+        expose: true

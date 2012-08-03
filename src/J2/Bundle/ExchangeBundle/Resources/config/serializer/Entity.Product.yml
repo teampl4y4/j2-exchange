@@ -7,3 +7,17 @@ J2\Bundle\ExchangeBundle\Entity\Product:
           expose: true
           read_only: true
           access_type: private_method
+        name:
+          expose: true
+        description:
+          expose: true
+        price:
+          expose: true
+        code:
+          expose: true
+        createdAt:
+          expose: true
+        active:
+          expose: true
+        offers:
+          expose: true
