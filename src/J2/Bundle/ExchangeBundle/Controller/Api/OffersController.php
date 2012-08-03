@@ -33,7 +33,7 @@ class OffersController extends AbstractApiController
      * @Route("/setActive/{id}/{active}", name="_api_offers_setActive")
      */
     public function setActive($id, $active) {
-        
+
         $em = $this->getDoctrine()->getEntityManager();
         
         /* @var $offer \J2\Bundle\ExchangeBundle\Entity\Offer */

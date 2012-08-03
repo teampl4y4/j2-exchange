@@ -19,7 +19,7 @@
             }
             
             var matchesCount = 0;
-            if(this.model.get('matches').length > 0) {
+            if(this.model.get('matches') && this.model.get('matches').length > 0) {
                 matchesCount = this.model.get('matches').length;
             }
             
