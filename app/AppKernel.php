@@ -22,7 +22,8 @@ class AppKernel extends Kernel
             new J2ExchangeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Craue\TwigExtensionsBundle\CraueTwigExtensionsBundle(),
-            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle()
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this)
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
