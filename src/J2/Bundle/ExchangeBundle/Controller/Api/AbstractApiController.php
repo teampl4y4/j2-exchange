@@ -14,7 +14,6 @@ use J2\Bundle\ExchangeBundle\Util\JsonEncoder;
 abstract class AbstractApiController extends Controller
 {
     protected function response($data, $success = true, $status_code = 200, $headers = array()) {
-        $encoder = new JsonEncoder();
         return new Response(json_encode(array('success' => $success, 'response' => $data)), $status_code, array('Content-Type' => 'application/json') + $headers);
     }
 

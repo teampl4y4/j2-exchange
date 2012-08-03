@@ -72,12 +72,12 @@ class ProductRepository extends EntityRepository
 
     /**
      * Delete a company product
-     * @param int $productID 
+     * @param int $id 
      * @param J2\Bundle\ExchangeBundle\Entity\User $user
      * @return boolean
      */
-    public function deleteProduct($productID,User $user){
-        $product = $this->findOneBy(array('id'=>$productID,'company_id'=>$user->getCompany()->getId()));
+    public function delete($id,User $user){
+        $product = $this->findOneByUser($id,$user);
         $this->getEntityManager()->remove($product);
         $this->getEntityManager()->flush();
     }

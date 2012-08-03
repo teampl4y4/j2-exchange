@@ -43,15 +43,15 @@ class ProductsController extends Controller
     
     
     /**
-     * @Method("DELETE")
-     * @Route("/{id}", name="_delete_product")
+     * @Method("GET")
+     * @Route("/delete/{id}", name="_delete_product")
      */
     public function deleteAction($id){
         $user     = $this->get('security.context')->getToken()->getUser();
         $deleted = $this->getDoctrine()
                          ->getEntityManager()
                          ->getRepository('J2ExchangeBundle:Product')
-                         ->deleteProduct($id,$user);
+                         ->delete($id,$user);
         return $this->redirect($this->generateUrl("_products"));
     }
     
