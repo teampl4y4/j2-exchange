@@ -15,8 +15,6 @@ J2\Bundle\ExchangeBundle\Entity\Match:
         expose: true
       available:
         expose: true
-      offers:
-        expose: true
       createdAt:
         expose: true
       active:
