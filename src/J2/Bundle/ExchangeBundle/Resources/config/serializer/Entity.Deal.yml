@@ -1,4 +1,4 @@
-J2\Bundle\ExchangeBundle\Entity\Exchange:
+J2\Bundle\ExchangeBundle\Entity\Deal:
     exclusion_policy: ALL
     exclude: false
     access_type: public_method # defaults to property
@@ -7,11 +7,15 @@ J2\Bundle\ExchangeBundle\Entity\Exchange:
         expose: true
         read_only: true
         access_type: private_method
-      name:
+      state:
         expose: true
-      companies:
+      slug:
         expose: true
-      createdAt:
+      offers:
         expose: true
-      active:
+      deals:
+        expose: true
+      revenueTotal:
+        expose: true
+      orderTotal:
         expose: true

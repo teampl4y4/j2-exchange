@@ -1,4 +1,4 @@
-J2\Bundle\ExchangeBundle\Entity\Exchange:
+J2\Bundle\ExchangeBundle\Entity\Category:
     exclusion_policy: ALL
     exclude: false
     access_type: public_method # defaults to property
@@ -9,7 +9,7 @@ J2\Bundle\ExchangeBundle\Entity\Exchange:
         access_type: private_method
       name:
         expose: true
-      companies:
+      description:
         expose: true
       createdAt:
         expose: true

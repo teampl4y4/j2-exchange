@@ -165,4 +165,22 @@ class Deal
     public function jsonSerialize() {
         return get_object_vars($this);
     }
+
+    /**
+     * Get Offers
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getOffers()
+    {
+        return $this->offers;
+    }
+
+    /**
+     * Set Offers
+     * @param \Doctrine\Common\Collections\ArrayCollection $offer
+     */
+    public function setOffers($offer)
+    {
+        $this->offers = $offers;
+    }
 }

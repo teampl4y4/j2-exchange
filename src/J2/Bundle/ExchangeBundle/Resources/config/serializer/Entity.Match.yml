@@ -1,4 +1,4 @@
-J2\Bundle\ExchangeBundle\Entity\Offer:
+J2\Bundle\ExchangeBundle\Entity\Match:
     exclusion_policy: ALL
     exclude: false
     access_type: public_method # defaults to property
@@ -9,22 +9,15 @@ J2\Bundle\ExchangeBundle\Entity\Offer:
         access_type: private_method
       name:
         expose: true
-      listPrice:
+      description:
         expose: true
-      whisperPrice:
+      price:
+        expose: true
+      available:
+        expose: true
+      offers:
         expose: true
       createdAt:
         expose: true
-      updatedAt:
-        expose: true
       active:
-        expose: true
-        serialized_name: isActive
-      available:
-        expose: true
-      active:
-        expose: true
-      product:
-        expose: true
-      matches:
         expose: true

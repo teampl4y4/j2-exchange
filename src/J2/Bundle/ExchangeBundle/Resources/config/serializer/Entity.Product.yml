@@ -21,3 +21,7 @@ J2\Bundle\ExchangeBundle\Entity\Product:
           expose: true
         offers:
           expose: true
+        categories:
+          expose: true
+        offers:
+          expose: true

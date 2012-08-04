@@ -1,7 +1,6 @@
 <?php
 
 namespace J2\Bundle\ExchangeBundle\Entity;
-use J2\Bundle\ExchangeBundle\Entity\Users;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -131,7 +130,7 @@ class Exchange
     /**
      * Set createdAt
      *
-     * @param datetime $createdAt
+     * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -141,7 +140,7 @@ class Exchange
     /**
      * Get createdAt
      *
-     * @return datetime 
+     * @return DateTime
      */
     public function getCreatedAt()
     {

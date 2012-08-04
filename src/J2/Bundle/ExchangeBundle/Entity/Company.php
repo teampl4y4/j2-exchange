@@ -165,7 +165,7 @@ class Company
     /**
      * Get the exchanges
      *
-     * @return ArrayCollection
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getExchanges()
     {
