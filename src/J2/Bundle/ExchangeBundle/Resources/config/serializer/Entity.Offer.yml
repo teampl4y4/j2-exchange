@@ -26,3 +26,5 @@ J2\Bundle\ExchangeBundle\Entity\Offer:
         expose: true
       product:
         expose: true
+      matches:
+        expose: true
