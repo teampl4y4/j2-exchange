@@ -40,12 +40,12 @@
                 })
 
                 , $('<td></td>', {
-                    html: '$' + this.model.get('listPrice'),
+                    html: '$' + this.model.get('list_price'),
                     style: 'text-align: center'
                 })
 
                 , $('<td></td>', {
-                    html: '$' + this.model.get('whisperPrice'),
+                    html: '$' + this.model.get('whisper_price'),
                     style: 'text-align: center'
                 })
 

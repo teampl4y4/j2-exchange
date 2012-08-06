@@ -10,18 +10,16 @@ class OffersType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('companyID')
             ->add('name')
             ->add('description')
             ->add('listPrice')
             ->add('whisperPrice')
-            ->add('createdAt')
-            ->add('createdBy')
-            ->add('updatedAt')
-            ->add('updatedBy')
             ->add('active')
-            ->add('productID')
             ->add('available')
+            ->add('product', 'entity', array(
+    'class' => 'J2ExchangeBundle:Product',
+    'query_builder' => function($repository) { return $repository->createQueryBuilder('p')->orderBy('p.id', 'ASC'); },
+    'property' => 'name'))
         ;
     }
 

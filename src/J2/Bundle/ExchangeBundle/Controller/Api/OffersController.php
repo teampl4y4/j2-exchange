@@ -48,4 +48,46 @@ class OffersController extends AbstractApiController
         return $this->success($offer);
     }
 
+    /**
+     * @Method("POST")
+     * @Route("/create/", name="_create_offer")
+     */
+    public function createAction() {
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $params = json_decode($content); // 2nd param to get as array
+            $product = $this->getDoctrine()
+                    ->getEntityManager()
+                    ->getRepository('J2ExchangeBundle:Offer')
+                    ->findOneByUser($params->product,$user);
+            $data = $this->getDoctrine()
+                    ->getEntityManager()
+                    ->getRepository('J2ExchangeBundle:Offer')
+                    ->create($params, $user, $product);
+            return $this->success($data);
+        }
+    }
+    
+    /**
+     * @Method("POST")
+     * @Route("/update/{id}", name="_update_offer")
+     */
+    public function updateAction($id){
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $params = json_decode($content); // 2nd param to get as array
+            $product = $this->getDoctrine()
+                    ->getEntityManager()
+                    ->getRepository('J2ExchangeBundle:Offer')
+                    ->findOneByUser($params->product,$user);
+            $data = $this->getDoctrine()
+                    ->getEntityManager()
+                    ->getRepository('J2ExchangeBundle:Offer')
+                    ->update($id, $params, $user,$product);
+            return $this->success($data);
+        }
+    }
+
 }

@@ -1,9 +1,22 @@
 {% extends '::base.html.twig' %}
 
 {% block title %} Your Offers {%endblock%}
+{% block headline %}{{company.name}} Offers{% endblock %}
+{% block tagLine %}Offers for company {{ company.name }}{%endblock%}
+
+{% block middleNav %}
+<div class="wrapper">
+    <div class="controlB">
+        <ul>
+            <li><a href="{{ path( '_add_offer') }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/plus.png') }}" alt=""><span>Add New Offer</span></a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+{% endblock%}
 
 {% block content %}
-<div class="oneTwo">
+<div class="oneOne">
     <div class="widgets">
         <div class="widget">
             <div class="title">
@@ -41,12 +54,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
-
-<div class="oneTwo">
-    <div class="widget" id="offerInfoPane">
-        &nbsp;
     </div>
 </div>
 

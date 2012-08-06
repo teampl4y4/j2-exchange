@@ -35,6 +35,7 @@ class ProductRepository extends EntityRepository
      * @param J2\Bundle\ExchangeBundle\Entity\User $user
      */
     public function create($data,$user){
+        $product = new Product();
         $product->setName($data->name);
         $product->setCode($data->code);
         $product->setPrice($data->price);

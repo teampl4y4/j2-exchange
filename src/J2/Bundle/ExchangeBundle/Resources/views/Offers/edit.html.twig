@@ -1,0 +1,148 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Your Offers {%endblock%}
+{% block headline %}{{company.name}} Offers{% endblock %}
+{% block tagLine %}Offers for company {{ company.name }}{%endblock%}
+
+{% block middleNav %}
+<div class="wrapper">
+    <div class="controlB">
+        <ul>
+            <li><a href="{{ path( '_add_offer') }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/plus.png') }}" alt=""><span>Add New Offer</span></a></li>
+            <li><a href="{{ path( '_offers') }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/bank.png') }}" alt=""><span>Back to Offers</span></a></li>
+            <li><a href="{{ path( '_delete_offer', {'id': offer.id }) }}" title=""><img src="{{ asset('bundles/j2exchange/images/icons/control/32/busy.png') }}" alt=""><span>Delete Offer</span></a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+{% endblock%}
+
+{% block content %}
+<div class="oneOne">
+    <div class="widgets">
+        <form id="offerForm" class="form" action="return false">
+            <fieldset>
+                <div class="widget">
+                    <div class="title">
+                        <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
+                        <h6>Edit {{offer.name}}</h6>
+                    </div>
+                    <div class="formRow">
+                        <label for="name">Name:</label>
+                        <div class="formRight">
+                            {{ form_widget(form.name) }}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                            <div class="formRow">
+                                <label>Product:</label>
+                                <div class="formRight searchDrop">
+                                    {{ form_widget(form.product, { 'attr': {'class': 'chzn-select'}}) }}
+                                    <div class="fix"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="formRow">
+                                <label for="price">List Price:</label>
+                                <div class="formRight">
+                                {{ form_widget(form.listPrice, { 'attr': {'class': 'ui-spinner-box','autocomplete': 'off'}}) }}
+                                        <div class="fix"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            <div class="formRow">
+                                <label for="price">Whiser Price:</label>
+                                <div class="formRight">
+                                {{ form_widget(form.whisperPrice, { 'attr': {'class': 'ui-spinner-box','autocomplete': 'off'}}) }}
+                                        <div class="fix"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="formRow">
+                                    <label for="description">Description:</label>
+                                    <div class="formRight">
+                            {{ form_widget(form.description) }}
+                                        <div class="fix"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="formRow">
+                                    <label for="description">Available:</label>
+                                    <div class="formRight">
+                            {{ form_widget(form.available, { 'attr': {'class': 'ui-spinner-box','autocomplete': 'off'}}) }}
+                                        <div class="fix"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="formRow">
+                                    <label>Active:</label>
+                                    <div class="formRight">
+                            {{ form_widget(form.active) }}
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                    {{ form_widget(form._token) }}
+                                    <div class="formSubmit">
+                                        <input type="submit" value="submit" class="redB">
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+{% endblock %}
+{% block javascripts %}
+                <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
+                <script type="text/javascript">
+                (function ($) {
+                    $(".chzn-select").chosen();
+                    var opts = {
+                        'j2_bundle_exchangebundle_offerstype_listPrice': {decimals:2}
+                    };
+                    $("#j2_bundle_exchangebundle_offerstype_listPrice").spinner({currency: '$',decimals:2,stepping: 0.25});
+                    $("#j2_bundle_exchangebundle_offerstype_whisperPrice").spinner({currency: '$',decimals:2,stepping: 0.25});
+                    $("#j2_bundle_exchangebundle_offerstype_available").spinner({decimals:0,stepping: 1});
+                    $("#j2_bundle_exchangebundle_offerstype_description").cleditor({
+                            width:"100%", 
+                            height:"100%",
+                            bodyStyle: "margin: 10px; font: 12px Arial,Verdana; cursor:text"
+                    });
+                    var offer = Backbone.Model.extend({
+                        defaults: {
+                            name: '{{offer.name}}',
+                            listPrice: '{{offer.listprice}}',
+                            whisperPrice: '{{offer.whisperprice}}',
+                            description: '{{offer.description}}',
+                            active: {{offer.active}},
+                            available: {{offer.available}}
+                        },
+                        url: '{{ path( '_update_offer', {'id': offer.id }) }}'
+                    });
+
+                    var offerView = Backbone.View.extend({
+                        initialize: function() {
+                            _.bindAll(this);
+                        }
+                    });
+                    var myOffer;
+                    var myView;
+                    $(document).ready(function(){
+                        myOffer = new offer();
+                        myView = new offerView({
+                            el: $('#offerForm'),
+                            model: myOffer
+                        });
+
+                        myView.populate('j2_bundle_exchangebundle_offerstype');
+                        myView.parse('j2_bundle_exchangebundle_offersstype');
+                    });
+                    $("#offerForm").submit(function(event){
+                        event.preventDefault();
+                        myView.parse('j2_bundle_exchangebundle_offerstype');
+                        myOffer.save();
+                    });
+
+                })(jQuery);
+                    </script>
+{%endblock%}

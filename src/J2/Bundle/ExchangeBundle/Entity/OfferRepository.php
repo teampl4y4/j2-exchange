@@ -129,4 +129,63 @@ class OfferRepository extends EntityRepository
 
         return $qb->getQuery()->execute();
     }
+    
+    /**
+     * Fetch an offer by id from within a company exchange
+     * @param int $offerID 
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     * @return J2\Bundle\ExchangeBundle\Entity\Offer
+     */
+    public function findOneByUser($offerID, User $user){
+        $params=array();
+        $params['id']=$offerID;
+        $params['company']=$user->getCompany()->getId();
+        $params['exchange']=$user->getCurrentExchange()->getId();
+        return $this->findOneBy($params);
+    }
+    
+    /**
+     * Create an offer
+     * @param stdClass $data
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     */
+    public function create($data,$user,$product){
+        $offer = new Offer();
+        $offer->setName($data->name);
+        $offer->setWhisperPrice(str_replace('$', '', $data->whisperPrice));
+        $offer->setListPrice(str_replace('$', '', $data->listPrice));
+        $offer->setCreatedBy($user);
+        $offer->setCompany($user->getCompany());
+        $offer->setExchange($user->getCurrentExchange());
+        $offer->setDescription($data->description);
+        $offer->setAvailable($data->available);
+        $offer->setProduct($product);
+        $this->getEntityManager()->persist($offer);
+        $this->getEntityManager()->flush();
+        return true;
+    }
+    
+    /**
+     * Update an offer
+     * @param int $id
+     * @param stdClass $data
+     * @param J2\Bundle\ExchangeBundle\Entity\User $user
+     */
+    public function update($id,$data,$user,$product){
+        $offer = $this->findOneByUser($id, $user);
+        if(!$offer instanceof Offer)
+            return false;
+        $offer->setName($data->name);
+        $offer->setWhisperPrice(str_replace('$', '', $data->whisperPrice));
+        $offer->setListPrice(str_replace('$', '', $data->listPrice));
+        $offer->setUpdatedBy($user);
+        $offer->setCompany($user->getCompany());
+        $offer->setExchange($user->getCurrentExchange());
+        $offer->setDescription($data->description);
+        $offer->setAvailable($data->available);
+        $offer->setProduct($product);
+        $this->getEntityManager()->persist($offer);
+        $this->getEntityManager()->flush();
+        return true;
+    }
 }
