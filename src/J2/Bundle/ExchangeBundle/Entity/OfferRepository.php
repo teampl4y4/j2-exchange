@@ -90,7 +90,8 @@ class OfferRepository extends EntityRepository
                 o.exchange_id = ' . $offer->getExchange()->getId() . ' AND
                 o.active = 1  AND
                 o.company_id != ' . $offer->getCompany()->getId() . '
-                o.available > 0
+                o.available > 0 AND
+                o.id NOT IN ( SELECT oma.matched_offer_id FROM offers_matches_activity oma WHERE oma.offer_id = ' . $offer->getId() . ')
             ORDER BY
                 o.listPrice DESC,
                 o.whisperPrice ASC';

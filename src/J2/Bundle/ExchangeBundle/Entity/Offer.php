@@ -3,6 +3,7 @@
 namespace J2\Bundle\ExchangeBundle\Entity;
 use JMS\SerializerBundle\Annotation\ExclusionPolicy;
 use JMS\SerializerBundle\Annotation\Expose;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +32,13 @@ class Offer
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $company;
+
+    /**
+     * @var OfferActivity $activity
+     *
+     * @ORM\OneToMany(targetEntity="OfferActivity", mappedBy="offer")
+     */
+    private $activity;
 
     /**
      * @var string $name
@@ -417,6 +425,22 @@ class Offer
     public function getExchange() {
         return $this->exchange;
     }
+
+    /**
+     * Set activity
+     * @param $activity
+     */
+    public function setActivity($activity) {
+        $this->activity = $activity;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
     
     public function jsonSerialize() {
         
@@ -431,4 +455,5 @@ class Offer
         return $arr;
         
     }
+
 }
