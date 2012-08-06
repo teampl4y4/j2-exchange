@@ -32,7 +32,7 @@
                         <td align="center"><a href="#">{{ match.company.name }}</a></td>
                         <td align="center">{{ match.listPrice }} </td>
                         <td align="center">{{ match.available }}</td>
-                        <td align="center" class="green"><b>{{ (match.listPrice / offer.listPrice) * 100 }}%</b></td>
+                        <td align="center" class="green"><b>{{ ((match.listPrice / offer.listPrice) * 100) | number_format(0) }}%</b></td>
                         <td align="center">
                             {% for category in match.product.categories %}
                             <span class="blueBack">{{ category.name }}</span>
