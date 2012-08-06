@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use J2\Bundle\ExchangeBundle\Form\ProductsType;
+use J2\Bundle\ExchangeBundle\Entity\Product;
 
 /**
  * Products Controller
@@ -37,7 +38,7 @@ class ProductsController extends Controller
      */
     public function addAction(){
         $user     = $this->get('security.context')->getToken()->getUser();
-        $form = $this->createForm(new ProductsType());
+        $form = $this->createForm(new ProductsType(), new Product());
         return array('form' => $form->createView(), 'company' => $user->getCompany());
     }
     

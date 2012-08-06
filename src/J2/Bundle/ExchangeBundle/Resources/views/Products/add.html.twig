@@ -19,7 +19,7 @@
 {% block content %}
 <div class="oneOne">
     <div class="widgets">
-        <form id="productForm" action="return false">
+        <form id="productForm" class="form" action="return false">
             <fieldset>
                 <div class="widget">
                     <div class="title">
@@ -78,43 +78,52 @@
 {% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
-<script type="text/javascript">
-(function ($) {
-    var product = Backbone.Model.extend({
-        defaults: {
-            name: '',
-            code: '',
-            price: '',
-            description: '',
-            active: 1
-        },
-        url: '{{ path( '_create_product') }}'
-    });
+                    <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
+                    <script type="text/javascript">
+                    (function ($) {
+                        var opts = {
+                            'j2_bundle_exchangebundle_productstype_price': {decimals:2}
+                        };
+                        $("#j2_bundle_exchangebundle_productstype_price").spinner({currency: '$',decimals:2,stepping: 0.25});
+                        $("#j2_bundle_exchangebundle_productstype_description").cleditor({
+                                width:"100%", 
+                                height:"100%",
+                                bodyStyle: "margin: 10px; font: 12px Arial,Verdana; cursor:text"
+                        });
+                        var product = Backbone.Model.extend({
+                            defaults: {
+                                name: '',
+                                code: '',
+                                price: '',
+                                description: '',
+                                active: 1
+                            },
+                            url: '{{ path( '_create_product') }}'
+                        });
 
-    var productView = Backbone.View.extend({
-        initialize: function() {
-            _.bindAll(this);
-        }
-    });
-    var myProduct;
-    var myView;
-    $(document).ready(function(){
-        myProduct = new product();
-        myView = new productView({
-            el: $('#productForm'),
-            model: myProduct
-        });
+                        var productView = Backbone.View.extend({
+                            initialize: function() {
+                                _.bindAll(this);
+                            }
+                        });
+                        var myProduct;
+                        var myView;
+                        $(document).ready(function(){
+                            myProduct = new product();
+                            myView = new productView({
+                                el: $('#productForm'),
+                                model: myProduct
+                            });
 
-        myView.populate('j2_bundle_exchangebundle_productstype');
-        myView.parse('j2_bundle_exchangebundle_productstype');
-    });
-    $("#productForm").submit(function(event){
-        event.preventDefault();
-        myView.parse('j2_bundle_exchangebundle_productstype');
-        myProduct.save();
-    });
+                            myView.populate('j2_bundle_exchangebundle_productstype');
+                            myView.parse('j2_bundle_exchangebundle_productstype');
+                        });
+                        $("#productForm").submit(function(event){
+                            event.preventDefault();
+                            myView.parse('j2_bundle_exchangebundle_productstype');
+                            myProduct.save();
+                        });
 
-})(jQuery);
-</script>
+                    })(jQuery);
+                        </script>
 {%endblock%}
