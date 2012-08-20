@@ -17,6 +17,9 @@
 
 {% block content %}
 <div class="oneOne">
+        <div id="saved" class="nNote nSuccess hideit" style="display:none; height:20px;">
+            <p><strong>Offer Saved!</strong></p>
+        </div> 
     <div class="widgets">
         <form id="offerForm" class="form" action="return false">
             <fieldset>
@@ -140,6 +143,13 @@
                         event.preventDefault();
                         myView.parse('j2_bundle_exchangebundle_offerstype');
                         myOffer.save();
+                        $("#saved").fadeTo(200, 100, function(){ //fade
+                                $(this).slideDown(300, function() { 
+                                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                                    myView.model = new offer();
+                                    myView.populate('j2_bundle_exchangebundle_offerstype');
+                                });
+                        });
                     });
 
                 })(jQuery);

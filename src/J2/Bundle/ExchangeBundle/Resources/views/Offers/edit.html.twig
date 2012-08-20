@@ -20,8 +20,11 @@
 {% block content %}
 <div class="oneOne">
     <div class="widgets">
+        <div id="saved" class="nNote nSuccess hideit" style="display:none">
+            <p><strong>Offer Saved</strong></p>
+        </div> 
         <form id="offerForm" class="form" action="return false">
-            <fieldset>
+            <fieldset> 
                 <div class="widget">
                     <div class="title">
                         <img src="{{ asset('bundles/j2exchange/images/icons/dark/stats.png')}} " alt="" class="titleIcon">
@@ -96,6 +99,13 @@
                 <script type="text/javascript" src="{{ asset('bundles/j2exchange/js/backbone/form.js') }}"></script>
                 <script type="text/javascript">
                 (function ($) {
+                    $(".hideit").click(function() {
+                            $(this).fadeTo(200, 0.00, function(){ //fade
+                                    $(this).slideUp(300, function() { //slide up
+                                            $(this).hide(); //then remove from the DOM
+                                    });
+                            });
+                    });
                     $(".chzn-select").chosen();
                     var opts = {
                         'j2_bundle_exchangebundle_offerstype_listPrice': {decimals:2}
@@ -141,8 +151,14 @@
                         event.preventDefault();
                         myView.parse('j2_bundle_exchangebundle_offerstype');
                         myOffer.save();
+                        $("#saved").fadeTo(200, 100, function(){ //fade
+                                $(this).slideDown(300, function() { 
+                                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                                });
+                        });
                     });
 
+                            
                 })(jQuery);
                     </script>
 {%endblock%}
